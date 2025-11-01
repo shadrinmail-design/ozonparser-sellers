@@ -10,49 +10,41 @@ async function searchByImage(imageUrl) {
 
   const browser = await puppeteer.launch({
     headless: false,
+    executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+    userDataDir: '/tmp/chrome-puppeteer-profile', // используем временную директорию с куками
     args: [
+      '--no-first-run',
+      '--no-default-browser-check',
       '--disable-blink-features=AutomationControlled',
       '--disable-features=IsolateOrigins,site-per-process',
       '--lang=ru-RU',
-      '--no-sandbox',
-      '--disable-setuid-sandbox',
+      '--disable-web-security',
+      '--disable-features=VizDisplayCompositor',
+      '--window-size=1366,768',
     ],
+    defaultViewport: null,
     ignoreDefaultArgs: ['--enable-automation'],
-    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
   });
 
   try {
-    const page = await browser.newPage();
+    await new Promise(resolve => setTimeout(resolve, 2000));
 
-    // Load cookies from Chrome profile
-    const cookiesPath = '/tmp/chrome-puppeteer-profile/Cookies';
-    console.log('🍪 Loading cookies from Chrome profile...');
-
-    // Set viewport
-    await page.setViewport({ width: 1920, height: 1080 });
+    const pages = await browser.pages();
+    const page = pages.find(p => p.url() !== 'about:blank') || pages[0] || await browser.newPage();
 
     console.log('🌐 Navigating to Ozon...');
-    await page.goto('https://www.ozon.ru/', { waitUntil: 'networkidle2', timeout: 30000 });
+    const response = await page.goto('https://www.ozon.ru/', {
+      waitUntil: 'domcontentloaded',
+      timeout: 60000
+    }).catch(err => {
+      console.log('⚠️  Navigation error:', err.message);
+      return null;
+    });
 
-    // Set cookies from file (if available)
-    try {
-      const cookiesString = fs.readFileSync(path.join(__dirname, '../ozon_cookies_converted.txt'), 'utf8').trim();
-      if (cookiesString) {
-        const cookies = cookiesString.split(';').map(c => {
-          const [name, value] = c.trim().split('=');
-          return { name, value, domain: '.ozon.ru' };
-        });
-        await page.setCookie(...cookies);
-        console.log('✅ Cookies loaded');
-
-        // Reload page with cookies
-        await page.reload({ waitUntil: 'networkidle2' });
-      }
-    } catch (err) {
-      console.log('⚠️  No cookies file found, continuing without cookies');
+    if (response) {
+      console.log('📊 Response status:', response.status());
     }
 
-    // Wait for page to load
     await new Promise(resolve => setTimeout(resolve, 3000));
 
     console.log('📷 Looking for camera button...');
