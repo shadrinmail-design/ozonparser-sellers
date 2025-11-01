@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ozon Image Search Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .input-wrapper {
+            flex: 1;
+            position: relative;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px 50px 15px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .camera-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #667eea;
+            font-size: 24px;
+        }
+
+        button {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .result.show {
+            display: block;
+        }
+
+        .result h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .result pre {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .loading {
+            text-align: center;
+            color: #667eea;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .example-images {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 10px;
+        }
+
+        .example-images h4 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .example-list {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .example-item {
+            padding: 8px 12px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+
+        .example-item:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .instructions {
+            margin-top: 30px;
+            padding: 20px;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            border-radius: 5px;
+        }
+
+        .instructions h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .instructions ol {
+            padding-left: 20px;
+            color: #856404;
+        }
+
+        .instructions li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Поиск по изображению Ozon</h1>
+        <p class="subtitle">Тестирование автоматизации Safari для поиска товаров по картинке</p>
+
+        <div class="search-box">
+            <div class="input-wrapper">
+                <input
+                    type="text"
+                    id="imageUrl"
+                    placeholder="Вставьте URL изображения товара..."
+                    value="https://ir.ozone.ru/s3/multimedia-1-y/wc1000/7116784786.jpg"
+                >
+                <span class="camera-icon" title="Поиск по изображению">📷</span>
+            </div>
+            <button onclick="searchByImage()" id="searchBtn">Искать</button>
+        </div>
+
+        <div class="example-images">
+            <h4>Примеры изображений:</h4>
+            <div class="example-list">
+                <div class="example-item" onclick="useExample(this.dataset.url)" data-url="https://ir.ozone.ru/s3/multimedia-1-y/wc1000/7116784786.jpg">
+                    Пример 1
+                </div>
+                <div class="example-item" onclick="useExample(this.dataset.url)" data-url="https://ir.ozone.ru/s3/multimedia-1-d/wc1000/7506575617.jpg">
+                    Пример 2
+                </div>
+                <div class="example-item" onclick="useExample(this.dataset.url)" data-url="https://ir.ozone.ru/s3/multimedia-1-5/wc1000/8111879861.jpg">
+                    Пример 3
+                </div>
+            </div>
+        </div>
+
+        <div class="loading" id="loading">
+            <p>⏳ Запуск Safari и поиск...</p>
+            <p style="font-size: 12px; margin-top: 5px;">Это может занять до 30 секунд</p>
+        </div>
+
+        <div class="result" id="result">
+            <h3>Результат:</h3>
+            <pre id="resultText"></pre>
+        </div>
+
+        <div class="instructions">
+            <h4>⚠️ Перед первым запуском:</h4>
+            <ol>
+                <li>Откройте Safari</li>
+                <li>Safari → Settings → Advanced</li>
+                <li>Включите "Show features for web developers"</li>
+                <li>Safari → Develop → "Allow JavaScript from Apple Events"</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        function useExample(url) {
+            document.getElementById('imageUrl').value = url;
+        }
+
+        async function searchByImage() {
+            const imageUrl = document.getElementById('imageUrl').value.trim();
+
+            if (!imageUrl) {
+                alert('Введите URL изображения');
+                return;
+            }
+
+            const loading = document.getElementById('loading');
+            const result = document.getElementById('result');
+            const searchBtn = document.getElementById('searchBtn');
+
+            loading.classList.add('show');
+            result.classList.remove('show');
+            searchBtn.disabled = true;
+
+            try {
+                // Call Node.js backend API
+                const response = await fetch('/api/image-search', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ imageUrl })
+                });
+
+                const data = await response.json();
+
+                document.getElementById('resultText').textContent = JSON.stringify(data, null, 2);
+                result.classList.add('show');
+
+            } catch (error) {
+                document.getElementById('resultText').textContent = 'Ошибка: ' + error.message;
+                result.classList.add('show');
+            } finally {
+                loading.classList.remove('show');
+                searchBtn.disabled = false;
+            }
+        }
+
+        // Allow Enter key to search
+        document.getElementById('imageUrl').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchByImage();
+            }
+        });
+    </script>
+</body>
+</html>

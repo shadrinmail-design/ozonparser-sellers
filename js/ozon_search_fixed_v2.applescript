@@ -19,7 +19,7 @@ on run argv
 
 		-- Step 1: Click camera button
 		do JavaScript "document.querySelector('button.rn6_29').click();" in currentTab
-		delay 5
+		delay 3
 
 		-- Step 2: Focus the image URL input field
 		do JavaScript "
@@ -30,23 +30,18 @@ on run argv
 				lastInput.click();
 			}
 		" in currentTab
-		delay 2
+		delay 1
 	end tell
 
 	-- Step 3: Paste URL using clipboard and Cmd+V
 	set the clipboard to imageURL
 
 	tell application "System Events"
-		-- First, clear any existing input
-		keystroke "a" using command down
-		delay 0.5
-
-		-- Then paste
 		keystroke "v" using command down
 	end tell
 
-	-- Step 4: Wait LONGER for "Найти" button to appear (Ozon needs time to validate URL)
-	delay 10
+	-- Step 4: Wait for "Найти" button to appear (give Ozon time to validate URL)
+	delay 3
 
 	tell application "Safari"
 		set currentTab to current tab of window 1
