@@ -1,7 +1,7 @@
 import os
 from typing import Any, Dict, Optional, Tuple
 
-from flask import Flask, abort, render_template, request, url_for, redirect, jsonify
+from flask import Flask, abort, render_template, request, url_for, redirect
 from werkzeug.middleware.proxy_fix import ProxyFix
 from pymongo import MongoClient, ASCENDING, DESCENDING
 
@@ -21,13 +21,6 @@ def create_app() -> Flask:
     uri, db_name, col_name = _mongo_params()
     _client = MongoClient(uri)
     _col = _client[db_name][col_name]
-    
-    # Store collection in app config for API routes
-    app.config['MONGO_COLLECTION'] = _col
-
-    # Register API blueprint
-    from .api_routes import api_bp
-    app.register_blueprint(api_bp)
 
     @app.get("/")
     def index():

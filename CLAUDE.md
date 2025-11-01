@@ -72,3 +72,112 @@ PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome SOCKS_PROXY=socks5://your-proxy
 PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome HTTPS_PROXY=http://your-proxy:port OZON_COOKIES="$(cat /home/ozon-parser/ozon_cookies_converted.txt)" MAX_SCROLLS=50 node src/index.js
 ```
 
+
+---
+
+## 🚀 MongoDB API готово! (2025-11-01)
+
+### API Endpoints
+
+Все API доступны через 
+
+**1. GET /api/health** - Health check
+```json
+{
+  "success": true,
+  "status": "ok",
+  "timestamp": "2025-11-01T04:02:13.434748"
+}
+```
+
+**2. GET /api/stats** - Статистика базы
+```json
+{
+  "success": true,
+  "data": {
+    "total_products": 0,
+    "avg_rating": 0,
+    "total_reviews": 0,
+    "unique_brands": 0,
+    "top_brands": []
+  }
+}
+```
+
+**3. GET /api/products** - Список товаров
+Параметры:
+- `q` - поисковый запрос
+- `brand` - фильтр по бренду
+- `min_rating` - минимальный рейтинг
+- `sort` - сортировка (updated, rating, reviews, name)
+- `page` - номер страницы (default: 1)
+- `per_page` - товаров на странице (default: 20, max: 100)
+
+```json
+{
+  "success": true,
+  "data": [...],
+  "pagination": {
+    "page": 1,
+    "per_page": 20,
+    "total": 0,
+    "pages": 0
+  },
+  "filters": {...}
+}
+```
+
+**4. GET /api/products/<id>** - Конкретный товар
+```json
+{
+  "success": true,
+  "data": {
+    "ozon_id": 123456,
+    "name": "...",
+    "price_text": "...",
+    "rating_value": 4.5,
+    "reviews_count": 100,
+    ...
+  }
+}
+```
+
+### Примеры использования
+
+```bash
+# Health check
+curl https://max.gogocrm.ru/ozon/api/health
+
+# Статистика
+curl https://max.gogocrm.ru/ozon/api/stats
+
+# Список товаров
+curl "https://max.gogocrm.ru/ozon/api/products?page=1&per_page=20"
+
+# Поиск по названию
+curl "https://max.gogocrm.ru/ozon/api/products?q=phone"
+
+# Фильтр по бренду и рейтингу
+curl "https://max.gogocrm.ru/ozon/api/products?brand=Apple&min_rating=4.5"
+
+# Сортировка по отзывам
+curl "https://max.gogocrm.ru/ozon/api/products?sort=reviews"
+
+# Конкретный товар
+curl https://max.gogocrm.ru/ozon/api/products/123456
+```
+
+### Технические детали
+
+- **Сервер:** gunicorn на 127.0.0.1:5007 (2 workers)
+- **Nginx:** reverse proxy на max.gogocrm.ru/ozon
+- **MongoDB:** mongodb://localhost:27017/ozon
+- **Коллекция:** products
+- **Бэкап:** /home/ozon-parser/src/ozon_parser/web/app.py.backup
+
+### Файлы
+
+- API routes: `/home/ozon-parser/src/ozon_parser/web/api_routes.py`
+- Main app: `/home/ozon-parser/src/ozon_parser/web/app.py`
+- WSGI: `/home/ozon-parser/src/ozon_parser/web/wsgi.py`
+
