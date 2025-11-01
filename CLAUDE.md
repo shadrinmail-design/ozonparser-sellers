@@ -518,3 +518,38 @@ targetInput.dispatchEvent(new Event('input', { bubbles: true }));
 - Метод: clipboard + System Events keystroke
 - Статус: РАБОТАЕТ СТАБИЛЬНО
 
+---
+
+## ⚠️ Попытка реализации на Puppeteer/Chrome (2025-11-01, поздний вечер)
+
+### Проблема:
+Кнопка поиска по изображению (camera button, class `rn6_29`) **НЕ ДОСТУПНА в Chrome через Puppeteer**.
+
+### Причина:
+- Ozon использует **browser detection**
+- Кнопка камеры показывается ТОЛЬКО в Safari
+- В Chrome (даже с реальным профилем) кнопка не отображается
+- **Puppeteer детектируется Ozon** несмотря на:
+  - puppeteer-extra-plugin-stealth
+  - Реальный Chrome profile (Default, Profile 5)
+  - --disable-blink-features=AutomationControlled
+  - Копирование кук
+
+### Результат тестирования:
+```
+Page title: "Доступ ограничен"
+Camera buttons: [] (не найдено)
+File inputs: [] (не найдено)
+```
+
+###Вывод:
+❌ **Puppeteer НЕ ПОДХОДИТ для поиска по изображению на Ozon**
+✅ **Safari + AppleScript - ЕДИНСТВЕННОЕ рабочее решение**
+
+### Файлы попыток:
+- `js/ozon_image_search_puppeteer.js` - неудачная попытка
+- `js/test_chrome_image_search.js` - диагностика
+
+### Рекомендация:
+Продолжать использовать Safari AppleScript для массового поиска по изображениям.
+
