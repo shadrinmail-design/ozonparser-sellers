@@ -1,0 +1,26 @@
+[
+  {
+    "id": "7249026173",
+    "sku": "7249026173",
+    "title": "Массажер для глаз электрический",
+    "price": 1990,
+    "images": ["https://ir.ozone.ru/s3/multimedia-1-5/wc600/7249026173.jpg"],
+    "url": "https://www.ozon.ru/product/massazher-dlya-glaz-elektricheskiy-7249026173/"
+  },
+  {
+    "id": "1176348271",
+    "sku": "1176348271",
+    "title": "Тушь для ресниц термотушь 5XL объем и удлинение",
+    "price": 299,
+    "images": ["https://ir.ozone.ru/s3/multimedia-1-k/wc1000/7116784776.jpg"],
+    "url": "https://www.ozon.ru/product/tush-dlya-resnits-termotush-5xl-obem-i-udlinenie-1176348271/"
+  },
+  {
+    "id": "829847844",
+    "sku": "829847844",
+    "title": "Подарочный набор натуральной косметики",
+    "price": 1499,
+    "images": ["https://ir.ozone.ru/s3/multimedia-1-y/wc1000/7116784786.jpg"],
+    "url": "https://www.ozon.ru/product/podarochnyy-nabor-naturalnoy-kosmetiki-829847844/"
+  }
+]
