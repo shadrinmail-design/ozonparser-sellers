@@ -1,0 +1,57 @@
+[
+  {
+    "profileName": "Default",
+    "isLoggedIn": false,
+    "userName": null
+  },
+  {
+    "profileName": "Profile 1",
+    "isLoggedIn": false,
+    "userName": null
+  },
+  {
+    "profileName": "Profile 10",
+    "isLoggedIn": false,
+    "userName": null
+  },
+  {
+    "profileName": "Profile 11",
+    "isLoggedIn": false,
+    "userName": null
+  },
+  {
+    "profileName": "Profile 12",
+    "isLoggedIn": false,
+    "userName": null
+  },
+  {
+    "profileName": "Profile 2",
+    "isLoggedIn": false,
+    "userName": null
+  },
+  {
+    "profileName": "Profile 3",
+    "isLoggedIn": false,
+    "userName": null
+  },
+  {
+    "profileName": "Profile 5",
+    "isLoggedIn": false,
+    "userName": null
+  },
+  {
+    "profileName": "Profile 6",
+    "isLoggedIn": false,
+    "userName": null
+  },
+  {
+    "profileName": "Profile 7",
+    "isLoggedIn": false,
+    "userName": null
+  },
+  {
+    "profileName": "Profile 9",
+    "isLoggedIn": false,
+    "userName": null
+  }
+]
