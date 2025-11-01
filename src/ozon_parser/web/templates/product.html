@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+{% block title %}{{ p.name or 'Товар' }}{% endblock %}
+{% block content %}
+
+<article class="product">
+  <header>
+    <h2>{{ p.name or 'Товар' }}</h2>
+    <div class="meta">
+      {% if p.brand %}<span class="brand">{{ p.brand }}</span>{% endif %}
+      {% if p.rating_value %}<span class="rating">⭐ {{ '%.1f'|format(p.rating_value) }}</span>{% endif %}
+      {% if p.reviews_count %}<span class="reviews">💬 {{ p.reviews_count }}</span>{% endif %}
+      {% if p.price_text %}<span class="price">{{ p.price_text }}</span>{% endif %}
+    </div>
+    {% if p.url %}
+    <p><a class="btn" href="{{ p.url }}" target="_blank">Открыть на Ozon</a></p>
+    {% endif %}
+  </header>
+
+  <section class="gallery">
+    {% for img in (p.images or []) %}
+      <img src="{{ img }}" alt="image" />
+    {% endfor %}
+    {% if not p.images %}
+      <div class="noimg">Нет изображений</div>
+    {% endif %}
+  </section>
+
+  <section class="delivery">
+    <h3>Доставка</h3>
+    {% if p.delivery_min_date %}<div>Минимальная дата: {{ p.delivery_min_date }}</div>{% endif %}
+    {% if p.delivery_texts %}
+      <ul>
+        {% for t in p.delivery_texts %}
+        <li>{{ t }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <div>Нет данных</div>
+    {% endif %}
+  </section>
+
+  <section class="seller">
+    <h3>Продавец</h3>
+    <div>
+      {% if p.seller_name %}<div>Название: {{ p.seller_name }}</div>{% endif %}
+      {% if p.seller_id %}<div>ID: {{ p.seller_id }}</div>{% endif %}
+      {% if p.seller_rating %}<div>Рейтинг продавца: {{ '%.2f'|format(p.seller_rating) }}</div>{% endif %}
+    </div>
+  </section>
+
+  <section class="chars">
+    <h3>Характеристики</h3>
+    {% if p.characteristics %}
+    <table class="specs">
+      <tbody>
+      {% for row in p.characteristics %}
+        <tr>
+          <th>{{ row.name }}</th>
+          <td>{{ row.value }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <div>Нет данных</div>
+    {% endif %}
+  </section>
+
+  <p><a href="{{ url_for('index') }}">← Назад к списку</a></p>
+</article>
+
+{% endblock %}
+

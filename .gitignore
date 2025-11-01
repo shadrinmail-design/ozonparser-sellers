@@ -1,0 +1,49 @@
+# Node modules
+node_modules/
+js/node_modules/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+ENV/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Screenshots
+screenshots/
+js/screenshots/
+
+# Cookie files
+*.txt
+!requirements.txt
+
+# Test results
+*_test_results.json
+working_proxies.json
+js/working_proxies.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local

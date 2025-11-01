@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+{% block title %}Каталог{% endblock %}
+{% block content %}
+
+<form class="filters" method="get" action="{{ url_for('index') }}">
+  <input type="text" name="q" placeholder="Поиск по названию, бренду, продавцу" value="{{ q }}" />
+  <input type="text" name="brand" placeholder="Бренд" value="{{ brand }}" />
+  <input type="number" step="0.1" min="0" max="5" name="min_rating" placeholder="Мин. рейтинг" value="{{ min_rating }}" />
+  <select name="sort">
+    <option value="updated" {% if sort=='updated' %}selected{% endif %}>Сначала обновлённые</option>
+    <option value="rating" {% if sort=='rating' %}selected{% endif %}>По рейтингу</option>
+    <option value="reviews" {% if sort=='reviews' %}selected{% endif %}>По отзывам</option>
+    <option value="name" {% if sort=='name' %}selected{% endif %}>По названию</option>
+  </select>
+  <button type="submit">Применить</button>
+</form>
+
+<div class="summary">Всего: {{ total }} | Стр. {{ page }} из {{ pages }}</div>
+{% if error %}
+<div class="summary" style="color:#f87171">Ошибка базы данных: {{ error }}</div>
+{% endif %}
+
+<div class="grid">
+  {% for it in items %}
+  <article class="card">
+    <a class="thumb" href="{{ url_for('product', doc_id=it._id) }}">
+      {% if it.thumb %}
+        <img src="{{ it.thumb }}" alt="{{ it.name }}" />
+      {% else %}
+        <div class="noimg">Нет изображения</div>
+      {% endif %}
+    </a>
+    <div class="body">
+      <h3 class="title"><a href="{{ url_for('product', doc_id=it._id) }}">{{ it.name or 'Без названия' }}</a></h3>
+      <div class="meta">
+        {% if it.brand %}<span class="brand">{{ it.brand }}</span>{% endif %}
+        {% if it.rating_value %}<span class="rating">⭐ {{ '%.1f'|format(it.rating_value) }}</span>{% endif %}
+        {% if it.reviews_count %}<span class="reviews">💬 {{ it.reviews_count }}</span>{% endif %}
+      </div>
+      {% if it.price_text %}<div class="price">{{ it.price_text }}</div>{% endif %}
+      {% if it.url %}<div class="ext"><a href="{{ it.url }}" target="_blank">Открыть на Ozon</a></div>{% endif %}
+    </div>
+  </article>
+  {% endfor %}
+  {% if not items %}
+  <p>Ничего не найдено.</p>
+  {% endif %}
+  </div>
+
+<div class="pagination">
+  {% set prev_page = page - 1 %}
+  {% set next_page = page + 1 %}
+  {% if page > 1 %}
+    <a class="btn" href="{{ url_for('index', q=q, brand=brand, min_rating=min_rating, sort=sort, page=prev_page) }}">← Назад</a>
+  {% endif %}
+  {% if page < pages %}
+    <a class="btn" href="{{ url_for('index', q=q, brand=brand, min_rating=min_rating, sort=sort, page=next_page) }}">Вперёд →</a>
+  {% endif %}
+</div>
+
+{% endblock %}

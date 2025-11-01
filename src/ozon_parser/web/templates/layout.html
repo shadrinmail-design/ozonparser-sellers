@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}Ozon Товары{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <h1><a href="{{ url_for('index') }}">Ozon Парсер</a></h1>
+        <nav>
+          <a href="{{ url_for('index') }}">Каталог</a>
+          <a href="https://www.ozon.ru/" target="_blank">Ozon</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      {% block content %}{% endblock %}
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <small>Собрано из MongoDB | {{ total if total is defined else '' }}</small>
+      </div>
+    </footer>
+  </body>
+  </html>
+

@@ -1,0 +1,19 @@
+{
+  "name": "ozon-puppeteer-scraper",
+  "version": "0.1.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/index.js",
+    "lint": "echo 'no lint configured'"
+  },
+  "dependencies": {
+    "mongodb": "^6.9.0",
+    "p-limit": "^3.1.0",
+    "proxy-chain": "^2.5.0",
+    "puppeteer": "^23.7.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "user-agents": "^1.1.306"
+  }
+}
