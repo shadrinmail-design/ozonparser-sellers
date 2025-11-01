@@ -21,41 +21,26 @@ on run argv
 		do JavaScript "document.querySelector('button.rn6_29').click();" in currentTab
 		delay 3
 
-		-- Focus input and TYPE URL via JavaScript (avoids keyboard layout issues)
+		-- Focus input
 		do JavaScript "
 			var inputs = document.querySelectorAll('input[type=\"text\"]');
 			var targetInput = inputs[inputs.length - 1];
 			targetInput.focus();
 			targetInput.click();
-
-			// Simulate typing character by character
-			var url = '" & imageURL & "';
-			var index = 0;
-
-			function typeChar() {
-				if (index < url.length) {
-					targetInput.value += url[index];
-
-					// Trigger input event after each character
-					var event = new Event('input', { bubbles: true });
-					targetInput.dispatchEvent(event);
-
-					index++;
-					setTimeout(typeChar, 50); // 50ms delay between characters
-				} else {
-					// Trigger final events
-					targetInput.dispatchEvent(new Event('change', { bubbles: true }));
-					targetInput.dispatchEvent(new KeyboardEvent('keyup', { bubbles: true, key: 'Enter' }));
-				}
-			}
-
-			typeChar();
 		" in currentTab
+		delay 1
 
-		-- Wait for typing to complete and button to appear
-		delay 10
+		-- Type URL character by character using System Events
+		tell application "System Events"
+			keystroke imageURL
+			delay 0.5
+			-- Press Enter to trigger search
+			keystroke return
+		end tell
 
-		-- Check for and click "Найти" button
+		delay 5
+
+		-- Check for "Найти" button
 		set buttonCheck to do JavaScript "
 			(function() {
 				var buttons = document.querySelectorAll('button');
@@ -76,25 +61,10 @@ on run argv
 					}
 				}
 
-				// If button not found, list all visible buttons
-				var visibleButtons = [];
-				for (var i = 0; i < buttons.length; i++) {
-					var btn = buttons[i];
-					var rect = btn.getBoundingClientRect();
-					var txt = btn.textContent.trim();
-					if (rect.width > 0 && rect.height > 0 && txt.length > 0 && txt.length < 50) {
-						visibleButtons.push(txt);
-					}
-				}
-
-				return JSON.stringify({
-					found: false,
-					visibleButtons: visibleButtons.slice(0, 10)
-				});
+				return JSON.stringify({found: false});
 			})();
 		" in currentTab
 
-		-- Wait for results
 		delay 10
 
 		-- Extract products

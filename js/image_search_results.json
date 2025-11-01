@@ -1,205 +1,194 @@
 {
-  "total_processed": 1,
-  "total_products": 1,
-  "success_count": 1,
+  "total_processed": 2,
+  "total_products": 2,
+  "success_count": 2,
   "fail_count": 0,
   "results": [
     {
       "source_product": {
-        "id": "60428",
         "title": "LEGO City Space 60428 Космический робот-строитель,6+,140 деталей",
-        "image": "https://ir.ozone.ru/s3/multimedia-1-y/wc250/7333735426.jpg",
-        "price": 1339,
-        "url": "https://www.ozon.ru/product/lego-city-space-60428-kosmicheskiy-robot-stroitel-6-140-detaley-1641496517/"
+        "image": "https://ir.ozone.ru/s3/multimedia-1-y/wc250/7333735426.jpg"
       },
       "search_result": {
         "success": true,
-        "total_count": 30,
-        "click_result": "ERROR: Search button not found",
+        "total_count": 15,
+        "button_check": {
+          "found": true,
+          "clicked": true,
+          "buttonText": "Найти"
+        },
         "products": [
           {
             "index": 1,
-            "id": "837998900",
-            "title": "Краска для ткани черная Dropcolor для джинс и хлопка, краска для одежды черная 40 г.",
-            "url": "https://www.ozon.ru/product/kraska-dlya-tkani-chernaya-dropcolor-dlya-dzhins-i-hlopka-kraska-dlya-odezhdy-chernaya-40-g-837998900/?at=gpt4QPjErc2yK9mJiov8yB2UlkP1RwUq73JV4s7DKBoM"
+            "id": "693592572",
+            "title": "Конструктор Трансформеры - робот Танос, 156 деталей",
+            "url": "https://www.ozon.ru/product/konstruktor-transformery-robot-tanos-156-detaley-693592572/"
           },
           {
             "index": 2,
-            "id": "390935187",
-            "title": "Краска для ткани Yarche черная для джинсы, хлопка и натуральных тканей",
-            "url": "https://www.ozon.ru/product/kraska-dlya-tkani-yarche-chernaya-dlya-dzhinsy-hlopka-i-naturalnyh-tkaney-390935187/?at=79tn7E0GvCA8qYOlhy5XKE7FADzN7MIMJ318DfonArWG"
+            "id": "2813598834",
+            "title": "60 шт осталось",
+            "url": "https://www.ozon.ru/product/skaybidi-figurki-unitaza-igrushka-model-titana-fotografa-s-dinamikom-dlya-rozhdestva-2813598834/"
           },
           {
             "index": 3,
-            "id": "1742806518",
-            "title": "Пылесос для автомобиля беспроводной JEXVI",
-            "url": "https://www.ozon.ru/product/pylesos-dlya-avtomobilya-besprovodnoy-jexvi-1742806518/?at=ywtAV6QOgcQPLVXmfKYWmWvC0Lxz6yHrE0vpyIkZxVly"
+            "id": "1577542067",
+            "title": "Конструктор Марвел / Тор Робот / 139 деталей",
+            "url": "https://www.ozon.ru/product/konstruktor-marvel-tor-robot-139-detaley-1577542067/"
           },
           {
             "index": 4,
-            "id": "2151197451",
-            "title": "Интерактивная игрушка для котов и кошек \"Прятки\" со звуковыми эффектами и встроенным аккумулятором",
-            "url": "https://www.ozon.ru/product/interaktivnaya-igrushka-dlya-kotov-i-koshek-pryatki-so-zvukovymi-effektami-i-2151197451/?at=GRt2XWP3mhYy5LqMurX4pYyTm8BOKkimrzqBVCKyPkMV"
+            "id": "2451812388",
+            "title": "Lego Городской космический строительный робот 60428",
+            "url": "https://www.ozon.ru/product/lego-gorodskoy-kosmicheskiy-stroitelnyy-robot-60428-2451812388/"
           },
           {
             "index": 5,
-            "id": "1148032475",
-            "title": "Wi-Fi-адаптер для компьютера Smart Street 5 ГГц / 2.4 ГГц , усилитель wifi сигнала",
-            "url": "https://www.ozon.ru/product/wi-fi-adapter-dlya-kompyutera-smart-street-5-ggts-2-4-ggts-usilitel-wifi-signala-1148032475/?at=z6tOV8yW3cpkAG2kc8AmPPmh9MPBX3Tw26VXyhGZLpM6"
+            "id": "1791044788",
+            "title": "3 шт осталось",
+            "url": "https://www.ozon.ru/product/konstruktor-lego-creator-kosmicheskiy-shahterskiy-robot-31115-1791044788/"
           },
           {
             "index": 6,
-            "id": "2018240182",
-            "title": "Развивающая игрушка-сортер для малышей от 1 года : Обучающий поезд- Монтессори Содержит 10 видов жив",
-            "url": "https://www.ozon.ru/product/razvivayushchaya-igrushka-sorter-dlya-malyshey-ot-1-goda-obuchayushchiy-poezd-montessori-soderzhit-2018240182/?at=lRt64O3RyuvZLPkOcp3ZqMyIEQZK62tWq3gqJCO2WMDo"
+            "id": "992082782",
+            "title": "10 шт осталось",
+            "url": "https://www.ozon.ru/product/konstruktor-supergeroi-tor-robot-11633-revenger-145-detaley-992082782/"
           },
           {
             "index": 7,
-            "id": "1940429921",
-            "title": "Dyson Airwrap HS08 Complete Long Стайлер, 30-40 мм, бирюзовый, оранжевый",
-            "url": "https://www.ozon.ru/product/dyson-airwrap-hs08-complete-long-stayler-30-40-mm-biryuzovyy-oranzhevyy-1940429921/?at=99tr7R64vFW0NLAwt61nn5WUG86qgncgqZ6PXh7mj6Oj"
+            "id": "1347029151",
+            "title": "7 шт осталось",
+            "url": "https://www.ozon.ru/product/konstruktor-issledovatel-morskih-glubin-sovmestim-s-60095-sudno-korabl-1347029151/"
           },
           {
             "index": 8,
-            "id": "2016745104",
-            "title": "Vivienne Sabo Глянцевая помада-бальзам для губ La La Laque, лаковое покрытие, тон 03, нежно-персиков",
-            "url": "https://www.ozon.ru/product/vivienne-sabo-glyantsevaya-pomada-balzam-dlya-gub-la-la-laque-lakovoe-pokrytie-ton-03-nezhno-2016745104/?at=jYtZNlwo2hqmp033F1PDDQLsxPND3LIzR91zZSNJnZxA"
+            "id": "827129817",
+            "title": "Стало дешевле",
+            "url": "https://www.ozon.ru/product/konstruktor-plastikovyy-qman-bolshoy-molot-meha-3401-1-135-detali-827129817/"
           },
           {
             "index": 9,
-            "id": "825106351",
-            "title": "Стаканы одноразовые бумажные 250 мл 100 шт, стаканчики крафт для кофе",
-            "url": "https://www.ozon.ru/product/stakany-odnorazovye-bumazhnye-250-ml-100-sht-stakanchiki-kraft-dlya-kofe-825106351/?at=79tn7E0GvCx9o9QjfoZQ7r1hXn6VDDuZ8YMYAs85v6Y4"
+            "id": "2688481504",
+            "title": "Мини-набор LEGO City Космический научный робот, 30694,6+,49",
+            "url": "https://www.ozon.ru/product/mini-nabor-lego-city-kosmicheskiy-nauchnyy-robot-30694-6-49-2688481504/"
           },
           {
             "index": 10,
-            "id": "1425951905",
-            "title": "Габа 100г. Отборный китайский листовой чай габа ручного сбора. Урожай 2025",
-            "url": "https://www.ozon.ru/product/gaba-100g-otbornyy-kitayskiy-listovoy-chay-gaba-ruchnogo-sbora-urozhay-2025-1425951905/?at=Y7tjBkvVQH8MVVQnS4gg4XgsznNJzniL36kQ2uErP0gw"
+            "id": "1730677202",
+            "title": "Конструктор LEGO City 60428 Космический робот-строитель",
+            "url": "https://www.ozon.ru/product/konstruktor-lego-city-60428-kosmicheskiy-robot-stroitel-1730677202/"
           },
           {
             "index": 11,
-            "id": "1496711021",
-            "title": "Ложка для обуви длинная, 75 см на магните, бежевая",
-            "url": "https://www.ozon.ru/product/lozhka-dlya-obuvi-dlinnaya-75-sm-na-magnite-bezhevaya-1496711021/"
+            "id": "2241832163",
+            "title": "Конструктор LEGO Overwatch 75987 Омнический бастион",
+            "url": "https://www.ozon.ru/product/konstruktor-lego-overwatch-75987-omnicheskiy-bastion-2241832163/"
           },
           {
             "index": 12,
-            "id": "768582386",
-            "title": "Чехол для карты банковской прозрачный 3 шт / обложка для проездного, пропуска, социальной карты трой",
-            "url": "https://www.ozon.ru/product/chehol-dlya-karty-bankovskoy-prozrachnyy-3-sht-oblozhka-dlya-proezdnogo-propuska-sotsialnoy-768582386/"
+            "id": "1616434196",
+            "title": "499 шт осталось",
+            "url": "https://www.ozon.ru/product/lego-city-60350-lunnaya-issledovatelskaya-baza-786-detaley-7-1616434196/"
           },
           {
             "index": 13,
-            "id": "677234758",
-            "title": "Влажный корм для кошек Felix Природа вкуса, говядина, 75 г x 26 шт",
-            "url": "https://www.ozon.ru/product/vlazhnyy-korm-dlya-koshek-felix-priroda-vkusa-govyadina-75-g-x-26-sht-677234758/?at=MZtvmxrljsOWPO1AfQENLgJTZR6nADIX41LmPu2qypJx"
+            "id": "1616925908",
+            "title": "97 шт осталось",
+            "url": "https://www.ozon.ru/product/figurok-konstruktor-minifigurki-sovmestim-s-lego-titanfall-ionic-mecha-888detaley-24sm-paket-1616925908/"
           },
           {
             "index": 14,
-            "id": "143589817",
-            "title": "Philips PowerPro Expert FC9733/01 Пылесос, синий",
-            "url": "https://www.ozon.ru/product/philips-powerpro-expert-fc9733-01-pylesos-siniy-143589817/?at=46tRkYVorC3M57J2SgABD2JtnJDVRri7yopZ8hqlVYEA"
+            "id": "339379593",
+            "title": "48 шт осталось",
+            "url": "https://www.ozon.ru/product/konstruktor-robot-transbot-1toy-blockformers-igrushki-dlya-malchikov-podarok-na-novyy-god-339379593/"
           },
           {
             "index": 15,
-            "id": "1575112175",
-            "title": "Зарядка для iPhone, быстрая зарядка type c, 20W с кабелем",
-            "url": "https://www.ozon.ru/product/zaryadka-dlya-iphone-bystraya-zaryadka-type-c-20w-s-kabelem-1575112175/?at=x6tPNmlOZhYwDJ3MCx38xVwfEqRkwph7mV3WXCmx7qo3"
-          },
-          {
-            "index": 16,
-            "id": "1982292599",
-            "title": "Средство для ухода за обувью Дезодорант",
-            "url": "https://www.ozon.ru/product/sredstvo-dlya-uhoda-za-obuvyu-dezodorant-1982292599/?at=pZtp6Q2D5UBJqXEASZ8xDxYS0pojgycvWZ5ENsJ95pzn"
-          },
-          {
-            "index": 17,
-            "id": "2091719244",
-            "title": "Накладки силиконовые на обувь 2 шт",
-            "url": "https://www.ozon.ru/product/nakladki-silikonovye-na-obuv-2-sht-2091719244/"
-          },
-          {
-            "index": 18,
-            "id": "1720987862",
-            "title": "Солевая эссенция от мочевого камня и ржавчины (концентрат), 750 мл",
-            "url": "https://www.ozon.ru/product/solevaya-essentsiya-ot-mochevogo-kamnya-i-rzhavchiny-kontsentrat-750-ml-1720987862/?at=r2t4Jwq9xIO0q9oOfzr8KR1HLZQ3Y2tE1QXoPcDnlLQZ"
-          },
-          {
-            "index": 19,
-            "id": "1137427870",
-            "title": "Влажный корм для стерилизованных кошек Royal Canin Sterilised в соусе 85 г х 28 шт",
-            "url": "https://www.ozon.ru/product/vlazhnyy-korm-dlya-sterilizovannyh-koshek-royal-canin-sterilised-v-souse-85-g-h-28-sht-1137427870/?at=XQtkrBQJmhzP8Z1ziO54wy0FV4pQmxHZLN6oKs7D4klp"
-          },
-          {
-            "index": 20,
-            "id": "2103849687",
-            "title": "Зарядное устройство для телефона с кабелем 120W Xiaomi / Зарядный блок Type C с кабелем / Блок питан",
-            "url": "https://www.ozon.ru/product/zaryadnoe-ustroystvo-dlya-telefona-s-kabelem-120w-xiaomi-zaryadnyy-blok-type-c-s-kabelem-blok-2103849687/?at=jYtZNlr9gS24mq9YT6P42LXF31Bl14H4lZ459I1PxkO3"
-          },
-          {
-            "index": 21,
-            "id": "2717938999",
-            "title": "Держатель для обувных ложек, зонтов, ключей настенный, БЕЛЫЙ",
-            "url": "https://www.ozon.ru/product/derzhatel-dlya-obuvnyh-lozhek-zontov-klyuchey-nastennyy-belyy-2717938999/"
-          },
-          {
-            "index": 22,
-            "id": "1641138946",
-            "title": "Вкладыш поддерживающий для обуви, накладка для ремонта обуви или уменьшения размера 2 шт",
-            "url": "https://www.ozon.ru/product/vkladysh-podderzhivayushchiy-dlya-obuvi-nakladka-dlya-remonta-obuvi-ili-umensheniya-razmera-2-sht-1641138946/"
-          },
-          {
-            "index": 23,
-            "id": "1666822413",
-            "title": "Мыло жидкое для рук LUIR Narcotic Cherry и Lime&Bergamot, 2х400 мл (мыло жидкое парфюмированное)",
-            "url": "https://www.ozon.ru/product/mylo-zhidkoe-dlya-ruk-luir-narcotic-cherry-i-lime-bergamot-2h400-ml-mylo-zhidkoe-parfyumirovannoe-1666822413/?at=EqtkX17PBhxY75qoHnWOKp9H6w9Aq6IwpJPvrhGKO5B8"
-          },
-          {
-            "index": 24,
-            "id": "1841608349",
-            "title": "Очиститель для лотков стиральных машин. Чистящее средство для очистки накипи, растворения отложений ",
-            "url": "https://www.ozon.ru/product/ochistitel-dlya-lotkov-stiralnyh-mashin-chistyashchee-sredstvo-dlya-ochistki-nakipi-rastvoreniya-1841608349/?at=LZtl8NWvLF0E9N0Bt1E7PpOhJL643mCgW2v22sZDrONY"
-          },
-          {
-            "index": 25,
-            "id": "2680471582",
-            "title": "Веник с совком для уборки, совок и щетка для уборки, метла с длинной ручкой",
-            "url": "https://www.ozon.ru/product/venik-s-sovkom-dlya-uborki-sovok-i-shchetka-dlya-uborki-metla-s-dlinnoy-ruchkoy-2680471582/?at=36tWN7kBZcv0G2OWhYkZBVnuzxq8WXIwBm8mPtRZ69J9"
-          },
-          {
-            "index": 26,
-            "id": "2009540407",
-            "title": "Шнурки эластичные с фиксатором, шнурки резинки для обуви",
-            "url": "https://www.ozon.ru/product/shnurki-elastichnye-s-fiksatorom-shnurki-rezinki-dlya-obuvi-2009540407/?at=K8tZp8oJLS37o0XoIDrg1pghr1YpOPsm1AKVEhvMplpX"
-          },
-          {
-            "index": 27,
-            "id": "2136487085",
-            "title": "MitAn Comfort Стельки для обуви 2 шт",
-            "url": "https://www.ozon.ru/product/mitan-comfort-stelki-dlya-obuvi-2-sht-2136487085/?at=pZtp6Q2D5U03yrKMso2vJGztNJ4Mxpu2OrZopS1ZlMnX"
-          },
-          {
-            "index": 28,
-            "id": "205922506",
-            "title": "Смеситель для кухни",
-            "url": "https://www.ozon.ru/product/smesitel-dlya-kuhni-205922506/?at=RltyZn6VNsEwV0K7Cm2y9yXUYrEM71spgk1M5IM1lZE5"
-          },
-          {
-            "index": 29,
-            "id": "2470050994",
-            "title": "Шприц для масла автомобильный, Шприц для масла,160 мл",
-            "url": "https://www.ozon.ru/product/shprits-dlya-masla-avtomobilnyy-shprits-dlya-masla-160-ml-2470050994/?at=J8tgMpJXxT2ZGAzpH7D98QRuWk8ykMc7KK1GkugrQZJW"
-          },
-          {
-            "index": 30,
-            "id": "1359813016",
-            "title": "Уплотнитель для варочной панели, универсальный. Уплотнительная лента для газовой, индукционной и эле",
-            "url": "https://www.ozon.ru/product/uplotnitel-dlya-varochnoy-paneli-universalnyy-uplotnitelnaya-lenta-dlya-gazovoy-induktsionnoy-1359813016/"
+            "id": "1392619297",
+            "title": "QBRIX KIDS Конструктор детский Мир роботов пластиковый для мальчика и девочки от 6 лет совместим с L",
+            "url": "https://www.ozon.ru/product/qbrix-kids-konstruktor-detskiy-mir-robotov-plastikovyy-dlya-malchika-i-devochki-ot-6-let-sovmestim-s-1392619297/"
           }
         ]
       },
-      "searched_at": "2025-11-01T17:00:19.826Z"
+      "searched_at": "2025-11-01T18:11:18.163Z"
+    },
+    {
+      "source_product": {
+        "title": "Конструктор LEGO Ninjago 71805 Боевой меч Джея,6+,72",
+        "image": "https://ir.ozone.ru/s3/multimedia-1-t/wc250/7156785845.jpg"
+      },
+      "search_result": {
+        "success": true,
+        "total_count": 10,
+        "button_check": {
+          "found": true,
+          "clicked": true,
+          "buttonText": "Найти"
+        },
+        "products": [
+          {
+            "index": 1,
+            "id": "1982453233",
+            "title": "Минифигурка \"Ниндзяго: Мастера Кружитцу Ния\" совместим с конструкторами лего (EM117)",
+            "url": "https://www.ozon.ru/product/minifigurka-nindzyago-mastera-kruzhittsu-niya-sovmestim-s-konstruktorami-lego-em117-1982453233/"
+          },
+          {
+            "index": 2,
+            "id": "1387220864",
+            "title": "1 280 шт осталось",
+            "url": "https://www.ozon.ru/product/konstruktor-lego-ninjago-boevoy-nabor-mehov-dzheya-78-detaley-vozrast-ot-6-71805-1387220864/"
+          },
+          {
+            "index": 3,
+            "id": "402653528",
+            "title": "Конструктор LEGO Ninjago 71740 Электрический робот Джея",
+            "url": "https://www.ozon.ru/product/konstruktor-lego-ninjago-71740-elektricheskiy-robot-dzheya-402653528/"
+          },
+          {
+            "index": 4,
+            "id": "2491961766",
+            "title": "504 шт осталось",
+            "url": "https://www.ozon.ru/product/konstruktor-lego-ninjago-71805-boevoy-mech-dzheya-6-72-2491961766/"
+          },
+          {
+            "index": 5,
+            "id": "1639346162",
+            "title": "100 шт осталось",
+            "url": "https://www.ozon.ru/product/konstruktor-lego-ninjago-71805-boevoy-mech-dzheya-6-72-1639346162/"
+          },
+          {
+            "index": 6,
+            "id": "1677160185",
+            "title": "Конструктор Ninjago Робот-инженер Соры, 209 дет.",
+            "url": "https://www.ozon.ru/product/konstruktor-ninjago-robot-inzhener-sory-209-det-1677160185/"
+          },
+          {
+            "index": 7,
+            "id": "2149713554",
+            "title": "Конструктор LEGO Ninjago 71740 Электрический робот Джея",
+            "url": "https://www.ozon.ru/product/konstruktor-lego-ninjago-71740-elektricheskiy-robot-dzheya-2149713554/"
+          },
+          {
+            "index": 8,
+            "id": "1616436282",
+            "title": "493 шт осталось",
+            "url": "https://www.ozon.ru/product/lego-ninjago-71785-titanovyy-meh-dzheya-794-detaley-9-1616436282/"
+          },
+          {
+            "index": 9,
+            "id": "1461422808",
+            "title": "Конструктор LEGO Ninjago Боевой набор роботов Джея, 71805",
+            "url": "https://www.ozon.ru/product/konstruktor-lego-ninjago-boevoy-nabor-robotov-dzheya-71805-1461422808/"
+          },
+          {
+            "index": 10,
+            "id": "1466399460",
+            "title": "Конструктор LEGO Ninjago Боевой робот Джея 71805",
+            "url": "https://www.ozon.ru/product/konstruktor-lego-ninjago-boevoy-robot-dzheya-71805-1466399460/"
+          }
+        ]
+      },
+      "searched_at": "2025-11-01T18:11:51.393Z"
     }
   ]
 }

@@ -225,11 +225,27 @@ async function createBrowser() {
   }
   const ua = buildUA();
   const headless = process.env.HEADLESS !== '0';
-  const browser = await puppeteer.launch({
+
+  // Поддержка Chrome профиля с куками (для обхода блокировки)
+  const launchOptions = {
     headless,
     args,
     defaultViewport: { width: randomInt(1280, 1440), height: randomInt(800, 960) },
-  });
+  };
+
+  const chromeProfile = process.env.CHROME_PROFILE;
+  if (chromeProfile) {
+    launchOptions.userDataDir = chromeProfile;
+    launchOptions.executablePath = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+    launchOptions.ignoreDefaultArgs = ['--enable-automation'];
+    // Добавляем аргументы для лучшей маскировки
+    launchOptions.args.push('--disable-web-security');
+    launchOptions.args.push('--no-first-run');
+    launchOptions.args.push('--no-default-browser-check');
+    console.log(`[INFO] Using Chrome profile: ${chromeProfile}`);
+  }
+
+  const browser = await puppeteer.launch(launchOptions);
   const page = await browser.newPage();
   await page.setUserAgent(ua);
   await page.setExtraHTTPHeaders({

@@ -21,7 +21,7 @@ const execFileAsync = promisify(execFile);
  */
 async function loadProducts() {
   // Для начала будем читать из JSON файла
-  const productsFile = process.env.PRODUCTS_FILE || './products.json';
+  const productsFile = process.env.PRODUCTS_FILE || './products_for_image_search.json';
 
   try {
     const data = await fs.readFile(productsFile, 'utf8');
