@@ -1,0 +1,306 @@
+{
+  "success": true,
+  "total": 30,
+  "products": [
+    {
+      "id": "1114505843",
+      "url": "https://www.ozon.ru/product/rashgard-sportcraft-1114505843/?miniapp=seller_2319654",
+      "title": "Рашгард SportCraft",
+      "price": "1 133 ₽",
+      "rating": "4.9",
+      "reviews_count": "7",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-1-k/wc300/7484223548.jpg"
+    },
+    {
+      "id": "1695204846",
+      "url": "https://www.ozon.ru/product/silser-remen-remen-muzhskoy-naturalnaya-kozha-1695204846/?miniapp=seller_2319654",
+      "title": "Silser Ремень Ремень мужской натуральная кожа",
+      "price": "622 ₽",
+      "rating": "4.6",
+      "reviews_count": "2",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-1-g/wc300/7139790268.jpg"
+    },
+    {
+      "id": "334296089",
+      "url": "https://www.ozon.ru/product/salfetka-dlya-stekol-i-zerkal-superchist-2sht-334296089/?miniapp=seller_2319654",
+      "title": "",
+      "price": "158 ₽",
+      "rating": "4.9",
+      "reviews_count": "25",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-8/wc300/6375341696.jpg"
+    },
+    {
+      "id": "287291675",
+      "url": "https://www.ozon.ru/product/kantselyarskiy-nozh-9-mm-metallicheskiy-chernyy-287291675/?miniapp=seller_2319654",
+      "title": "Канцелярский нож 9 мм металлический, черный",
+      "price": "116 ₽",
+      "rating": "5.0",
+      "reviews_count": "41",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-1-o/wc300/7339005420.jpg"
+    },
+    {
+      "id": "1831173452",
+      "url": "https://www.ozon.ru/product/kengupak-meshki-dlya-musora-30-l-8mkm-150-sht-1831173452/?miniapp=seller_2319654",
+      "title": "",
+      "price": "223 ₽",
+      "rating": "4.9",
+      "reviews_count": "1",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-1-6/wc300/7459426158.jpg"
+    },
+    {
+      "id": "1494169231",
+      "url": "https://www.ozon.ru/product/byustgalter-nizhnee-bele-1494169231/?miniapp=seller_2319654",
+      "title": "Бюстгальтер Нижнее белье",
+      "price": "513 ₽",
+      "rating": "4.8",
+      "reviews_count": "2",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-1-u/wc300/7127773698.jpg"
+    },
+    {
+      "id": "2219428147",
+      "url": "https://www.ozon.ru/product/beysbolka-pokemony-2219428147/?miniapp=seller_2319654",
+      "title": "Бейсболка покемоны",
+      "price": "2 091 ₽",
+      "rating": "",
+      "reviews_count": "0",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-1-3/wc300/7585748967.jpg"
+    },
+    {
+      "id": "166792437",
+      "url": "https://www.ozon.ru/product/xprinter-printer-dlya-nakleek-etiketok-termo-xp-365b-chernyy-166792437/?miniapp=seller_2319654",
+      "title": "Xprinter Принтер для наклеек/этикеток термо XP-365B, черный",
+      "price": "3 368 ₽",
+      "rating": "4.9",
+      "reviews_count": "4",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-1-6/wc300/7420308810.jpg"
+    },
+    {
+      "id": "1651897282",
+      "url": "https://www.ozon.ru/product/vetosh-tsvetnaya-hb-40h60-sm-obtirochnaya-trikotazh-10-kg-1651897282/?miniapp=seller_2319654",
+      "title": "Ветошь цветная ХБ (40х60 см) обтирочная трикотаж 10 кг",
+      "price": "1 108 ₽",
+      "rating": "4.9",
+      "reviews_count": "889",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-1-2/wc300/7436886698.jpg"
+    },
+    {
+      "id": "351098769",
+      "url": "https://www.ozon.ru/product/papka-planshet-dlya-dokumentov-i-bumag-s-zazhimom-berlingo-steel-style-a4-serebristyy-metallik-351098769/?miniapp=seller_2319654",
+      "title": "Папка-планшет для документов и бумаг с зажимом Berlingo \"Steel&Style\" A4, серебристый металлик",
+      "price": "155 ₽",
+      "rating": "4.9",
+      "reviews_count": "3",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-1-r/wc300/8059325895.jpg"
+    },
+    {
+      "id": "2009953953",
+      "url": "https://www.ozon.ru/product/fartuk-kuhonnyy-zhenskiy-muzhskoy-nepromokaemyy-rabochiy-povarskoy-2009953953/?miniapp=seller_2319654",
+      "title": "Фартук кухонный женский, мужской непромокаемый, рабочий, поварской",
+      "price": "653 ₽",
+      "rating": "4.9",
+      "reviews_count": "2",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-1-0/wc300/7508579400.jpg"
+    },
+    {
+      "id": "1298909223",
+      "url": "https://www.ozon.ru/product/sabo-1298909223/?miniapp=seller_2319654",
+      "title": "",
+      "price": "1 806 ₽",
+      "rating": "4.8",
+      "reviews_count": "2",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-1-r/wc300/8237401047.jpg"
+    },
+    {
+      "id": "782057891",
+      "url": "https://www.ozon.ru/product/shvabra-s-otzhimom-i-vedrom-dlya-mytya-polov-komplekt-dlya-uborki-spin-mop-verde-16-litrov-bezhevyy-782057891/?miniapp=seller_2319654",
+      "title": "Швабра с отжимом и ведром для мытья полов комплект для уборки Spin Mop VERDE 16 литров бежевый",
+      "price": "1 216 ₽",
+      "rating": "4.8",
+      "reviews_count": "35",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-1-3/wc300/7663119375.jpg"
+    },
+    {
+      "id": "1710682986",
+      "url": "https://www.ozon.ru/product/batareyki-mizinchikovye-batareyki-aaa-12-sht-1710682986/?miniapp=seller_2319654",
+      "title": "",
+      "price": "412 ₽",
+      "rating": "4.9",
+      "reviews_count": "21",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-1-z/wc300/7761430727.jpg"
+    },
+    {
+      "id": "518939834",
+      "url": "https://www.ozon.ru/product/vafelnoe-polotno-gost-shirina-40-sm-rulon-50-metrov-518939834/?miniapp=seller_2319654",
+      "title": "Вафельное полотно ГОСТ: ширина - 40 см., рулон - 50 метров",
+      "price": "1 204 ₽",
+      "rating": "4.6",
+      "reviews_count": "3",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-1-q/wc300/7961287670.jpg"
+    },
+    {
+      "id": "1546307862",
+      "url": "https://www.ozon.ru/product/mayka-belevaya-1546307862/?miniapp=seller_2319654",
+      "title": "Майка бельевая",
+      "price": "654 ₽",
+      "rating": "4.7",
+      "reviews_count": "1",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-1-h/wc300/7000749161.jpg"
+    },
+    {
+      "id": "1865690684",
+      "url": "https://www.ozon.ru/product/bosonozhki-joycity-vesenne-letnyaya-kollektsiya-2025-1865690684/?miniapp=seller_2319654",
+      "title": "Босоножки JOYCITY Весенне-летняя коллекция 2025",
+      "price": "1 879 ₽",
+      "rating": "4.9",
+      "reviews_count": "387",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-1-w/wc300/7515661676.jpg"
+    },
+    {
+      "id": "462832903",
+      "url": "https://www.ozon.ru/product/nabor-markerov-dlya-doski-4-sht-magnitnaya-gubka-stiratel-podarok-v-kazhdom-nabore-462832903/?miniapp=seller_2319654",
+      "title": "",
+      "price": "257 ₽",
+      "rating": "4.9",
+      "reviews_count": "6",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-j/wc300/6222893875.jpg"
+    },
+    {
+      "id": "492326277",
+      "url": "https://www.ozon.ru/product/batareyki-aa-palchikovye-ergolux-aa-1-5v-shchelochnye-alkalinovye-20-sht-492326277/?miniapp=seller_2319654",
+      "title": "",
+      "price": "278 ₽",
+      "rating": "4.9",
+      "reviews_count": "159",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-1-n/wc300/7026845819.jpg"
+    },
+    {
+      "id": "1840468452",
+      "url": "https://www.ozon.ru/product/sharikovye-ruchki-sinie-0-7-mm-nabor-10-shtuk-1840468452/?miniapp=seller_2319654",
+      "title": "",
+      "price": "133 ₽",
+      "rating": "4.9",
+      "reviews_count": "43",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-1-a/wc300/8105920534.jpg"
+    },
+    {
+      "id": "885789876",
+      "url": "https://www.ozon.ru/product/byustgalter-885789876/?miniapp=seller_2319654",
+      "title": "Бюстгальтер",
+      "price": "232 ₽",
+      "rating": "4.8",
+      "reviews_count": "342",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-k/wc300/6396774992.jpg"
+    },
+    {
+      "id": "2723498414",
+      "url": "https://www.ozon.ru/product/sharf-befree-2723498414/?miniapp=seller_2319654",
+      "title": "Шарф Befree",
+      "price": "715 ₽",
+      "rating": "4.7",
+      "reviews_count": "8",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-1-6/wc300/8164166478.jpg"
+    },
+    {
+      "id": "1833662648",
+      "url": "https://www.ozon.ru/product/plastic-tech-opryskivatel-dlya-rasteniy-0-5-l-1-sht-1833662648/?miniapp=seller_2319654",
+      "title": "",
+      "price": "140 ₽",
+      "rating": "4.9",
+      "reviews_count": "15",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-1-e/wc300/7329324398.jpg"
+    },
+    {
+      "id": "329761308",
+      "url": "https://www.ozon.ru/product/perchatki-nitrilovye-vinilovye-wally-plastic-chernye-razmer-l-100sht-50-par-329761308/?miniapp=seller_2319654",
+      "title": "",
+      "price": "364 ₽",
+      "rating": "4.8",
+      "reviews_count": "15",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-1-s/wc300/7612275484.jpg"
+    },
+    {
+      "id": "1215920522",
+      "url": "https://www.ozon.ru/product/zhurnal-ucheta-ognetushiteley-60-stranits-kniga-ucheta-1215920522/?miniapp=seller_2319654",
+      "title": "Журнал учета огнетушителей, 60 страниц (книга учета)",
+      "price": "200 ₽",
+      "rating": "4.9",
+      "reviews_count": "512",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-u/wc300/6782235006.jpg"
+    },
+    {
+      "id": "2022670795",
+      "url": "https://www.ozon.ru/product/noski-footzy-12-par-2022670795/?miniapp=seller_2319654",
+      "title": "Носки Footzy, 12 пар",
+      "price": "587 ₽",
+      "rating": "4.9",
+      "reviews_count": "38",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-1-0/wc300/8192797020.jpg"
+    },
+    {
+      "id": "2794269434",
+      "url": "https://www.ozon.ru/product/g-s-sumka-zhenskaya-na-plecho-kross-bodi-2794269434/?miniapp=seller_2319654",
+      "title": "G&S сумка женская на плечо кросс-боди",
+      "price": "851 ₽",
+      "rating": "4.9",
+      "reviews_count": "84",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-1-7/wc300/8009695447.jpg"
+    },
+    {
+      "id": "2762315370",
+      "url": "https://www.ozon.ru/product/sredstvo-dlya-mytya-pola-grass-laun-5-litrov-s-aromatom-lavandy-universalnoe-moyushchee-2762315370/?miniapp=seller_2319654",
+      "title": "Средство для мытья пола GRASS LAUN 5 литров с ароматом ЛАВАНДЫ, универсальное, моющее средство для пола с полирующим эффектом",
+      "price": "366 ₽",
+      "rating": "4.9",
+      "reviews_count": "976",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-1-3/wc300/7942633419.jpg"
+    },
+    {
+      "id": "2406738219",
+      "url": "https://www.ozon.ru/product/russkiy-sahar-sahar-belyy-kuskovoy-2000g-2sht-2406738219/?miniapp=seller_2319654",
+      "title": "",
+      "price": "270 ₽",
+      "rating": "5.0",
+      "reviews_count": "275",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-1-u/wc300/7800418146.jpg"
+    },
+    {
+      "id": "652680105",
+      "url": "https://www.ozon.ru/product/meshki-dlya-musora-60-l-prochnye-50-sht-dlya-hraneniya-pereezda-lomberta-652680105/?miniapp=seller_2319654",
+      "title": "",
+      "price": "187 ₽",
+      "rating": "4.9",
+      "reviews_count": "7",
+      "delivery_days": "",
+      "image": "https://ir.ozone.ru/s3/multimedia-1-j/wc300/8091517411.jpg"
+    }
+  ]
+}

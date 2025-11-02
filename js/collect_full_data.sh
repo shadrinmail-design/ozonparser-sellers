@@ -157,12 +157,22 @@ if (!tile) { ''; } else {
 }
 \"" 2>/dev/null | head -1)
 
+    # Изображение
+    IMAGE=$(osascript -e "tell application \"Google Chrome\" to execute active tab of window 1 javascript \"
+var tile = document.querySelector('[data-index=\\\"$idx\\\"]');
+if (!tile) { ''; } else {
+    var img = tile.querySelector('img');
+    if (img && img.src) { img.src; } else { ''; }
+}
+\"" 2>/dev/null | head -1)
+
     # Очищаем значения от "missing value"
     [ "$TITLE" = "missing value" ] && TITLE=""
     [ "$PRICE" = "missing value" ] && PRICE=""
     [ "$RATING" = "missing value" ] && RATING=""
     [ "$REVIEWS" = "missing value" ] && REVIEWS="0"
     [ "$DELIVERY" = "missing value" ] && DELIVERY=""
+    [ "$IMAGE" = "missing value" ] && IMAGE=""
 
     # Экранируем JSON
     TITLE=$(echo "$TITLE" | sed 's/"/\\"/g' | sed "s/'/\\'/g")
@@ -182,7 +192,8 @@ if (!tile) { ''; } else {
     "price": "$PRICE",
     "rating": "$RATING",
     "reviews_count": "$REVIEWS",
-    "delivery_days": "$DELIVERY"
+    "delivery_days": "$DELIVERY",
+    "image": "$IMAGE"
   }
 JSON
 
