@@ -1,7 +1,7 @@
 {
-  "total_processed": 2,
-  "total_products": 2,
-  "success_count": 2,
+  "total_processed": 1,
+  "total_products": 1,
+  "success_count": 1,
   "fail_count": 0,
   "results": [
     {
@@ -24,301 +24,143 @@
         },
         "products": [
           {
-            "id": "1541598563",
-            "url": "https://www.ozon.ru/product/noski-10-par-1541598563/?at=16tLWEOB2FmgRryyU773pJLs0oJY4gTNxGVN5tLgAzlx",
-            "title": "Носки, 10 пар",
-            "price": "359 ₽",
-            "rating": "4.8",
-            "reviews_count": "86",
-            "delivery_days": ""
-          },
-          {
-            "id": "654444530",
-            "url": "https://www.ozon.ru/product/dzhibiki-dzhibbitsy-10-sht-654444530/",
+            "id": "1421687913",
+            "url": "https://www.ozon.ru/product/nosovye-platki-iz-100-hlopka-nabor-6-shtuk-1421687913/?at=K8tZpr9MzfGWp9p5tEVZknqUgjXyo2U2KX6Jkf5PpKOJ",
             "title": "",
-            "price": "199 ₽",
-            "rating": "5.0",
-            "reviews_count": "22",
+            "price": "251 ₽",
+            "rating": "4.9",
+            "reviews_count": "53",
             "delivery_days": ""
           },
           {
-            "id": "1922296264",
-            "url": "https://www.ozon.ru/product/canespuk-stroitelnyy-pylesos-30-l-3300-vt-1922296264/?at=57twNWRp5cL3Wl1oCyoD1vGFpQWMxxIDm5z6pFW0lK62",
-            "title": "CANESPUK Строительный пылесос 30 л, 3300 Вт",
-            "price": "4 549 ₽",
-            "rating": "4.7",
-            "reviews_count": "5",
-            "delivery_days": ""
-          },
-          {
-            "id": "2703303705",
-            "url": "https://www.ozon.ru/product/podstavka-dlya-knig-i-uchebnikov-1-sht-soyuz-pk-03-plastikovaya-belaya-2703303705/?at=nRtrB6x3AUm6B0WVuNQDLA9ug66KJYt8pWl4phoWMKkZ",
+            "id": "1822055271",
+            "url": "https://www.ozon.ru/product/shnurki-2-sht-1822055271/?at=VvtzQPXkNc09wjNxH8gnMm6FmgERr3fqvlRRntBRjJLA",
             "title": "",
-            "price": "144 ₽",
-            "rating": "4.8",
-            "reviews_count": "0",
-            "delivery_days": ""
-          },
-          {
-            "id": "1828480394",
-            "url": "https://www.ozon.ru/product/nabor-iz-10-instrumentov-dlya-sborki-modeley-instrumenty-dlya-razborki-i-polirovki-1828480394/?at=OgtEQ2wZzFkWANjWSOw6oy1ukl3xV2fvMOxDOHZK0WOY",
-            "title": "Набор из 10 инструментов для сборки моделей, инструменты для разборки и полировки.",
-            "price": "651 ₽",
+            "price": "110 ₽",
             "rating": "4.9",
-            "reviews_count": "537",
-            "delivery_days": ""
-          },
-          {
-            "id": "201132146",
-            "url": "https://www.ozon.ru/product/salton-propitka-vodoottalkivayushchaya-201132146/?at=XQtkrMGDVhGoxq6QcV5RKKHNnGNKlt2r518RiZ8VrRM",
-            "title": "Salton Пропитка водоотталкивающая",
-            "price": "465 ₽",
-            "rating": "4.9",
-            "reviews_count": "82",
-            "delivery_days": ""
-          },
-          {
-            "id": "981744550",
-            "url": "https://www.ozon.ru/product/nozh-brelok-981744550/?at=ywtAVyJ2quK067XmIAkQD9wC8qA5y2tp8AR6ril5wXjE",
-            "title": "",
-            "price": "292 ₽",
-            "rating": "4.8",
-            "reviews_count": "16",
-            "delivery_days": ""
-          },
-          {
-            "id": "1346788497",
-            "url": "https://www.ozon.ru/product/popular-broun-paket-dlya-produktov-30-sm-1346788497/?at=Brtz2lARpc8g4YoXTj4VLPnc4o4wgLUoxPX42SGDgVg0",
-            "title": "POPULAR BROUN Пакет для продуктов, 30 см",
-            "price": "170 ₽",
-            "rating": "4.9",
-            "reviews_count": "225",
-            "delivery_days": ""
-          },
-          {
-            "id": "1317286142",
-            "url": "https://www.ozon.ru/product/sinichka-vatnye-palochki-1000-sht-1317286142/?at=OgtEQ2wZzFpN9NN2S9V7MVpiLrjWp2hw0JNQrUYWZZQY",
-            "title": "",
-            "price": "348 ₽",
-            "rating": "5.0",
-            "reviews_count": "39",
-            "delivery_days": ""
-          },
-          {
-            "id": "2796780602",
-            "url": "https://www.ozon.ru/product/robot-pylesos-xiaomi-robot-vacuum-x10-jcz2201-b102gl-2796780602/?at=08tYPr4gqcKPjkYCZA0ZJVIMQEX1xUoopnv0hzqRv0X",
-            "title": "Робот-пылесос Xiaomi Robot Vacuum X10, (JCZ2201/B102GL)",
-            "price": "30 735 ₽",
-            "rating": "5.0",
-            "reviews_count": "58",
-            "delivery_days": ""
-          },
-          {
-            "id": "1842512713",
-            "url": "https://www.ozon.ru/product/podushka-anatomicheskaya-dlya-sna-50h70-sm-2-sht-evkaliptovoe-volokno-1842512713/?at=J8tgMQyA3T8ZnBjziky95x5H1ywvqztWLELvRsO387ml",
-            "title": "",
-            "price": "1 834 ₽",
-            "rating": "4.9",
-            "reviews_count": "18",
-            "delivery_days": ""
-          },
-          {
-            "id": "2286532680",
-            "url": "https://www.ozon.ru/product/duhi-muzhskie-black-afgano-2286532680/?at=LZtl8YXwyCxgjGWVC8rQLvEu9yywpQt3BEwOWfyL6oEL",
-            "title": "Духи мужские, Black Afgano",
-            "price": "689 ₽",
-            "rating": "4.7",
-            "reviews_count": "115",
-            "delivery_days": ""
-          },
-          {
-            "id": "5629622",
-            "url": "https://www.ozon.ru/product/ochistitel-dlya-posudomoechnyh-mashin-finish-finish-250-ml-chistyashchee-sredstvo-dlya-pmm-5629622/?at=jYtZNyAGKf5q9RrZSJv5N6fnlW1P4SL6WZGGFqPB9Jr",
-            "title": "Finish очиститель для посудомоечной машины, чистящее средство, 250 мл",
-            "price": "550 ₽",
-            "rating": "4.9",
-            "reviews_count": "0",
-            "delivery_days": ""
-          },
-          {
-            "id": "34371171",
-            "url": "https://www.ozon.ru/product/kofe-molotyy-zhokey-irlandskie-slivki-150-g-34371171/?at=qQtJw7RkKc9BkxORs16NM99sA4R2m4IMnyyD4Irpz3wO",
-            "title": "Кофе молотый Жокей Ирландские сливки, 150 г",
-            "price": "309 ₽",
-            "rating": "4.9",
-            "reviews_count": "0",
-            "delivery_days": ""
-          },
-          {
-            "id": "1947065525",
-            "url": "https://www.ozon.ru/product/bsg-zhestkiy-gel-dlya-narashchivaniya-konfityur-125-nizkaya-vyazkost-novogodnyaya-kollektsiya-13-g-1947065525/?at=EqtkX6n0VhoRnWPXCk3l977cBoRqkpCxkmoLzf5MmvWY",
-            "title": "BSG Жёсткий гель для наращивания Konfityur №125 НИЗКАЯ ВЯЗКОСТЬ - Новогодняя коллекция (13 г)",
-            "price": "432 ₽",
-            "rating": "4.9",
-            "reviews_count": "25",
-            "delivery_days": ""
-          }
-        ]
-      },
-      "searched_at": "2025-11-02T02:53:00.788Z"
-    },
-    {
-      "source_product": {
-        "id": "42",
-        "title": "Мешок для стирки длина 42см, ширина26 см, 1 шт.",
-        "image": "https://ir.ozone.ru/s3/multimedia-1-2/wc500/8089985018.jpg",
-        "price": "214 ₽",
-        "url": "https://www.ozon.ru/product/meshok-dlya-stirki-dlina-42sm-shirina26-sm-1-sht-2521194452/?_bctx=CAYQ3Yk5&at=J8tgMpLQRcDrlWQRHDn3MnCkW5LvXIlkAW41C8GnLGO"
-      },
-      "search_result": {
-        "success": true,
-        "total_count": 25,
-        "button_check": {
-          "found": false,
-          "visibleButtons": [
-            "Каталог",
-            "Для бизнеса"
-          ]
-        },
-        "products": [
-          {
-            "id": "2134321333",
-            "url": "https://www.ozon.ru/product/komplekt-noskov-10-par-2134321333/?at=VvtzQPXkNc0ZoL1jIMDYMzrim4n7Pjf76zyGzCMm2x9O",
-            "title": "Носки, 10 пар",
-            "price": "447 ₽",
-            "rating": "4.9",
-            "reviews_count": "21",
-            "delivery_days": ""
-          },
-          {
-            "id": "1123994098",
-            "url": "https://www.ozon.ru/product/ryukzak-muzhskoy-1123994098/?at=99tr7YxNLUV597WXuwAP0qyhZgZYrUgWQDmPcVq48l5",
-            "title": "Рюкзак мужской",
-            "price": "1 041 ₽",
-            "rating": "4.8",
             "reviews_count": "36",
             "delivery_days": ""
           },
           {
-            "id": "2945374485",
-            "url": "https://www.ozon.ru/product/ochistitel-vozduha-dlya-doma-ionizator-ot-pyli-hepa-filtr-s-taymerom-tihiy-rezhim-udalyaet-2945374485/?at=oZt6WK8PjFjoM0lQSXvMLq8uqOXv28F0YKg9Ai0J16Oj",
-            "title": "Очиститель воздуха для дома / Ионизатор от пыли / HEPA фильтр с таймером Тихий режим, Удаляет шерсть, запахи и аллергены",
-            "price": "4 032 ₽",
-            "rating": "4.6",
-            "reviews_count": "129",
+            "id": "2384767275",
+            "url": "https://www.ozon.ru/product/mts-sim-karta-sim-karta-bezlimitnyy-internet-dlya-telefona-i-modema-vsya-rossiya-2384767275/?at=Z8tXBox8rS8kr7k8uy2zDx2SzX0lJLUrQAy1Es9lQ9xj",
+            "title": "МТС SIM-карта сим карта безлимитный интернет для телефона и модема (Вся Россия)",
+            "price": "167 ₽",
+            "rating": "4.4",
+            "reviews_count": "2",
             "delivery_days": ""
           },
           {
-            "id": "379591368",
-            "url": "https://www.ozon.ru/product/muzhskaya-tualetnaya-voda-spartak-100ml-drevesnyy-parfyum-379591368/?at=OgtEQ2wZzFERlwAxCWEmly1FKOnkvoF6QmyXnhXm2qz9",
-            "title": "Мужская туалетная вода Спартак 100мл, древесный парфюм",
-            "price": "666 ₽",
-            "rating": "4.8",
-            "reviews_count": "1",
-            "delivery_days": ""
-          },
-          {
-            "id": "1054618225",
-            "url": "https://www.ozon.ru/product/venotonic-500-mg-60-tabletok-venotonik-diosmin-gesperidin-ot-varikoza-atech-nutrition-premium-1054618225/?at=NOtwyM9PDc4q1jr7UQGWJrJsB836klH0O7KpXu3nylA7",
-            "title": "VENOTONIC 500 мг 60 таблеток венотоник диосмин гесперидин от варикоза aTech nutrition Premium",
-            "price": "611 ₽",
-            "rating": "4.8",
-            "reviews_count": "203",
-            "delivery_days": ""
-          },
-          {
-            "id": "1722238775",
-            "url": "https://www.ozon.ru/product/kardigan-fabrika-horoshiy-trikotazh-1722238775/?at=k2toGq4X8FzRkpx2U086OyXFwvz0ogS7j4pw8sGyDKpp",
-            "title": "Кардиган Фабрика Хороший Трикотаж",
-            "price": "3 070 ₽",
+            "id": "1645191205",
+            "url": "https://www.ozon.ru/product/vakuumator-dlya-produktov-vakuumator-dlya-produktov-s-rezakom-1645191205/?at=jYtZNyAGKfJXnrmWtYkm8klSzOWjN2TMgk6gRC22QwlD",
+            "title": "Вакууматор для продуктов вакууматор для продуктов с резаком",
+            "price": "1 452 ₽",
             "rating": "4.9",
-            "reviews_count": "252",
+            "reviews_count": "12",
             "delivery_days": ""
           },
           {
-            "id": "2528666423",
-            "url": "https://www.ozon.ru/product/zubnaya-pasta-total-protective-repair-kompleksnaya-zashchita-bez-ftora-75-ml-2528666423/?at=6WtZwGM0jf6y5J1qSJMnYm2SmNPX6yI8oMEEWsyx5DE1",
-            "title": "Зубная паста Total Protective Repair Комплексная Защита, без фтора, 75 мл",
-            "price": "441 ₽",
-            "rating": "5.0",
-            "reviews_count": "853",
-            "delivery_days": ""
-          },
-          {
-            "id": "2825202629",
-            "url": "https://www.ozon.ru/product/pakety-dlya-hraneniya-produktov-chehol-dlya-edy-kryshka-shapochka-pakety-kryshki-na-rezinke-35sm-2825202629/?at=16tLWEOB2Fq0gNXYiGAOlVJSz8kjN6FYmw02oU0q84lG",
+            "id": "2197356975",
+            "url": "https://www.ozon.ru/product/kryshki-dlya-stakanchikov-90-mm-flip-top-1000-sht-2197356975/?at=k2toGq4X8FlxAPvcklzk0kfQyVvONUrzvlz8CDzqRX1",
             "title": "",
-            "price": "159 ₽",
+            "price": "2 488 ₽",
             "rating": "4.8",
-            "reviews_count": "11",
+            "reviews_count": "178",
             "delivery_days": ""
           },
           {
-            "id": "1663008070",
-            "url": "https://www.ozon.ru/product/opolaskivatel-finish-dlya-posudy-v-posudomoechnyh-mashinah-750-ml-1663008070/?at=x6tPNQBRnh7lXJq3h4PxZ5Phv5qMz5UrvnZy1uPY9jvW",
-            "title": "Ополаскиватель Finish для посуды в посудомоечных машинах, 750 мл",
-            "price": "395 ₽",
+            "id": "1973547416",
+            "url": "https://www.ozon.ru/product/smesitel-dlya-kuhni-s-gibkim-izlivom-g4004b-chernyy-1973547416/?at=WPtNoyxXRfPnPq6Wsn60B50fE358lqs7ZVQAWtZOB43K",
+            "title": "Смеситель для кухни с гибким изливом G4004B черный",
+            "price": "2 297 ₽",
+            "rating": "4.9",
+            "reviews_count": "281",
+            "delivery_days": ""
+          },
+          {
+            "id": "676246590",
+            "url": "https://www.ozon.ru/product/tresemm-maska-dlya-volos-uplotnyayushchaya-prevoshodnyy-obem-dlya-sozdaniya-obema-200-ml-676246590/?at=RltyZgQ0js0zGrZxH6xWPKoc8YvoGnHjxEw8jUJWWxJz",
+            "title": "ТРЕСеммé Маска для волос уплотняющая Превосходный Объем для создания объема, 200 мл",
+            "price": "324 ₽",
             "rating": "4.9",
             "reviews_count": "0",
             "delivery_days": ""
           },
           {
-            "id": "1679789985",
-            "url": "https://www.ozon.ru/product/dikie-skrichery-mashinka-transformer-kiber-avtoflip-hellshtorm-s5-1679789985/?at=gpt4QYNwOUVjQq9NinJAv6mfEvx88VfmwyLpBsjgKX1G",
-            "title": "",
-            "price": "646 ₽",
-            "rating": "4.9",
-            "reviews_count": "742",
-            "delivery_days": ""
-          },
-          {
-            "id": "1293896791",
-            "url": "https://www.ozon.ru/product/sim-karta-yota-50-gb-2000-minut-s-ab-platoy-ot-399-rub-1293896791/?at=J8tgMQyA3Tm4E3w0ugWLYNgcj75oVNUL87PJ6h5VNPWg",
-            "title": "Сим-карта YOTA, 50 Гб, 2000 минут, с аб.платой от 399 руб.",
-            "price": "59 ₽",
-            "rating": "4.5",
-            "reviews_count": "9",
-            "delivery_days": ""
-          },
-          {
-            "id": "933369054",
-            "url": "https://www.ozon.ru/product/gel-dlya-brovey-s-effektom-supersilnoy-fiksatsii-i-laminirovaniya-5-ml-semily-933369054/?at=57twNWRp5c999Vg2sJJ0gwqSNoD8omfvm7kpRFyJM3WR",
-            "title": "Гель для бровей с эффeктoм супeрсильнoй фиксaции и лaминирoвaния 5 мл, Semily",
-            "price": "387 ₽",
-            "rating": "4.9",
-            "reviews_count": "38",
-            "delivery_days": ""
-          },
-          {
-            "id": "2581478026",
-            "url": "https://www.ozon.ru/product/honor-planshet-pad-x7-wi-fi-8-7-4-gb-64-gb-seryy-2581478026/?at=k2toGq4X8FgRyMrAsMBBzMQTJBZ89ZsODB5VDFglBr8Y",
-            "title": "Honor Планшет Pad X7 WI-FI, 8.7\" 4 ГБ/64 ГБ, серый",
-            "price": "7 670 ₽",
+            "id": "2280766499",
+            "url": "https://www.ozon.ru/product/maz-ot-gribka-nogtey-sumifun-krem-dlya-effektivnoy-borby-s-nesovershenstvami-chudo-sredstvo-2280766499/?at=DqtDGOMJNHmROZp8so3VRkxIAZwY4DTx8J469cRr5MkR",
+            "title": "Мазь от грибка ногтей Sumifun / Крем для эффективной борьбы с несовершенствами / Чудо средство для ухода за ногами против онихолизиса",
+            "price": "184 ₽",
             "rating": "4.8",
+            "reviews_count": "4",
+            "delivery_days": ""
+          },
+          {
+            "id": "140310566",
+            "url": "https://www.ozon.ru/product/komplekt-moduley-smennyh-filtruyushchih-akvafor-rr5-v510-04-02-201895-dlya-akvafor-trio-140310566/?at=XQtkrMGDVhoy6D67S70ZqLJIXPENzBUrMkAY9FKm278",
+            "title": "Комплект модулей сменных фильтрующих Аквафор РР5-В510-04-02, 201895 // для Аквафор Трио Норма Умягчающий",
+            "price": "1 727 ₽",
+            "rating": "4.9",
             "reviews_count": "0",
             "delivery_days": ""
           },
           {
-            "id": "2425141664",
-            "url": "https://www.ozon.ru/product/lampa-nastolnaya-besprovodnaya-ot-seti-2425141664/?at=K8tZpr9MzfmAXkDQIKgvzP8s5Q80jAI6EnPorUAJVAQ6",
-            "title": "Лампа настольная беспроводная/от сети",
-            "price": "330 ₽",
-            "rating": "4.7",
-            "reviews_count": "10",
+            "id": "728296226",
+            "url": "https://www.ozon.ru/product/nozhnitsy-detskie-13-5-sm-berlingo-assorti-metallicheskie-raznotsvetnye-728296226/?at=46tRk769MHB5Y6ZlFBA98NjC9xGXlBtRZ3lm3CjQ0yN5",
+            "title": "Ножницы детские 13,5 см Berlingo АССОРТИ, металлические, разноцветные",
+            "price": "80 ₽",
+            "rating": "4.9",
+            "reviews_count": "0",
             "delivery_days": ""
           },
           {
-            "id": "1011675752",
-            "url": "https://www.ozon.ru/product/opolaskivatel-dlya-posudomoechnyh-mashin-synergetic-0-75l-2sht-nabor-blesk-i-siyanie-bez-1011675752/?at=k2toGq4X8FJA6QrQC0KVoMwCwpnYYpUkj79gjIEr83lk",
-            "title": "",
-            "price": "476 ₽",
+            "id": "140926212",
+            "url": "https://www.ozon.ru/product/korzina-dlya-bumag-i-musora-9-litrov-chernaya-140926212/?at=GRt2XLqOKI7xPnZLCz6nNGRfBLnJ4yiBOzWMkhkVVNGq",
+            "title": "Корзина для бумаг и мусора 9 литров, черная",
+            "price": "171 ₽",
             "rating": "4.9",
-            "reviews_count": "41",
+            "reviews_count": "0",
+            "delivery_days": ""
+          },
+          {
+            "id": "1844184920",
+            "url": "https://www.ozon.ru/product/elektrostaticheskaya-prozrachnaya-zashchitnaya-plenka-bez-kleya-60-300cm-1844184920/?at=jYtZNyAGKfYX7AOGHpj31ZYTW1jKp1cDwPwr8sZYo56g",
+            "title": "Электростатическая прозрачная защитная пленка, без клея 60*300cm",
+            "price": "216 ₽",
+            "rating": "4.8",
+            "reviews_count": "13",
+            "delivery_days": ""
+          },
+          {
+            "id": "835676827",
+            "url": "https://www.ozon.ru/product/zubnaya-pasta-biorepair-active-shield-aktivnaya-zashchita-ot-kariesa-75-ml-835676827/?at=A6tGq1VlLckRY1pwULOp5qYfRKEnLMHVvjMQ8IMWOkl9",
+            "title": "Зубная паста Biorepair Active Shield Активная защита от кариеса, 75 мл",
+            "price": "789 ₽",
+            "rating": "4.9",
+            "reviews_count": "178",
+            "delivery_days": ""
+          },
+          {
+            "id": "1571108988",
+            "url": "https://www.ozon.ru/product/nabor-espanderov-iz-5-shtuk-1571108988/?at=r2t4JD6nPUYoBqoAIKDDAPgf29509Ph74WnlwCO9GNR2",
+            "title": "",
+            "price": "449 ₽",
+            "rating": "4.8",
+            "reviews_count": "4",
+            "delivery_days": ""
+          },
+          {
+            "id": "1547990545",
+            "url": "https://www.ozon.ru/product/vesy-napolnye-elektronnye-umnye-dlya-vzveshivaniya-cheloveka-na-batareykah-chernye-1547990545/?at=r2t4JD6nPUj2lxR5cLD0yx5tLBrO5vcE9kpgVI0q6rZY",
+            "title": "Весы напольные электронные,умные для взвешивания человека на батарейках черные",
+            "price": "484 ₽",
+            "rating": "4.8",
+            "reviews_count": "7",
             "delivery_days": ""
           }
         ]
       },
-      "searched_at": "2025-11-02T02:53:34.860Z"
+      "searched_at": "2025-11-02T03:00:12.128Z"
     }
   ]
 }

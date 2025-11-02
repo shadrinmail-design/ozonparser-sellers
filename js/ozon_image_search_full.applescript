@@ -178,15 +178,34 @@ on run argv
 				set productDelivery to do JavaScript ("
 					var tile = document.querySelector('[data-index=\"" & idx & "\"]');
 					if (!tile) { ''; } else {
-						var buttons = tile.querySelectorAll('button');
 						var delivery = '';
+						// Check buttons first
+						var buttons = tile.querySelectorAll('button');
 						for (var i = 0; i < buttons.length; i++) {
 							var t = buttons[i].textContent.trim();
 							var tl = t.toLowerCase();
 							if (tl.indexOf('ноя') > -1 || tl.indexOf('дек') > -1 ||
-								tl.indexOf('янв') > -1 || tl.indexOf('завтра') > -1) {
+								tl.indexOf('янв') > -1 || tl.indexOf('фев') > -1 ||
+								tl.indexOf('мар') > -1 || tl.indexOf('апр') > -1 ||
+								tl.indexOf('завтра') > -1 || tl.indexOf('сегодня') > -1) {
 								delivery = t;
 								break;
+							}
+						}
+						// If not found in buttons, check all spans
+						if (!delivery) {
+							var spans = tile.querySelectorAll('span');
+							for (var i = 0; i < spans.length; i++) {
+								var t = spans[i].textContent.trim();
+								var tl = t.toLowerCase();
+								if ((tl.indexOf('ноя') > -1 || tl.indexOf('дек') > -1 ||
+									tl.indexOf('янв') > -1 || tl.indexOf('фев') > -1 ||
+									tl.indexOf('мар') > -1 || tl.indexOf('апр') > -1 ||
+									tl.indexOf('завтра') > -1 || tl.indexOf('сегодня') > -1) &&
+									t.length < 30) {
+									delivery = t;
+									break;
+								}
 							}
 						}
 						delivery;
