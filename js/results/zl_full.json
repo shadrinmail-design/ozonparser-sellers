@@ -1,0 +1,114 @@
+{
+  "success": true,
+  "total": 12,
+  "products": [
+    {
+      "id": "1810134255",
+      "url": "https://www.ozon.ru/product/ruka-veshch-iz-uensdey-wednesday-semeyka-addams-1810134255/?_bctx=CAQQj86LAQ&hs=1",
+      "title": "Рука вещь из уэнсдей, wednesday, семейка аддамс",
+      "price": "175 ₽",
+      "rating": "4.6",
+      "reviews_count": "56",
+      "delivery_days": "14 ноября"
+    },
+    {
+      "id": "1730391286",
+      "url": "https://www.ozon.ru/product/forma-dlya-yaichnitsy-1730391286/?_bctx=CAQQj86LAQ&hs=1",
+      "title": "Форма для яичницы",
+      "price": "179 ₽",
+      "rating": "4.7",
+      "reviews_count": "6",
+      "delivery_days": "26 ноября"
+    },
+    {
+      "id": "1749256412",
+      "url": "https://www.ozon.ru/product/rubanok-dlya-rybnoy-cheshui-s-kryshkoy-instrument-dlya-ubiystva-ryby-1749256412/?_bctx=CAQQj86LAQ&hs=1",
+      "title": "Рубанок Для Рыбной Чешуи С Крышкой Инструмент Для Убийства Рыбы",
+      "price": "136 ₽",
+      "rating": "4.6",
+      "reviews_count": "2",
+      "delivery_days": "26 ноября"
+    },
+    {
+      "id": "2030364558",
+      "url": "https://www.ozon.ru/product/podvyazka-dlya-rasteniy-1sm-3sht-2030364558/?_bctx=CAQQj86LAQ&hs=1",
+      "title": "Стало дешевле",
+      "price": "83 ₽",
+      "rating": "4.9",
+      "reviews_count": "354",
+      "delivery_days": "26 ноября"
+    },
+    {
+      "id": "1799008453",
+      "url": "https://www.ozon.ru/product/frukto-ovoshchechistka-gorizontalnaya-1-sht-1799008453/?_bctx=CAQQj86LAQ&hs=1",
+      "title": "",
+      "price": "134 ₽",
+      "rating": "4.5",
+      "reviews_count": "1",
+      "delivery_days": "26 ноября"
+    },
+    {
+      "id": "1748595055",
+      "url": "https://www.ozon.ru/product/podstavka-dlya-zubochistok-9-sm-h-6-sm-h-6-sm-1-sht-1748595055/?_bctx=CAQQj86LAQ&hs=1",
+      "title": "Автоматическая коробка для зубочисток",
+      "price": "142 ₽",
+      "rating": "4.7",
+      "reviews_count": "1",
+      "delivery_days": "25 ноября"
+    },
+    {
+      "id": "1940482817",
+      "url": "https://www.ozon.ru/product/samokleyashchayasya-lenta-setka-dlya-remonta-moskitnoy-setki-remkomplekt-dlya-moskitnoy-setki-1940482817/?_bctx=CAQQj86LAQ&hs=1",
+      "title": "Самоклеящаяся лента-сетка для ремонта москитной сетки (ремкомплект для москитной сетки), 5 метра",
+      "price": "118 ₽",
+      "rating": "4.8",
+      "reviews_count": "1",
+      "delivery_days": "26 ноября"
+    },
+    {
+      "id": "1763498893",
+      "url": "https://www.ozon.ru/product/professionalnaya-salonnaya-rascheska-dlya-vytsvetaniya-volos-ergonomichnaya-mashinka-dlya-strizhki-1763498893/?_bctx=CAQQj86LAQ&hs=1",
+      "title": "Профессиональная салонная расческа для выцветания волос Эргономичная машинка для стрижки волос с плоским верхом, термостойкая, острая и прецизионная для мужчин",
+      "price": "107 ₽",
+      "rating": "4.7",
+      "reviews_count": "3",
+      "delivery_days": "26 ноября"
+    },
+    {
+      "id": "1781554229",
+      "url": "https://www.ozon.ru/product/organayzer-dlya-hraneniya-veshchey-9h10h2-5-sm-1781554229/?_bctx=CAQQj86LAQ&hs=1",
+      "title": "Органайзер для хранения вещей 9х10х2.5 см.",
+      "price": "112 ₽",
+      "rating": "4.3",
+      "reviews_count": "1",
+      "delivery_days": "26 ноября"
+    },
+    {
+      "id": "1810288038",
+      "url": "https://www.ozon.ru/product/sredstvo-chistyashchee-dlya-vannoy-i-tualeta-1810288038/?_bctx=CAQQj86LAQ&hs=1",
+      "title": "Средство чистящее для ванной и туалета",
+      "price": "208 ₽",
+      "rating": "4.8",
+      "reviews_count": "2",
+      "delivery_days": "26 ноября"
+    },
+    {
+      "id": "1692030073",
+      "url": "https://www.ozon.ru/product/tryapka-10-sht-1692030073/?_bctx=CAQQj86LAQ&hs=1",
+      "title": "",
+      "price": "122 ₽",
+      "rating": "4.9",
+      "reviews_count": "350",
+      "delivery_days": "26 ноября"
+    },
+    {
+      "id": "2425634183",
+      "url": "https://www.ozon.ru/product/gubka-50-sht-2425634183/?_bctx=CAQQj86LAQ&hs=1",
+      "title": "",
+      "price": "221 ₽",
+      "rating": "4.7",
+      "reviews_count": "214",
+      "delivery_days": "14 ноября"
+    }
+  ]
+}

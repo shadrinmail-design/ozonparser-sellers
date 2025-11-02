@@ -44,7 +44,7 @@ async function loadProducts() {
 async function searchByImage(imageUrl) {
   console.log(`🔍 Searching for: ${imageUrl}`);
 
-  const scriptPath = path.join(__dirname, 'ozon_image_search.applescript');
+  const scriptPath = path.join(__dirname, 'ozon_image_search_full.applescript');
 
   try {
     const { stdout, stderr } = await execFileAsync('osascript', [scriptPath, imageUrl], {

@@ -1,0 +1,276 @@
+{
+  "success": true,
+  "total": 30,
+  "products": [
+    {
+      "id": "2267594357",
+      "url": "https://www.ozon.ru/product/ruchnaya-kofemolka-coffe-2267594357/?_bctx=CAQQu9OOAQ&hs=1",
+      "title": "Ручная кофемолка \"COFFE\"",
+      "price": "377 ₽",
+      "rating": "5.0",
+      "reviews_count": "3",
+      "delivery_days": "28 ноября"
+    },
+    {
+      "id": "2267595050",
+      "url": "https://www.ozon.ru/product/figurka-sadovaya-2267595050/?_bctx=CAQQu9OOAQ&hs=1",
+      "title": "Фигурка садовая",
+      "price": "754 ₽",
+      "rating": "4.9",
+      "reviews_count": "17",
+      "delivery_days": "27 ноября"
+    },
+    {
+      "id": "2523663790",
+      "url": "https://www.ozon.ru/product/gobelen-lesa-230h180-sm-2523663790/?_bctx=CAQQu9OOAQ&hs=1",
+      "title": "Гобелен \"леса\", 230х180 см",
+      "price": "777 ₽",
+      "rating": "3.2",
+      "reviews_count": "5",
+      "delivery_days": "28 ноября"
+    },
+    {
+      "id": "2768004554",
+      "url": "https://www.ozon.ru/product/boks-shchitok-elektricheskiy-plastikovyy-dlya-avtomatov-shchit-raspredelitelnyy-navesnoy-5-2768004554/?_bctx=CAQQu9OOAQ&hs=1",
+      "title": "Бокс/ щиток электрический пластиковый для автоматов, щит распределительный навесной 5 модулей 65IP",
+      "price": "364 ₽",
+      "rating": "5.0",
+      "reviews_count": "7",
+      "delivery_days": "28 ноября"
+    },
+    {
+      "id": "2658154446",
+      "url": "https://www.ozon.ru/product/besprovodnoy-mini-izmelchitel-edy-400-ml-izmelchitel-kuhonnyy-elektricheskiy-press-dlya-2658154446/?_bctx=CAQQu9OOAQ&hs=1",
+      "title": "Беспроводной мини измельчитель еды 400 мл., Измельчитель кухонный электрический / Пресс для чеснока / Дробилка",
+      "price": "440 ₽",
+      "rating": "4.4",
+      "reviews_count": "11",
+      "delivery_days": "27 ноября"
+    },
+    {
+      "id": "2768116422",
+      "url": "https://www.ozon.ru/product/kalopriemniki-abutsel-vt-5-dreniruemye-5sht-samofiksiruemye-vyrezaemoe-otverstie-20-65mm-2768116422/?_bctx=CAQQu9OOAQ&hs=1",
+      "title": "",
+      "price": "490 ₽",
+      "rating": "5.0",
+      "reviews_count": "1",
+      "delivery_days": "27 ноября"
+    },
+    {
+      "id": "2167950485",
+      "url": "https://www.ozon.ru/product/myagkaya-igrushka-2167950485/?_bctx=CAQQu9OOAQ&hs=1",
+      "title": "Мягкая игрушка",
+      "price": "458 ₽",
+      "rating": "4.4",
+      "reviews_count": "5",
+      "delivery_days": "28 ноября"
+    },
+    {
+      "id": "2794361332",
+      "url": "https://www.ozon.ru/product/chulki-kompressionnye-chernyy-1-klass-kompressii-2794361332/?_bctx=CAQQu9OOAQ&hs=1",
+      "title": "Чулки компрессионные черный, 1 класс компрессии",
+      "price": "238 ₽",
+      "rating": "5.0",
+      "reviews_count": "2",
+      "delivery_days": "21 ноября"
+    },
+    {
+      "id": "1553820513",
+      "url": "https://www.ozon.ru/product/nakleyka-znak-ognetushitel-gost-f04-10h10-sm-20-sht-1553820513/?miniapp=seller_2337211",
+      "title": "",
+      "price": "199 ₽",
+      "rating": "4.9",
+      "reviews_count": "247",
+      "delivery_days": "Завтра"
+    },
+    {
+      "id": "1622147489",
+      "url": "https://www.ozon.ru/product/sovok-i-shchetka-dlya-uborki-nabor-shchetka-s-sovkom-dlya-uborki-na-dlinnoy-ruchke-1622147489/?miniapp=seller_2337211",
+      "title": "Совок и щетка для уборки,Набор щетка с совком для уборки на длинной ручке",
+      "price": "765 ₽",
+      "rating": "4.7",
+      "reviews_count": "7",
+      "delivery_days": "Завтра"
+    },
+    {
+      "id": "2000296923",
+      "url": "https://www.ozon.ru/product/halat-trendywoman-shop-domashniy-halat-2000296923/?miniapp=seller_2337211",
+      "title": "Халат TrendyWoman Shop Домашний халат",
+      "price": "1 914 ₽",
+      "rating": "4.9",
+      "reviews_count": "963",
+      "delivery_days": "5 ноября"
+    },
+    {
+      "id": "1066650955",
+      "url": "https://www.ozon.ru/product/kedy-adidas-sportswear-grand-court-base-2-0-1066650955/?miniapp=seller_2337211",
+      "title": "Кеды adidas Sportswear Grand Court Base 2.0",
+      "price": "1 465 ₽",
+      "rating": "4.8",
+      "reviews_count": "0",
+      "delivery_days": "Завтра"
+    },
+    {
+      "id": "1916826726",
+      "url": "https://www.ozon.ru/product/skoby-dlya-steplera-24-6-nabor-5000-shtuk-skoby-24-6-dlya-steplera-kantselyarskie-otsinkovannye-1916826726/?miniapp=seller_2337211",
+      "title": "",
+      "price": "290 ₽",
+      "rating": "4.9",
+      "reviews_count": "565",
+      "delivery_days": "6 ноября"
+    },
+    {
+      "id": "714281312",
+      "url": "https://www.ozon.ru/product/lenta-kassovaya-12-sht-shirina-80-mm-714281312/?miniapp=seller_2337211",
+      "title": "",
+      "price": "815 ₽",
+      "rating": "5.0",
+      "reviews_count": "1",
+      "delivery_days": "6 ноября"
+    },
+    {
+      "id": "2770469377",
+      "url": "https://www.ozon.ru/product/fayly-prad-office-a4-100-shtuk-30-mikron-matovye-vkladyshi-multifory-s-perforatsiey-2770469377/?miniapp=seller_2337211",
+      "title": "",
+      "price": "178 ₽",
+      "rating": "5.0",
+      "reviews_count": "1",
+      "delivery_days": "6 ноября"
+    },
+    {
+      "id": "2272959215",
+      "url": "https://www.ozon.ru/product/futbolka-korotkiy-rukav-s-risunkom-malenkogo-zheltogo-chelovechka-2272959215/?miniapp=seller_2337211",
+      "title": "Футболка Короткий рукав с рисунком маленького желтого человечка",
+      "price": "383 ₽",
+      "rating": "4.5",
+      "reviews_count": "2",
+      "delivery_days": "12 ноября"
+    },
+    {
+      "id": "2215474002",
+      "url": "https://www.ozon.ru/product/kole-kole-2215474002/?miniapp=seller_2337211",
+      "title": "Колье Колье",
+      "price": "219 ₽",
+      "rating": "4.9",
+      "reviews_count": "121",
+      "delivery_days": "16 ноября"
+    },
+    {
+      "id": "1640892631",
+      "url": "https://www.ozon.ru/product/paket-mayka-1000-sht-dlya-pvz-ozon-ozon-28h50-sm-dlya-hraneniya-produktov-i-veshchey-15-mkr-belyy-1640892631/?miniapp=seller_2337211",
+      "title": "",
+      "price": "1 231 ₽",
+      "rating": "4.9",
+      "reviews_count": "2",
+      "delivery_days": "Завтра"
+    },
+    {
+      "id": "266603525",
+      "url": "https://www.ozon.ru/product/kalkulyator-nastolnyy-bolshoy-12-razryadnyy-buhgalterskiy-266603525/?miniapp=seller_2337211",
+      "title": "Калькулятор настольный большой, 12-разрядный, бухгалтерский",
+      "price": "301 ₽",
+      "rating": "4.8",
+      "reviews_count": "6",
+      "delivery_days": "6 ноября"
+    },
+    {
+      "id": "24962122",
+      "url": "https://www.ozon.ru/product/bumazhnye-polotentsa-zewa-4-rulona-24962122/?miniapp=seller_2337211",
+      "title": "Бумажные полотенца Zewa 1/2 листа, 4 рулона",
+      "price": "264 ₽",
+      "rating": "4.9",
+      "reviews_count": "0",
+      "delivery_days": "Завтра"
+    },
+    {
+      "id": "2558960677",
+      "url": "https://www.ozon.ru/product/pizhama-saimeiqi-pizhama-2558960677/?miniapp=seller_2337211",
+      "title": "Пижама SAIMEIQI пижама",
+      "price": "1 363 ₽",
+      "rating": "4.8",
+      "reviews_count": "5",
+      "delivery_days": "6 ноября"
+    },
+    {
+      "id": "1131048127",
+      "url": "https://www.ozon.ru/product/sumka-shopper-na-plecho-1131048127/?miniapp=seller_2337211",
+      "title": "Сумка шоппер, на плечо",
+      "price": "873 ₽",
+      "rating": "4.8",
+      "reviews_count": "490",
+      "delivery_days": "Завтра"
+    },
+    {
+      "id": "161073747",
+      "url": "https://www.ozon.ru/product/fayly-a4-100-shtuk-perforirovannye-matovye-vkladyshi-v-papki-dlya-hraneniya-dokumentov-i-bumag-161073747/?miniapp=seller_2337211",
+      "title": "",
+      "price": "157 ₽",
+      "rating": "4.9",
+      "reviews_count": "5",
+      "delivery_days": "Завтра"
+    },
+    {
+      "id": "564401618",
+      "url": "https://www.ozon.ru/product/leykoplastyr-rulonnyy-fiksiruyushchiy-master-uni-3-x-500-sm-2-upakovki-plastyr-na-tkanevoy-osnove-564401618/?miniapp=seller_2337211",
+      "title": "Лейкопластырь рулонный фиксирующий MASTER UNI, 3 x 500 см, 2 упаковки, пластырь на тканевой основе",
+      "price": "179 ₽",
+      "rating": "4.9",
+      "reviews_count": "13",
+      "delivery_days": "Завтра"
+    },
+    {
+      "id": "1859907951",
+      "url": "https://www.ozon.ru/product/korzina-dlya-bumag-buro-kruglaya-12-l-plastik-chernyy-1859907951/?miniapp=seller_2337211",
+      "title": "Корзина для бумаг Buro круглая 12 л., пластик, черный",
+      "price": "206 ₽",
+      "rating": "4.9",
+      "reviews_count": "0",
+      "delivery_days": "Послезавтра"
+    },
+    {
+      "id": "2330512743",
+      "url": "https://www.ozon.ru/product/komplekt-termobelya-icewind-termobele-zhenskoe-2330512743/?miniapp=seller_2337211",
+      "title": "Комплект термобелья ICEWIND , термобелье женское",
+      "price": "1 351 ₽",
+      "rating": "4.9",
+      "reviews_count": "3",
+      "delivery_days": "Завтра"
+    },
+    {
+      "id": "992675460",
+      "url": "https://www.ozon.ru/product/sapogi-rezinovye-snaiden-992675460/?miniapp=seller_2337211",
+      "title": "Сапоги резиновые Snaiden",
+      "price": "786 ₽",
+      "rating": "4.8",
+      "reviews_count": "5",
+      "delivery_days": "Завтра"
+    },
+    {
+      "id": "1598158091",
+      "url": "https://www.ozon.ru/product/meshki-pakety-dlya-musora-30l-200-sht-1598158091/?miniapp=seller_2337211",
+      "title": "",
+      "price": "308 ₽",
+      "rating": "4.8",
+      "reviews_count": "9",
+      "delivery_days": "6 ноября"
+    },
+    {
+      "id": "793476211",
+      "url": "https://www.ozon.ru/product/zazhimy-dlya-bumagi-metallicheskie-12-shtuk-51-mm-nabor-793476211/?miniapp=seller_2337211",
+      "title": "",
+      "price": "169 ₽",
+      "rating": "4.9",
+      "reviews_count": "18",
+      "delivery_days": "Завтра"
+    },
+    {
+      "id": "1472251446",
+      "url": "https://www.ozon.ru/product/venik-shchetka-s-sovkom-dlya-uborki-seryy-gustaya-shchetina-1472251446/?miniapp=seller_2337211",
+      "title": "Веник-щетка с совком для уборки, серый (густая щетина)",
+      "price": "551 ₽",
+      "rating": "4.8",
+      "reviews_count": "6",
+      "delivery_days": "6 ноября"
+    }
+  ]
+}

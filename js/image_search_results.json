@@ -6,189 +6,319 @@
   "results": [
     {
       "source_product": {
-        "title": "LEGO City Space 60428 Космический робот-строитель,6+,140 деталей",
-        "image": "https://ir.ozone.ru/s3/multimedia-1-y/wc250/7333735426.jpg"
+        "id": "3",
+        "title": "Украшение на праздник новогоднее Новогодний 3 шт.",
+        "image": "https://ir.ozone.ru/s3/multimedia-1-f/wc500/7184667903.jpg",
+        "price": "412 ₽",
+        "url": "https://www.ozon.ru/product/ukrashenie-na-prazdnik-novogodnee-novogodniy-3-sht-1788940107/?_bctx=CAYQ3Yk5&at=6WtZwVlGEF4B019ZskjVPJxTjykoyXfWKrD9gSg9MxGv"
       },
       "search_result": {
         "success": true,
-        "total_count": 15,
+        "total_count": 25,
         "button_check": {
-          "found": true,
-          "clicked": true,
-          "buttonText": "Найти"
+          "found": false,
+          "visibleButtons": [
+            "Каталог",
+            "Для бизнеса"
+          ]
         },
         "products": [
           {
-            "index": 1,
-            "id": "693592572",
-            "title": "Конструктор Трансформеры - робот Танос, 156 деталей",
-            "url": "https://www.ozon.ru/product/konstruktor-transformery-robot-tanos-156-detaley-693592572/"
+            "id": "1541598563",
+            "url": "https://www.ozon.ru/product/noski-10-par-1541598563/?at=16tLWEOB2FmgRryyU773pJLs0oJY4gTNxGVN5tLgAzlx",
+            "title": "Носки, 10 пар",
+            "price": "359 ₽",
+            "rating": "4.8",
+            "reviews_count": "86",
+            "delivery_days": ""
           },
           {
-            "index": 2,
-            "id": "2813598834",
-            "title": "60 шт осталось",
-            "url": "https://www.ozon.ru/product/skaybidi-figurki-unitaza-igrushka-model-titana-fotografa-s-dinamikom-dlya-rozhdestva-2813598834/"
+            "id": "654444530",
+            "url": "https://www.ozon.ru/product/dzhibiki-dzhibbitsy-10-sht-654444530/",
+            "title": "",
+            "price": "199 ₽",
+            "rating": "5.0",
+            "reviews_count": "22",
+            "delivery_days": ""
           },
           {
-            "index": 3,
-            "id": "1577542067",
-            "title": "Конструктор Марвел / Тор Робот / 139 деталей",
-            "url": "https://www.ozon.ru/product/konstruktor-marvel-tor-robot-139-detaley-1577542067/"
+            "id": "1922296264",
+            "url": "https://www.ozon.ru/product/canespuk-stroitelnyy-pylesos-30-l-3300-vt-1922296264/?at=57twNWRp5cL3Wl1oCyoD1vGFpQWMxxIDm5z6pFW0lK62",
+            "title": "CANESPUK Строительный пылесос 30 л, 3300 Вт",
+            "price": "4 549 ₽",
+            "rating": "4.7",
+            "reviews_count": "5",
+            "delivery_days": ""
           },
           {
-            "index": 4,
-            "id": "2451812388",
-            "title": "Lego Городской космический строительный робот 60428",
-            "url": "https://www.ozon.ru/product/lego-gorodskoy-kosmicheskiy-stroitelnyy-robot-60428-2451812388/"
+            "id": "2703303705",
+            "url": "https://www.ozon.ru/product/podstavka-dlya-knig-i-uchebnikov-1-sht-soyuz-pk-03-plastikovaya-belaya-2703303705/?at=nRtrB6x3AUm6B0WVuNQDLA9ug66KJYt8pWl4phoWMKkZ",
+            "title": "",
+            "price": "144 ₽",
+            "rating": "4.8",
+            "reviews_count": "0",
+            "delivery_days": ""
           },
           {
-            "index": 5,
-            "id": "1791044788",
-            "title": "3 шт осталось",
-            "url": "https://www.ozon.ru/product/konstruktor-lego-creator-kosmicheskiy-shahterskiy-robot-31115-1791044788/"
+            "id": "1828480394",
+            "url": "https://www.ozon.ru/product/nabor-iz-10-instrumentov-dlya-sborki-modeley-instrumenty-dlya-razborki-i-polirovki-1828480394/?at=OgtEQ2wZzFkWANjWSOw6oy1ukl3xV2fvMOxDOHZK0WOY",
+            "title": "Набор из 10 инструментов для сборки моделей, инструменты для разборки и полировки.",
+            "price": "651 ₽",
+            "rating": "4.9",
+            "reviews_count": "537",
+            "delivery_days": ""
           },
           {
-            "index": 6,
-            "id": "992082782",
-            "title": "10 шт осталось",
-            "url": "https://www.ozon.ru/product/konstruktor-supergeroi-tor-robot-11633-revenger-145-detaley-992082782/"
+            "id": "201132146",
+            "url": "https://www.ozon.ru/product/salton-propitka-vodoottalkivayushchaya-201132146/?at=XQtkrMGDVhGoxq6QcV5RKKHNnGNKlt2r518RiZ8VrRM",
+            "title": "Salton Пропитка водоотталкивающая",
+            "price": "465 ₽",
+            "rating": "4.9",
+            "reviews_count": "82",
+            "delivery_days": ""
           },
           {
-            "index": 7,
-            "id": "1347029151",
-            "title": "7 шт осталось",
-            "url": "https://www.ozon.ru/product/konstruktor-issledovatel-morskih-glubin-sovmestim-s-60095-sudno-korabl-1347029151/"
+            "id": "981744550",
+            "url": "https://www.ozon.ru/product/nozh-brelok-981744550/?at=ywtAVyJ2quK067XmIAkQD9wC8qA5y2tp8AR6ril5wXjE",
+            "title": "",
+            "price": "292 ₽",
+            "rating": "4.8",
+            "reviews_count": "16",
+            "delivery_days": ""
           },
           {
-            "index": 8,
-            "id": "827129817",
-            "title": "Стало дешевле",
-            "url": "https://www.ozon.ru/product/konstruktor-plastikovyy-qman-bolshoy-molot-meha-3401-1-135-detali-827129817/"
+            "id": "1346788497",
+            "url": "https://www.ozon.ru/product/popular-broun-paket-dlya-produktov-30-sm-1346788497/?at=Brtz2lARpc8g4YoXTj4VLPnc4o4wgLUoxPX42SGDgVg0",
+            "title": "POPULAR BROUN Пакет для продуктов, 30 см",
+            "price": "170 ₽",
+            "rating": "4.9",
+            "reviews_count": "225",
+            "delivery_days": ""
           },
           {
-            "index": 9,
-            "id": "2688481504",
-            "title": "Мини-набор LEGO City Космический научный робот, 30694,6+,49",
-            "url": "https://www.ozon.ru/product/mini-nabor-lego-city-kosmicheskiy-nauchnyy-robot-30694-6-49-2688481504/"
+            "id": "1317286142",
+            "url": "https://www.ozon.ru/product/sinichka-vatnye-palochki-1000-sht-1317286142/?at=OgtEQ2wZzFpN9NN2S9V7MVpiLrjWp2hw0JNQrUYWZZQY",
+            "title": "",
+            "price": "348 ₽",
+            "rating": "5.0",
+            "reviews_count": "39",
+            "delivery_days": ""
           },
           {
-            "index": 10,
-            "id": "1730677202",
-            "title": "Конструктор LEGO City 60428 Космический робот-строитель",
-            "url": "https://www.ozon.ru/product/konstruktor-lego-city-60428-kosmicheskiy-robot-stroitel-1730677202/"
+            "id": "2796780602",
+            "url": "https://www.ozon.ru/product/robot-pylesos-xiaomi-robot-vacuum-x10-jcz2201-b102gl-2796780602/?at=08tYPr4gqcKPjkYCZA0ZJVIMQEX1xUoopnv0hzqRv0X",
+            "title": "Робот-пылесос Xiaomi Robot Vacuum X10, (JCZ2201/B102GL)",
+            "price": "30 735 ₽",
+            "rating": "5.0",
+            "reviews_count": "58",
+            "delivery_days": ""
           },
           {
-            "index": 11,
-            "id": "2241832163",
-            "title": "Конструктор LEGO Overwatch 75987 Омнический бастион",
-            "url": "https://www.ozon.ru/product/konstruktor-lego-overwatch-75987-omnicheskiy-bastion-2241832163/"
+            "id": "1842512713",
+            "url": "https://www.ozon.ru/product/podushka-anatomicheskaya-dlya-sna-50h70-sm-2-sht-evkaliptovoe-volokno-1842512713/?at=J8tgMQyA3T8ZnBjziky95x5H1ywvqztWLELvRsO387ml",
+            "title": "",
+            "price": "1 834 ₽",
+            "rating": "4.9",
+            "reviews_count": "18",
+            "delivery_days": ""
           },
           {
-            "index": 12,
-            "id": "1616434196",
-            "title": "499 шт осталось",
-            "url": "https://www.ozon.ru/product/lego-city-60350-lunnaya-issledovatelskaya-baza-786-detaley-7-1616434196/"
+            "id": "2286532680",
+            "url": "https://www.ozon.ru/product/duhi-muzhskie-black-afgano-2286532680/?at=LZtl8YXwyCxgjGWVC8rQLvEu9yywpQt3BEwOWfyL6oEL",
+            "title": "Духи мужские, Black Afgano",
+            "price": "689 ₽",
+            "rating": "4.7",
+            "reviews_count": "115",
+            "delivery_days": ""
           },
           {
-            "index": 13,
-            "id": "1616925908",
-            "title": "97 шт осталось",
-            "url": "https://www.ozon.ru/product/figurok-konstruktor-minifigurki-sovmestim-s-lego-titanfall-ionic-mecha-888detaley-24sm-paket-1616925908/"
+            "id": "5629622",
+            "url": "https://www.ozon.ru/product/ochistitel-dlya-posudomoechnyh-mashin-finish-finish-250-ml-chistyashchee-sredstvo-dlya-pmm-5629622/?at=jYtZNyAGKf5q9RrZSJv5N6fnlW1P4SL6WZGGFqPB9Jr",
+            "title": "Finish очиститель для посудомоечной машины, чистящее средство, 250 мл",
+            "price": "550 ₽",
+            "rating": "4.9",
+            "reviews_count": "0",
+            "delivery_days": ""
           },
           {
-            "index": 14,
-            "id": "339379593",
-            "title": "48 шт осталось",
-            "url": "https://www.ozon.ru/product/konstruktor-robot-transbot-1toy-blockformers-igrushki-dlya-malchikov-podarok-na-novyy-god-339379593/"
+            "id": "34371171",
+            "url": "https://www.ozon.ru/product/kofe-molotyy-zhokey-irlandskie-slivki-150-g-34371171/?at=qQtJw7RkKc9BkxORs16NM99sA4R2m4IMnyyD4Irpz3wO",
+            "title": "Кофе молотый Жокей Ирландские сливки, 150 г",
+            "price": "309 ₽",
+            "rating": "4.9",
+            "reviews_count": "0",
+            "delivery_days": ""
           },
           {
-            "index": 15,
-            "id": "1392619297",
-            "title": "QBRIX KIDS Конструктор детский Мир роботов пластиковый для мальчика и девочки от 6 лет совместим с L",
-            "url": "https://www.ozon.ru/product/qbrix-kids-konstruktor-detskiy-mir-robotov-plastikovyy-dlya-malchika-i-devochki-ot-6-let-sovmestim-s-1392619297/"
+            "id": "1947065525",
+            "url": "https://www.ozon.ru/product/bsg-zhestkiy-gel-dlya-narashchivaniya-konfityur-125-nizkaya-vyazkost-novogodnyaya-kollektsiya-13-g-1947065525/?at=EqtkX6n0VhoRnWPXCk3l977cBoRqkpCxkmoLzf5MmvWY",
+            "title": "BSG Жёсткий гель для наращивания Konfityur №125 НИЗКАЯ ВЯЗКОСТЬ - Новогодняя коллекция (13 г)",
+            "price": "432 ₽",
+            "rating": "4.9",
+            "reviews_count": "25",
+            "delivery_days": ""
           }
         ]
       },
-      "searched_at": "2025-11-01T18:11:18.163Z"
+      "searched_at": "2025-11-02T02:53:00.788Z"
     },
     {
       "source_product": {
-        "title": "Конструктор LEGO Ninjago 71805 Боевой меч Джея,6+,72",
-        "image": "https://ir.ozone.ru/s3/multimedia-1-t/wc250/7156785845.jpg"
+        "id": "42",
+        "title": "Мешок для стирки длина 42см, ширина26 см, 1 шт.",
+        "image": "https://ir.ozone.ru/s3/multimedia-1-2/wc500/8089985018.jpg",
+        "price": "214 ₽",
+        "url": "https://www.ozon.ru/product/meshok-dlya-stirki-dlina-42sm-shirina26-sm-1-sht-2521194452/?_bctx=CAYQ3Yk5&at=J8tgMpLQRcDrlWQRHDn3MnCkW5LvXIlkAW41C8GnLGO"
       },
       "search_result": {
         "success": true,
-        "total_count": 10,
+        "total_count": 25,
         "button_check": {
-          "found": true,
-          "clicked": true,
-          "buttonText": "Найти"
+          "found": false,
+          "visibleButtons": [
+            "Каталог",
+            "Для бизнеса"
+          ]
         },
         "products": [
           {
-            "index": 1,
-            "id": "1982453233",
-            "title": "Минифигурка \"Ниндзяго: Мастера Кружитцу Ния\" совместим с конструкторами лего (EM117)",
-            "url": "https://www.ozon.ru/product/minifigurka-nindzyago-mastera-kruzhittsu-niya-sovmestim-s-konstruktorami-lego-em117-1982453233/"
+            "id": "2134321333",
+            "url": "https://www.ozon.ru/product/komplekt-noskov-10-par-2134321333/?at=VvtzQPXkNc0ZoL1jIMDYMzrim4n7Pjf76zyGzCMm2x9O",
+            "title": "Носки, 10 пар",
+            "price": "447 ₽",
+            "rating": "4.9",
+            "reviews_count": "21",
+            "delivery_days": ""
           },
           {
-            "index": 2,
-            "id": "1387220864",
-            "title": "1 280 шт осталось",
-            "url": "https://www.ozon.ru/product/konstruktor-lego-ninjago-boevoy-nabor-mehov-dzheya-78-detaley-vozrast-ot-6-71805-1387220864/"
+            "id": "1123994098",
+            "url": "https://www.ozon.ru/product/ryukzak-muzhskoy-1123994098/?at=99tr7YxNLUV597WXuwAP0qyhZgZYrUgWQDmPcVq48l5",
+            "title": "Рюкзак мужской",
+            "price": "1 041 ₽",
+            "rating": "4.8",
+            "reviews_count": "36",
+            "delivery_days": ""
           },
           {
-            "index": 3,
-            "id": "402653528",
-            "title": "Конструктор LEGO Ninjago 71740 Электрический робот Джея",
-            "url": "https://www.ozon.ru/product/konstruktor-lego-ninjago-71740-elektricheskiy-robot-dzheya-402653528/"
+            "id": "2945374485",
+            "url": "https://www.ozon.ru/product/ochistitel-vozduha-dlya-doma-ionizator-ot-pyli-hepa-filtr-s-taymerom-tihiy-rezhim-udalyaet-2945374485/?at=oZt6WK8PjFjoM0lQSXvMLq8uqOXv28F0YKg9Ai0J16Oj",
+            "title": "Очиститель воздуха для дома / Ионизатор от пыли / HEPA фильтр с таймером Тихий режим, Удаляет шерсть, запахи и аллергены",
+            "price": "4 032 ₽",
+            "rating": "4.6",
+            "reviews_count": "129",
+            "delivery_days": ""
           },
           {
-            "index": 4,
-            "id": "2491961766",
-            "title": "504 шт осталось",
-            "url": "https://www.ozon.ru/product/konstruktor-lego-ninjago-71805-boevoy-mech-dzheya-6-72-2491961766/"
+            "id": "379591368",
+            "url": "https://www.ozon.ru/product/muzhskaya-tualetnaya-voda-spartak-100ml-drevesnyy-parfyum-379591368/?at=OgtEQ2wZzFERlwAxCWEmly1FKOnkvoF6QmyXnhXm2qz9",
+            "title": "Мужская туалетная вода Спартак 100мл, древесный парфюм",
+            "price": "666 ₽",
+            "rating": "4.8",
+            "reviews_count": "1",
+            "delivery_days": ""
           },
           {
-            "index": 5,
-            "id": "1639346162",
-            "title": "100 шт осталось",
-            "url": "https://www.ozon.ru/product/konstruktor-lego-ninjago-71805-boevoy-mech-dzheya-6-72-1639346162/"
+            "id": "1054618225",
+            "url": "https://www.ozon.ru/product/venotonic-500-mg-60-tabletok-venotonik-diosmin-gesperidin-ot-varikoza-atech-nutrition-premium-1054618225/?at=NOtwyM9PDc4q1jr7UQGWJrJsB836klH0O7KpXu3nylA7",
+            "title": "VENOTONIC 500 мг 60 таблеток венотоник диосмин гесперидин от варикоза aTech nutrition Premium",
+            "price": "611 ₽",
+            "rating": "4.8",
+            "reviews_count": "203",
+            "delivery_days": ""
           },
           {
-            "index": 6,
-            "id": "1677160185",
-            "title": "Конструктор Ninjago Робот-инженер Соры, 209 дет.",
-            "url": "https://www.ozon.ru/product/konstruktor-ninjago-robot-inzhener-sory-209-det-1677160185/"
+            "id": "1722238775",
+            "url": "https://www.ozon.ru/product/kardigan-fabrika-horoshiy-trikotazh-1722238775/?at=k2toGq4X8FzRkpx2U086OyXFwvz0ogS7j4pw8sGyDKpp",
+            "title": "Кардиган Фабрика Хороший Трикотаж",
+            "price": "3 070 ₽",
+            "rating": "4.9",
+            "reviews_count": "252",
+            "delivery_days": ""
           },
           {
-            "index": 7,
-            "id": "2149713554",
-            "title": "Конструктор LEGO Ninjago 71740 Электрический робот Джея",
-            "url": "https://www.ozon.ru/product/konstruktor-lego-ninjago-71740-elektricheskiy-robot-dzheya-2149713554/"
+            "id": "2528666423",
+            "url": "https://www.ozon.ru/product/zubnaya-pasta-total-protective-repair-kompleksnaya-zashchita-bez-ftora-75-ml-2528666423/?at=6WtZwGM0jf6y5J1qSJMnYm2SmNPX6yI8oMEEWsyx5DE1",
+            "title": "Зубная паста Total Protective Repair Комплексная Защита, без фтора, 75 мл",
+            "price": "441 ₽",
+            "rating": "5.0",
+            "reviews_count": "853",
+            "delivery_days": ""
           },
           {
-            "index": 8,
-            "id": "1616436282",
-            "title": "493 шт осталось",
-            "url": "https://www.ozon.ru/product/lego-ninjago-71785-titanovyy-meh-dzheya-794-detaley-9-1616436282/"
+            "id": "2825202629",
+            "url": "https://www.ozon.ru/product/pakety-dlya-hraneniya-produktov-chehol-dlya-edy-kryshka-shapochka-pakety-kryshki-na-rezinke-35sm-2825202629/?at=16tLWEOB2Fq0gNXYiGAOlVJSz8kjN6FYmw02oU0q84lG",
+            "title": "",
+            "price": "159 ₽",
+            "rating": "4.8",
+            "reviews_count": "11",
+            "delivery_days": ""
           },
           {
-            "index": 9,
-            "id": "1461422808",
-            "title": "Конструктор LEGO Ninjago Боевой набор роботов Джея, 71805",
-            "url": "https://www.ozon.ru/product/konstruktor-lego-ninjago-boevoy-nabor-robotov-dzheya-71805-1461422808/"
+            "id": "1663008070",
+            "url": "https://www.ozon.ru/product/opolaskivatel-finish-dlya-posudy-v-posudomoechnyh-mashinah-750-ml-1663008070/?at=x6tPNQBRnh7lXJq3h4PxZ5Phv5qMz5UrvnZy1uPY9jvW",
+            "title": "Ополаскиватель Finish для посуды в посудомоечных машинах, 750 мл",
+            "price": "395 ₽",
+            "rating": "4.9",
+            "reviews_count": "0",
+            "delivery_days": ""
           },
           {
-            "index": 10,
-            "id": "1466399460",
-            "title": "Конструктор LEGO Ninjago Боевой робот Джея 71805",
-            "url": "https://www.ozon.ru/product/konstruktor-lego-ninjago-boevoy-robot-dzheya-71805-1466399460/"
+            "id": "1679789985",
+            "url": "https://www.ozon.ru/product/dikie-skrichery-mashinka-transformer-kiber-avtoflip-hellshtorm-s5-1679789985/?at=gpt4QYNwOUVjQq9NinJAv6mfEvx88VfmwyLpBsjgKX1G",
+            "title": "",
+            "price": "646 ₽",
+            "rating": "4.9",
+            "reviews_count": "742",
+            "delivery_days": ""
+          },
+          {
+            "id": "1293896791",
+            "url": "https://www.ozon.ru/product/sim-karta-yota-50-gb-2000-minut-s-ab-platoy-ot-399-rub-1293896791/?at=J8tgMQyA3Tm4E3w0ugWLYNgcj75oVNUL87PJ6h5VNPWg",
+            "title": "Сим-карта YOTA, 50 Гб, 2000 минут, с аб.платой от 399 руб.",
+            "price": "59 ₽",
+            "rating": "4.5",
+            "reviews_count": "9",
+            "delivery_days": ""
+          },
+          {
+            "id": "933369054",
+            "url": "https://www.ozon.ru/product/gel-dlya-brovey-s-effektom-supersilnoy-fiksatsii-i-laminirovaniya-5-ml-semily-933369054/?at=57twNWRp5c999Vg2sJJ0gwqSNoD8omfvm7kpRFyJM3WR",
+            "title": "Гель для бровей с эффeктoм супeрсильнoй фиксaции и лaминирoвaния 5 мл, Semily",
+            "price": "387 ₽",
+            "rating": "4.9",
+            "reviews_count": "38",
+            "delivery_days": ""
+          },
+          {
+            "id": "2581478026",
+            "url": "https://www.ozon.ru/product/honor-planshet-pad-x7-wi-fi-8-7-4-gb-64-gb-seryy-2581478026/?at=k2toGq4X8FgRyMrAsMBBzMQTJBZ89ZsODB5VDFglBr8Y",
+            "title": "Honor Планшет Pad X7 WI-FI, 8.7\" 4 ГБ/64 ГБ, серый",
+            "price": "7 670 ₽",
+            "rating": "4.8",
+            "reviews_count": "0",
+            "delivery_days": ""
+          },
+          {
+            "id": "2425141664",
+            "url": "https://www.ozon.ru/product/lampa-nastolnaya-besprovodnaya-ot-seti-2425141664/?at=K8tZpr9MzfmAXkDQIKgvzP8s5Q80jAI6EnPorUAJVAQ6",
+            "title": "Лампа настольная беспроводная/от сети",
+            "price": "330 ₽",
+            "rating": "4.7",
+            "reviews_count": "10",
+            "delivery_days": ""
+          },
+          {
+            "id": "1011675752",
+            "url": "https://www.ozon.ru/product/opolaskivatel-dlya-posudomoechnyh-mashin-synergetic-0-75l-2sht-nabor-blesk-i-siyanie-bez-1011675752/?at=k2toGq4X8FJA6QrQC0KVoMwCwpnYYpUkj79gjIEr83lk",
+            "title": "",
+            "price": "476 ₽",
+            "rating": "4.9",
+            "reviews_count": "41",
+            "delivery_days": ""
           }
         ]
       },
-      "searched_at": "2025-11-01T18:11:51.393Z"
+      "searched_at": "2025-11-02T02:53:34.860Z"
     }
   ]
 }

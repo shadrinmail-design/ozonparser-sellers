@@ -1,0 +1,114 @@
+{
+  "success": true,
+  "total": 12,
+  "products": [
+    {
+      "id": "2747045373",
+      "url": "https://www.ozon.ru/product/sadovaya-dorozhka-2747045373/?_bctx=CAQQo8HHAQ&hs=1",
+      "title": "Садовая дорожка",
+      "price": "3 499 ₽",
+      "rating": "5.0",
+      "reviews_count": "4",
+      "delivery_days": "24 ноября"
+    },
+    {
+      "id": "2746329283",
+      "url": "https://www.ozon.ru/product/kletka-dlya-zhivotnyh-slzw-2746329283/?_bctx=CAQQo8HHAQ&hs=1",
+      "title": "Клетка для животных SLZW",
+      "price": "2 041 ₽",
+      "rating": "",
+      "reviews_count": "0",
+      "delivery_days": "24 ноября"
+    },
+    {
+      "id": "2950589658",
+      "url": "https://www.ozon.ru/product/stremyanka-2950589658/?_bctx=CAQQo8HHAQ&hs=1",
+      "title": "",
+      "price": "2 270 ₽",
+      "rating": "",
+      "reviews_count": "0",
+      "delivery_days": "24 ноября"
+    },
+    {
+      "id": "2746394847",
+      "url": "https://www.ozon.ru/product/stul-2746394847/?_bctx=CAQQo8HHAQ&hs=1",
+      "title": "",
+      "price": "2 695 ₽",
+      "rating": "4.0",
+      "reviews_count": "1",
+      "delivery_days": "24 ноября"
+    },
+    {
+      "id": "2765346061",
+      "url": "https://www.ozon.ru/product/prisposoblenie-dlya-zameny-tormoznoy-zhidkosti-3l-2765346061/?_bctx=CAQQo8HHAQ&hs=1",
+      "title": "Приспособление для замены тормозной жидкости,3Л",
+      "price": "1 857 ₽",
+      "rating": "",
+      "reviews_count": "0",
+      "delivery_days": "27 ноября"
+    },
+    {
+      "id": "2746122213",
+      "url": "https://www.ozon.ru/product/bidon-nerzhaveyushchaya-stal-10-0-l-2746122213/?_bctx=CAQQo8HHAQ&hs=1",
+      "title": "Бидон, Нержавеющая сталь, 10.0 л",
+      "price": "1 604 ₽",
+      "rating": "",
+      "reviews_count": "0",
+      "delivery_days": "27 ноября"
+    },
+    {
+      "id": "2949854555",
+      "url": "https://www.ozon.ru/product/tormoz-nakata-dlya-pritsepa-2949854555/?_bctx=CAQQo8HHAQ&hs=1",
+      "title": "Тормоз наката для прицепа",
+      "price": "10 522 ₽",
+      "rating": "",
+      "reviews_count": "0",
+      "delivery_days": "27 ноября"
+    },
+    {
+      "id": "2750666613",
+      "url": "https://www.ozon.ru/product/podvizhnyy-skelet-170-sm-dlya-hellouina-2750666613/?_bctx=CAQQo8HHAQ&hs=1",
+      "title": "Подвижный скелет 170 см для Хэллоуина",
+      "price": "2 138 ₽",
+      "rating": "5.0",
+      "reviews_count": "2",
+      "delivery_days": "27 ноября"
+    },
+    {
+      "id": "2746387396",
+      "url": "https://www.ozon.ru/product/stul-2746387396/?_bctx=CAQQo8HHAQ&hs=1",
+      "title": "",
+      "price": "2 695 ₽",
+      "rating": "4.0",
+      "reviews_count": "1",
+      "delivery_days": "24 ноября"
+    },
+    {
+      "id": "2971463527",
+      "url": "https://www.ozon.ru/product/stul-dlya-zanyatiya-yogoy-ayengara-yogastuff-chernyy-2971463527/?_bctx=CAQQo8HHAQ&hs=1",
+      "title": "Стул для занятия йогой Айенгара Yogastuff, черный",
+      "price": "2 319 ₽",
+      "rating": "",
+      "reviews_count": "0",
+      "delivery_days": "24 ноября"
+    },
+    {
+      "id": "2950589903",
+      "url": "https://www.ozon.ru/product/stremyanka-2950589903/?_bctx=CAQQo8HHAQ&hs=1",
+      "title": "",
+      "price": "2 270 ₽",
+      "rating": "",
+      "reviews_count": "0",
+      "delivery_days": "24 ноября"
+    },
+    {
+      "id": "2746389811",
+      "url": "https://www.ozon.ru/product/stul-2746389811/?_bctx=CAQQo8HHAQ&hs=1",
+      "title": "",
+      "price": "2 797 ₽",
+      "rating": "4.0",
+      "reviews_count": "1",
+      "delivery_days": "24 ноября"
+    }
+  ]
+}

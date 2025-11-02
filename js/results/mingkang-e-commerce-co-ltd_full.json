@@ -1,0 +1,276 @@
+{
+  "success": true,
+  "total": 30,
+  "products": [
+    {
+      "id": "2741063614",
+      "url": "https://www.ozon.ru/product/perchatki-2741063614/?miniapp=seller_3301088",
+      "title": "",
+      "price": "183 ₽",
+      "rating": "",
+      "reviews_count": "0",
+      "delivery_days": "25 ноября"
+    },
+    {
+      "id": "2804404468",
+      "url": "https://www.ozon.ru/product/kapor-2804404468/?miniapp=seller_3301088",
+      "title": "",
+      "price": "182 ₽",
+      "rating": "",
+      "reviews_count": "0",
+      "delivery_days": "25 ноября"
+    },
+    {
+      "id": "2744618407",
+      "url": "https://www.ozon.ru/product/svetilnik-1-vt-2744618407/?miniapp=seller_3301088",
+      "title": "Светильник, 1 Вт",
+      "price": "133 ₽",
+      "rating": "",
+      "reviews_count": "0",
+      "delivery_days": "25 ноября"
+    },
+    {
+      "id": "2821961677",
+      "url": "https://www.ozon.ru/product/raspredelyayushchaya-shlyapa-shkoly-hogvarts-iz-filma-garri-potter-2821961677/?miniapp=seller_3301088",
+      "title": "Распределяющая шляпа школы Хогвартс из фильма Гарри Поттер",
+      "price": "375 ₽",
+      "rating": "",
+      "reviews_count": "0",
+      "delivery_days": "25 ноября"
+    },
+    {
+      "id": "2751544212",
+      "url": "https://www.ozon.ru/product/sumka-sportivnaya-2751544212/?miniapp=seller_3301088",
+      "title": "Сумка спортивная",
+      "price": "304 ₽",
+      "rating": "",
+      "reviews_count": "0",
+      "delivery_days": "25 ноября"
+    },
+    {
+      "id": "2741063614",
+      "url": "https://www.ozon.ru/product/perchatki-2741063614/?_bctx=CAQQ4L3JAQ&hs=1",
+      "title": "",
+      "price": "183 ₽",
+      "rating": "4.7",
+      "reviews_count": "32",
+      "delivery_days": "25 ноября"
+    },
+    {
+      "id": "2832162243",
+      "url": "https://www.ozon.ru/product/detskaya-igrushka-myagkiy-slon-ku-ku-s-2-melodiyami-i-rezhimom-pryatok-2832162243/?_bctx=CAQQ4L3JAQ&hs=1",
+      "title": "Детская игрушка/Мягкий слон Ку-ку с 2 мелодиями и режимом пряток",
+      "price": "506 ₽",
+      "rating": "",
+      "reviews_count": "0",
+      "delivery_days": "25 ноября"
+    },
+    {
+      "id": "2804404468",
+      "url": "https://www.ozon.ru/product/kapor-2804404468/?_bctx=CAQQ4L3JAQ&hs=1",
+      "title": "",
+      "price": "182 ₽",
+      "rating": "4.7",
+      "reviews_count": "12",
+      "delivery_days": "25 ноября"
+    },
+    {
+      "id": "1134254160",
+      "url": "https://www.ozon.ru/product/nabor-aromaticheskih-diffuzorov-tobacco-vanilla-i-amber-black-pepper-aromatizator-dlya-doma-1134254160/?miniapp=seller_3301088",
+      "title": "",
+      "price": "364 ₽",
+      "rating": "4.8",
+      "reviews_count": "80",
+      "delivery_days": ""
+    },
+    {
+      "id": "1595097486",
+      "url": "https://www.ozon.ru/product/skotch-dvuhstoronniy-skotch-razmer-1m-3cm-1mm-podhodit-dlya-otdelki-vannoy-komnaty-i-kuhni-a-1595097486/?miniapp=seller_3301088",
+      "title": "скотч, Двухсторонний скотч, размер 1M 3cм 1мм, подходит для отделки ванной комнаты и кухни, а также для любого места в доме, многоразовая, сверхпрочная фиксация, не оставляющая следов.",
+      "price": "65 ₽",
+      "rating": "4.8",
+      "reviews_count": "289",
+      "delivery_days": "Завтра"
+    },
+    {
+      "id": "2754369004",
+      "url": "https://www.ozon.ru/product/sumka-klatch-kross-bodi-cherez-plecho-2754369004/?miniapp=seller_3301088",
+      "title": "Сумка- клатч, кросс-боди через плечо",
+      "price": "481 ₽",
+      "rating": "4.9",
+      "reviews_count": "515",
+      "delivery_days": "5 ноября"
+    },
+    {
+      "id": "155523061",
+      "url": "https://www.ozon.ru/product/nabor-svechey-svetodiodnyh-24-sht-dekorativnye-led-komplekt-na-batareykah-ukrashenie-dlya-doma-155523061/?miniapp=seller_3301088",
+      "title": "",
+      "price": "408 ₽",
+      "rating": "4.9",
+      "reviews_count": "13",
+      "delivery_days": "Завтра"
+    },
+    {
+      "id": "1604822209",
+      "url": "https://www.ozon.ru/product/marker-chernyy-permanentnyy-vodostoykiy-nabor-12-sht-1604822209/?miniapp=seller_3301088",
+      "title": "",
+      "price": "177 ₽",
+      "rating": "4.9",
+      "reviews_count": "28",
+      "delivery_days": "Завтра"
+    },
+    {
+      "id": "1581297636",
+      "url": "https://www.ozon.ru/product/ruletka-vihr-5m-h-19mm-1581297636/?miniapp=seller_3301088",
+      "title": "Рулетка ВИХРЬ 5м х 19мм",
+      "price": "195 ₽",
+      "rating": "4.9",
+      "reviews_count": "3",
+      "delivery_days": "Завтра"
+    },
+    {
+      "id": "240257358",
+      "url": "https://www.ozon.ru/product/oblozhka-na-pasport-kozhanaya-muzhskaya-zhenskaya-chehol-dlya-dokumentov-240257358/?miniapp=seller_3301088",
+      "title": "Обложка на паспорт кожаная мужская женская / чехол для документов",
+      "price": "336 ₽",
+      "rating": "4.9",
+      "reviews_count": "1",
+      "delivery_days": "Завтра"
+    },
+    {
+      "id": "1619369834",
+      "url": "https://www.ozon.ru/product/fartuk-brezentovyy-1619369834/?miniapp=seller_3301088",
+      "title": "Фартук брезентовый",
+      "price": "241 ₽",
+      "rating": "4.8",
+      "reviews_count": "779",
+      "delivery_days": "7 ноября"
+    },
+    {
+      "id": "1508811755",
+      "url": "https://www.ozon.ru/product/korrektor-kantselyarskiy-korrektor-lentochnyy-5-mm-30-m-komplekt-5-sht-1508811755/?miniapp=seller_3301088",
+      "title": "",
+      "price": "207 ₽",
+      "rating": "4.0",
+      "reviews_count": "1",
+      "delivery_days": "Завтра"
+    },
+    {
+      "id": "934244348",
+      "url": "https://www.ozon.ru/product/salfetki-dlya-uborki-tryapki-dlya-kuhni-iz-plotnoy-mikrofibry-serye-razmer-30h30sm-10-sht-934244348/?miniapp=seller_3301088",
+      "title": "",
+      "price": "272 ₽",
+      "rating": "4.9",
+      "reviews_count": "27",
+      "delivery_days": "5 ноября"
+    },
+    {
+      "id": "2474167395",
+      "url": "https://www.ozon.ru/product/romanky-marker-spirtovoy-tolshchina-3-mm-12-sht-2474167395/?miniapp=seller_3301088",
+      "title": "",
+      "price": "176 ₽",
+      "rating": "4.9",
+      "reviews_count": "1",
+      "delivery_days": "Завтра"
+    },
+    {
+      "id": "418761362",
+      "url": "https://www.ozon.ru/product/remeshok-dlya-chasov-casio-g-shock-418761362/?miniapp=seller_3301088",
+      "title": "Ремешок для часов Casio G Shock",
+      "price": "318 ₽",
+      "rating": "4.7",
+      "reviews_count": "2",
+      "delivery_days": "Завтра"
+    },
+    {
+      "id": "2749241994",
+      "url": "https://www.ozon.ru/product/termobryuki-alpine-outfit-2749241994/?miniapp=seller_3301088",
+      "title": "Термобрюки ALPINE outfit",
+      "price": "768 ₽",
+      "rating": "4.8",
+      "reviews_count": "11",
+      "delivery_days": "Завтра"
+    },
+    {
+      "id": "600774147",
+      "url": "https://www.ozon.ru/product/konfety-karamel-ledentsovaya-fruit-mini-s-fruktovymi-vkusami-1kg-600774147/?miniapp=seller_3301088",
+      "title": "Конфеты карамель леденцовая \"Fruit мини с фруктовыми вкусами\" 1кг.",
+      "price": "344 ₽",
+      "rating": "4.9",
+      "reviews_count": "8",
+      "delivery_days": "Завтра"
+    },
+    {
+      "id": "826778492",
+      "url": "https://www.ozon.ru/product/kryuchki-samokleyushchiesya-metallicheskie-universalnye-dlya-vannoy-komnaty-i-kuhni-chernye-2-826778492/?miniapp=seller_3301088",
+      "title": "",
+      "price": "213 ₽",
+      "rating": "4.9",
+      "reviews_count": "100",
+      "delivery_days": "6 ноября"
+    },
+    {
+      "id": "1061271452",
+      "url": "https://www.ozon.ru/product/termoetiketka-31h47-mm-500-sht-1061271452/?miniapp=seller_3301088",
+      "title": "Возьми и сэкономь",
+      "price": "75 ₽",
+      "rating": "4.9",
+      "reviews_count": "0",
+      "delivery_days": "Завтра"
+    },
+    {
+      "id": "1906147699",
+      "url": "https://www.ozon.ru/product/luggarika-ryukzak-muzhskoy-gorodskoy-dlya-noutbuka-s-usb-transformer-ruchnaya-1906147699/?miniapp=seller_3301088",
+      "title": "LUGGARIKA Рюкзак мужской городской для ноутбука с USB, трансформер, ручная кладь, водонепроницаемый, для командировок, для путешествий, 30 л",
+      "price": "2 196 ₽",
+      "rating": "4.9",
+      "reviews_count": "3",
+      "delivery_days": "Завтра"
+    },
+    {
+      "id": "2615690188",
+      "url": "https://www.ozon.ru/product/polukombinezon-rabochiy-spetsodezhda-siz-2615690188/?miniapp=seller_3301088",
+      "title": "Полукомбинезон рабочий спецодежда СИЗ",
+      "price": "1 411 ₽",
+      "rating": "4.8",
+      "reviews_count": "4",
+      "delivery_days": "Завтра"
+    },
+    {
+      "id": "1557337283",
+      "url": "https://www.ozon.ru/product/bumaga-dlya-zametok-1-sht-1557337283/?miniapp=seller_3301088",
+      "title": "",
+      "price": "166 ₽",
+      "rating": "5.0",
+      "reviews_count": "1",
+      "delivery_days": "Завтра"
+    },
+    {
+      "id": "2330672874",
+      "url": "https://www.ozon.ru/product/salfetki-dlya-uborki-iz-mikrofibry-30sht-25h25-miks-2330672874/?miniapp=seller_3301088",
+      "title": "",
+      "price": "321 ₽",
+      "rating": "4.8",
+      "reviews_count": "8",
+      "delivery_days": "6 ноября"
+    },
+    {
+      "id": "2157518881",
+      "url": "https://www.ozon.ru/product/lezviya-dlya-kantselyarskogo-nozha-18-mm-nabor-10-shtuk-2157518881/?miniapp=seller_3301088",
+      "title": "",
+      "price": "76 ₽",
+      "rating": "4.9",
+      "reviews_count": "4",
+      "delivery_days": "Завтра"
+    },
+    {
+      "id": "1652678897",
+      "url": "https://www.ozon.ru/product/botinki-rabochie-prosafe-1652678897/?miniapp=seller_3301088",
+      "title": "Ботинки рабочие PROSAFE",
+      "price": "1 052 ₽",
+      "rating": "4.8",
+      "reviews_count": "1",
+      "delivery_days": "Послезавтра"
+    }
+  ]
+}
