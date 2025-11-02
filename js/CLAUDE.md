@@ -176,3 +176,173 @@ smart-open: 66 товаров
 3. Создать скрипт загрузки в MongoDB на сервере
 4. Запустить полный сбор с MAX_SCROLLS=50-100
 
+
+---
+
+## ✅ РАБОЧЕЕ РЕШЕНИЕ! Сбор ПОЛНЫХ данных через AppleScript (2025-11-02)
+
+### Проблема решена!
+После долгих попыток с Puppeteer и сложным JavaScript в AppleScript, найдено **РАБОЧЕЕ РЕШЕНИЕ** через простые отдельные запросы.
+
+### Метод: Множественные простые AppleScript запросы
+
+**Ключевая идея:** Вместо одного сложного JavaScript (который ломается из-за экранирования кавычек), делаем много простых запросов для каждого поля отдельно.
+
+### Рабочие файлы:
+
+#### 1. `collect_full_data.sh` - Сбор полных данных с одного источника
+**Использование:**
+```bash
+./collect_full_data.sh "/seller/guangzhouganxinmaoyidian-3366398" 10
+```
+
+**Что собирает:**
+- ✅ ID товара
+- ✅ URL товара
+- ✅ Название товара
+- ✅ Цена
+- ✅ Рейтинг (если есть)
+- ✅ Количество отзывов
+- ✅ Дата доставки
+
+**Как работает:**
+1. Открывает страницу в Chrome через AppleScript
+2. Скроллит N раз
+3. Для каждой карточки делает 6 отдельных простых JavaScript запросов:
+   - ID и URL (один запрос)
+   - Название (отдельный запрос)
+   - Цена (отдельный запрос)
+   - Рейтинг (отдельный запрос)
+   - Отзывы (отдельный запрос)
+   - Доставка (отдельный запрос из кнопок)
+4. Сохраняет в JSON
+
+**Результат теста:**
+- ✅ 30 товаров собрано за ~2 минуты
+- ✅ Все поля заполнены корректно
+- ✅ JSON валидный
+
+#### 2. `mass_collect_all.sh` - Массовый сбор со всех 23 источников
+**Использование:**
+```bash
+./mass_collect_all.sh
+```
+
+**Что делает:**
+- Собирает данные со всех 23 источников из настроек
+- По 10 прокруток на каждой странице
+- Сохраняет результат в отдельные файлы: `results/*_full.json`
+- Показывает прогресс и статистику
+
+**Примерное время:** 30-60 минут
+
+**Результаты:**
+- `results/guangzhouganxinmaoyidian_full.json`
+- `results/uilc_full.json`
+- `results/zavodskoy-magazin_full.json`
+- ... (всего 23 файла)
+
+**Объединение всех результатов:**
+```bash
+python3 -c "import json, glob; print(json.dumps({'total': sum(json.load(open(f))['total'] for f in glob.glob('results/*_full.json')), 'products': [p for f in glob.glob('results/*_full.json') for p in json.load(open(f))['products']]}, ensure_ascii=False, indent=2))" > results/all_products.json
+```
+
+### Технические детали:
+
+**Почему это работает:**
+1. **Простой JavaScript:** Каждый запрос - максимум 10 строк кода без сложных структур
+2. **Минимум экранирования:** Используются только простые селекторы и базовые операции
+3. **Обычный Chrome:** Не Puppeteer, а реальный браузер пользователя
+4. **Нет детекта:** Ozon видит обычные JavaScript запросы от настоящего браузера
+
+**Селекторы используемые:**
+```javascript
+// Карточка
+document.querySelector('[data-index="0"]')
+
+// Ссылка на товар
+tile.querySelector('a[href*="/product/"]')
+
+// ID из URL
+link.href.match(/product\/[^\/]*-(\d+)/)
+
+// Тексты
+tile.querySelectorAll('span')
+
+// Кнопки (для доставки)
+tile.querySelectorAll('button')
+```
+
+**Логика извлечения данных:**
+- **ID:** Regex из href
+- **Название:** Самый длинный текст > 10 символов без "₽", "шт", "%", "отзыв"
+- **Цена:** Первый текст содержащий "₽" и цифры
+- **Рейтинг:** Текст формата "X.X" где X от 0 до 5
+- **Отзывы:** Число из текста содержащего "отзыв"
+- **Доставка:** Текст кнопки содержащий месяц или "завтра"
+
+### Следующие шаги:
+
+1. **Запустить массовый сбор:**
+   ```bash
+   cd /Users/mikhailzhirnov/claude/ozonparser/js
+   ./mass_collect_all.sh
+   ```
+
+2. **Объединить результаты:**
+   ```bash
+   # После завершения сбора
+   python3 -c "..." > results/all_products.json
+   ```
+
+3. **Загрузить на сервер:**
+   ```bash
+   scp -P 2209 results/all_products.json root@max.gogocrm.ru:/home/ozon-parser/
+   ```
+
+4. **Импортировать в MongoDB на сервере:**
+   ```bash
+   ssh -p 2209 root@max.gogocrm.ru
+   cd /home/ozon-parser
+   PYTHONPATH=src python3 -c "
+   import json
+   from pymongo import MongoClient
+   
+   client = MongoClient('mongodb://localhost:27017/')
+   db = client['ozon']
+   collection = db['products']
+   
+   with open('all_products.json') as f:
+       data = json.load(f)
+   
+   for product in data['products']:
+       collection.update_one(
+           {'id': product['id']},
+           {'\$set': product},
+           upsert=True
+       )
+   
+   print(f\"Imported {len(data['products'])} products\")
+   "
+   ```
+
+5. **Проверить на веб-интерфейсе:**
+   - https://max.gogocrm.ru/ozon/
+   - https://max.gogocrm.ru/ozon/api/products
+
+### Статистика:
+
+**Тестовый запуск (1 источник):**
+- Источник: guangzhouganxinmaoyidian
+- Прокруток: 5
+- Карточек найдено: 42
+- Товаров собрано: 30
+- Время: ~2 минуты
+- Файл: results/full_data_1762049683.json
+
+**Ожидаемые результаты массового сбора:**
+- Источников: 23
+- Примерно товаров: 500-1000
+- Время: 30-60 минут
+- Размер JSON: ~5-10 MB
+
