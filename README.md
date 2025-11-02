@@ -1,20 +1,50 @@
 # Ozon Parser → MongoDB
 
-Парсер товаров по категории «Товары из Китая» (и любая другая страница каталога/подборки на Ozon, совместимая с composer API). Данные складываются в MongoDB.
+Парсер товаров с Ozon через AppleScript + Chrome (обход антибот защиты). Данные складываются в MongoDB.
 
-По умолчанию стартовый путь:
+**⚠️ ВАЖНО:** Python и Puppeteer парсеры НЕ РАБОТАЮТ из-за антибот защиты Ozon (HTTP 403). Используйте AppleScript.
 
+## ✅ Рабочее решение: AppleScript + Chrome
+
+**Сбор ПОЛНЫХ данных товаров (ID, URL, название, цена, рейтинг, отзывы, доставка):**
+
+```bash
+cd js
+
+# Один источник (тест)
+./collect_full_data.sh "/seller/guangzhouganxinmaoyidian-3366398" 10
+
+# Массовый сбор из 23 источников
+./mass_collect_all.sh
 ```
-/highlight/tovary-iz-kitaya-935133/?from_global=true
+
+**Результат:** JSON файлы в директории `results/`:
+- `results/<source>_full.json` - данные по каждому источнику
+- `results/<source>_log.txt` - логи сбора
+
+**Что собирается:**
+- ID товара
+- URL товара
+- Название
+- Цена
+- Рейтинг
+- Количество отзывов
+- Дата доставки
+
+**Объединение всех результатов в один файл:**
+```bash
+python3 -c "import json, glob; print(json.dumps({'total': sum(json.load(open(f))['total'] for f in glob.glob('results/*_full.json')), 'products': [p for f in glob.glob('results/*_full.json') for p in json.load(open(f))['products']]}, ensure_ascii=False, indent=2))" > results/all_products.json
 ```
 
-## Установка
+**Загрузка на сервер и импорт в MongoDB:**
+```bash
+# Загрузка результатов
+scp -P 2209 results/all_products.json root@max.gogocrm.ru:/home/ozon-parser/
 
-1) Python 3.10+
-2) Установите зависимости:
-
-```
-pip install -r requirements.txt
+# На сервере
+ssh -p 2209 root@max.gogocrm.ru
+cd /home/ozon-parser
+python3 import_to_mongo.py all_products.json
 ```
 
 ## Подготовка MongoDB
@@ -23,29 +53,15 @@ pip install -r requirements.txt
 - БД: `ozon`
 - Коллекция: `products`
 
-Можно переопределить через переменные окружения или флаги CLI.
+## ❌ Устаревшие методы (НЕ РАБОТАЮТ)
 
-## Запуск
+### Python Parser (HTTP 403)
+~~PYTHONPATH=src python -m ozon_parser~~
 
-Самый простой запуск (сохранение сразу в MongoDB, с деталями товара — рейтинг, отзывы, доставка и др.):
+### Puppeteer (HTTP 403)
+~~node src/index.js~~
 
-```
-PYTHONPATH=src python -m ozon_parser --mongo-uri "mongodb://localhost:27017" --db ozon --collection products
-```
-
-Сухой прогон (без записи в базу) и ограничение по страницам:
-
-```
-PYTHONPATH=src python -m ozon_parser --dry-run --max-pages 2
-```
-
-С произвольным стартовым URL-путём (должен начинаться с `/`):
-
-```
-PYTHONPATH=src python -m ozon_parser \
-  --start-url "/highlight/tovary-iz-kitaya-935133/?from_global=true" \
-  --max-pages 10
-```
+**Причина:** Ozon блокирует автоматизацию по IP, даже со stealth plugin и куками.
 
 ## Веб-интерфейс
 
@@ -66,116 +82,102 @@ PYTHONPATH=src python -m ozon_parser.web.app
 - `MONGO_DB` (по умолчанию `ozon`)
 - `MONGO_COLLECTION` (по умолчанию `products`)
 
-## Puppeteer-скрапер (антидетект)
+## Поиск похожих товаров по изображению
 
-Вариант на Node.js с Puppeteer + stealth плагином, прокруткой и сбором товаров/деталей через перехват composer API.
+Работает через Safari + AppleScript (единственный метод, который не блокируется Ozon):
 
-1) Установка:
-
-```
+```bash
 cd js
-npm install
+
+# Массовый поиск для всех товаров
+PRODUCTS_FILE=products.json node bulk_image_search.js
+
+# Сохранение результатов в MongoDB
+MONGODB_URI="mongodb://localhost:27017" node save_to_mongodb.js
 ```
 
-2) Запуск (пример — 60 прокруток, детали включены, метрики включены):
-
-```
-OZON_START_URL="/highlight/tovary-iz-kitaya-935133/?from_global=true" \
-MAX_SCROLLS=60 \
-DETAILS_CONCURRENCY=2 \
-METRICS=1 \
-MONGODB_URI="mongodb://localhost:27017" MONGO_DB=ozon MONGO_COLLECTION=products \
-node src/index.js
-```
-
-3) Прокси и куки (опционально):
-
-- Прокси: `HTTPS_PROXY=http://user:pass@host:port`
-- Куки: `OZON_COOKIES` (строка заголовка Cookie). Скрипт сам установит куки на домен `.ozon.ru`.
-
-4) Защита от детекта:
-
-- Используется `puppeteer-extra-plugin-stealth`, рандомный десктопный User-Agent, таймзона `Europe/Moscow`, заголовок `accept-language: ru-RU`.
-- Запуск без фокуса на headless-признаках, включён набор аргументов Chrome для снижения детекта.
-- Перехватывается только composer JSON, лишние запросы игнорируются, задержки и прокрутка рандомизированы.
+**Подробности:** см. `js/BULK_IMAGE_SEARCH_README.md`
 
 ## Ежедневный сбор (динамика)
 
-Чтобы собирать динамику (снимки по дням: отзывы, рейтинг, сроки доставки), используйте режим метрик:
+Запускайте массовый сбор ежедневно через cron:
 
-```
-PYTHONPATH=src python -m ozon_parser \
-  --metrics \
-  --metrics-collection products_metrics \
-  --mongo-uri "mongodb://localhost:27017" --db ozon --collection products
-```
+```bash
+# Crontab на Mac (где работает Chrome + AppleScript)
+0 3 * * * cd /Users/mikhailzhirnov/claude/ozonparser/js && ./mass_collect_all.sh >> /tmp/ozon_collect.log 2>&1
 
-Рекомендуемый крон (каждый день в 03:15):
-
-```
-15 3 * * * cd /home/ozon-parser && /usr/bin/python3 -m venv .venv && . .venv/bin/activate && pip -q install -r requirements.txt && OZON_START_URL="/highlight/tovary-iz-kitaya-935133/?from_global=true" PYTHONPATH=src python -m ozon_parser --metrics --mongo-uri "mongodb://localhost:27017" --db ozon --collection products >> cron.log 2>&1
+# После сбора - загрузка на сервер
+30 4 * * * cd /Users/mikhailzhirnov/claude/ozonparser/js && python3 upload_results.py
 ```
 
-В коллекцию `products_metrics` сохраняются документы по ключу `_id = <YYYY-MM-DD>:<ozon_id>` с полями: `reviews_count`, `rating_value`, `delivery_min_date`, `delivery_days`, `price_text` и др. Основная коллекция `products` обновляется актуальными данными.
-## Параметры и окружение
+Данные автоматически обновляются в MongoDB с отметкой времени `updated_at`.
+## Параметры скриптов
 
-- `--start-url` или `OZON_START_URL` — путь на ozon.ru (пример: `/search/?from_global=true&text=ssd`).
-- `--mongo-uri` или `MONGODB_URI` — строка подключения к MongoDB.
-- `--db` или `MONGO_DB` — имя базы.
-- `--collection` или `MONGO_COLLECTION` — имя коллекции.
-- `--max-pages` или `MAX_PAGES` — ограничение количества страниц (0 = без ограничений).
-- Детали карточки товара: по умолчанию включены; отключить можно флагом `--no-details`.
-- `--timeout` или `REQUEST_TIMEOUT` — таймаут HTTP, сек.
-- `--sleep-min` / `--sleep-max` или `SLEEP_MIN` / `SLEEP_MAX` — рандомная пауза между запросами.
-- Прокси берутся из `HTTP_PROXY`/`HTTPS_PROXY` при наличии.
+**collect_full_data.sh:**
+- Аргумент 1: URL путь (например `/seller/...`)
+- Аргумент 2: количество прокруток (по умолчанию 10)
+
+**mass_collect_all.sh:**
+- Редактируйте массив `URLS` внутри скрипта для изменения списка источников
+- Переменная `SCROLLS` задает количество прокруток на страницу
 
 ## Что сохраняется
 
-Каждый товар сохраняется как документ вида:
+Каждый товар сохраняется в JSON формате:
 
-```
+```json
 {
-  _id: <ozon_id | url>,
-  ozon_id: <int | str>,
-  name: <str | null>,
-  url_path: <str | null>,
-  url: <str | null>,
-  price_text: <str | null>,
-  rating_value: <float | null>,
-  reviews_count: <int | null>,
-  delivery_texts: <[str]>,
-  delivery_min_date: <YYYY-MM-DD | null>,
-  images: <[str]>,
-  brand: <str | null>,
-  seller_id: <int | str | null>,
-  seller_name: <str | null>,
-  seller_rating: <float | null>,
-  characteristics: <[{name, value}]>,
-  updated_at: <datetime>
+  "id": "2875927880",
+  "url": "https://www.ozon.ru/product/...",
+  "title": "Victorinox Мини портативный складной нож...",
+  "price": "1 245 ₽",
+  "rating": "4.5",
+  "reviews_count": "42",
+  "delivery_days": "25 ноября"
 }
 ```
 
-- Индексы создаются на `ozon_id` (unique, sparse) и `url`.
-- Если `ozon_id` не удалось извлечь, ключом `_id` становится `url`/`url_path`.
+**Формат результата:**
+```json
+{
+  "success": true,
+  "total": 30,
+  "products": [...]
+}
+```
 
 ## Как это работает
 
-- Скрипт не рендерит JavaScript. Он обращается к публичному composer API Ozon:
-  `GET https://www.ozon.ru/api/composer-api.bx/page/json/v2?url=<PATH>`
-- Парсер ищет нужные виджеты (`searchResults*/catalog*`), извлекает элементы и пагинацию (`nextPage.url`).
-- Для каждого элемента берёт `ozon_id` (из трекинга/sku/id), название, ссылку, цену (текстом).
+**AppleScript + Chrome:**
+1. Открывает страницу в реальном Chrome браузере
+2. Прокручивает страницу для загрузки всех товаров (lazy loading)
+3. Для каждого товара выполняет ПРОСТЫЕ JavaScript запросы через AppleScript
+4. Собирает данные по полям (ID, URL, название, цена, рейтинг, отзывы, доставка)
+5. Сохраняет в JSON формате
+
+**Преимущества:**
+- ✅ Не блокируется Ozon (используется настоящий браузер)
+- ✅ Не требует прокси
+- ✅ Собирает все поля товара
+- ✅ Простая отладка (видно в браузере)
 
 ## Примечания
 
-- Ozon может менять структуру виджетов и применять антибот меры. Если получите 403/429 — попробуйте прокси и увеличьте паузы.
-- Для обогащения полей (бренд, рейтинг и т.п.) можно дополнить загрузку карточек товара — напишите, добавлю.
+- Требуется macOS с установленным Google Chrome
+- Chrome должен быть открыт во время работы скрипта
+- Для массового сбора рекомендуется запускать на отдельной машине/виртуалке
 
-## Структура
+## Структура проекта
 
 ```
+js/
+  collect_full_data.sh      # Сбор полных данных (РАБОТАЕТ)
+  mass_collect_all.sh       # Массовый сбор (РАБОТАЕТ)
+  ozon_image_search.applescript  # Поиск по изображению (РАБОТАЕТ)
+  bulk_image_search.js      # Массовый поиск похожих
+  results/                  # Результаты сбора
+
 src/ozon_parser/
-  client.py   # HTTP клиент + пагинация
-  storage.py  # Запись в MongoDB (bulk upsert)
-  main.py     # CLI-обвязка
-  utils.py    # Логер, заголовки, UA
+  web/app.py               # Веб-интерфейс
+  (остальное устарело - не работает из-за блокировки)
 ```
