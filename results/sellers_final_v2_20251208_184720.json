@@ -1,0 +1,33 @@
+{
+  "success": true,
+  "total": 8,
+  "parsed_at": "2025-12-08T18:47:20.933607",
+  "filter": "delivery > 21 days + cheaper option with scroll",
+  "modal_scrolls": 5,
+  "sellers": [
+    {
+      "url": "https://www.ozon.ru/seller/yifatong-2537239/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/yehuobaihuo-3625949/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/youyili-lighting-336007/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/die-ge-429170/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/yd-1296867/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/huameng-tools-1178996/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/prekrasnaya-zhizn-722788/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/okean-888788/"
+    }
+  ]
+}
