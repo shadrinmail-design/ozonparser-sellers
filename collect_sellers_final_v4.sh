@@ -1,13 +1,19 @@
 #!/bin/bash
 
-# Финальная версия v3: кнопка "Еще" + небольшие случайные задержки
+# Финальная версия v4: рекурсивный обход витрин магазинов
 
 MAX_SELLERS="${1:-10}"
 MAX_MORE_CLICKS="${2:-5}"  # Максимум кликов на "Еще"
+START_URL="${3:-https://www.ozon.ru/highlight/tovary-iz-kitaya-935133/}"  # Стартовая страница
+SKIP_PHASE1="${4:-no}"  # Пропустить фазу 1 (yes/no)
+INPUT_SELLERS_FILE="${5:-}"  # JSON файл с существующими продавцами
+MAX_SHOPS_TO_VISIT="${6:-50}"  # Максимум магазинов для обхода в фазе 2
 
-echo "🚀 Сбор продавцов Ozon Global (финальная версия)"
+echo "🚀 Сбор продавцов Ozon Global (v4 - рекурсивный)"
 echo "Цель: $MAX_SELLERS продавцов"
 echo "Максимум кликов 'Еще': $MAX_MORE_CLICKS"
+echo "Стартовая страница: $START_URL"
+echo "Пропуск фазы 1: $SKIP_PHASE1"
 echo ""
 
 # Функция случайной задержки
@@ -23,31 +29,7 @@ THREE_WEEKS_DATE=$(date -v+21d +"%Y-%m-%d")
 echo "Фильтр: доставка позже $THREE_WEEKS_DATE"
 echo ""
 
-# Открываем страницу
-echo "⏳ Открываю страницу 'Товары из Китая'..."
-osascript -e 'tell application "Google Chrome"
-    activate
-    if (count of windows) is 0 then make new window
-    set URL of active tab of window 1 to "https://www.ozon.ru/highlight/tovary-iz-kitaya-935133/"
-end tell'
-
-sleep 8
-
-# Прокручиваем
-echo "📜 Прокручиваю страницу..."
-for ((i=1; i<=50; i++)); do
-    echo -ne "\r  📜 Прокрутка: $i/50    "
-    osascript -e 'tell application "Google Chrome" to execute active tab of window 1 javascript "window.scrollBy(0, window.innerHeight);"' >/dev/null 2>&1
-    random_sleep 1 2
-done
-echo ""
-
-# Получаем количество карточек
-TILES=$(osascript -e 'tell application "Google Chrome" to execute active tab of window 1 javascript "document.querySelectorAll(\"[data-index]\").length;"' 2>/dev/null)
-
-echo "Найдено карточек: $TILES"
-echo ""
-
+# Создаем временный файл для продавцов
 SELLERS_FILE="/tmp/sellers_$(date +%s).txt"
 > "$SELLERS_FILE"
 
@@ -91,6 +73,36 @@ parse_date() {
 
     return 1
 }
+
+# ФАЗА 1: Сбор с начальной страницы
+if [ "$SKIP_PHASE1" = "yes" ]; then
+    echo "⏭️  Фаза 1 пропущена (используется существующий список продавцов)"
+    echo ""
+else
+    # Открываем страницу
+    echo "⏳ Открываю страницу: $START_URL"
+    osascript -e "tell application \"Google Chrome\"
+        activate
+        if (count of windows) is 0 then make new window
+        set URL of active tab of window 1 to \"$START_URL\"
+    end tell"
+
+    sleep 8
+
+    # Прокручиваем
+    echo "📜 Прокручиваю страницу..."
+    for ((i=1; i<=50; i++)); do
+        echo -ne "\r  📜 Прокрутка: $i/50    "
+        osascript -e 'tell application "Google Chrome" to execute active tab of window 1 javascript "window.scrollBy(0, window.innerHeight);"' >/dev/null 2>&1
+        random_sleep 1 2
+    done
+    echo ""
+
+    # Получаем количество карточек
+    TILES=$(osascript -e 'tell application "Google Chrome" to execute active tab of window 1 javascript "document.querySelectorAll(\"[data-index]\").length;"' 2>/dev/null)
+
+    echo "Найдено карточек: $TILES"
+    echo ""
 
 # Обрабатываем каждую карточку
 for ((idx=0; idx<$TILES && FOUND<$MAX_SELLERS; idx++)); do
@@ -287,14 +299,38 @@ document.dispatchEvent(event);
     fi
 done
 
+    echo ""
+    echo "✅ Фаза 1 завершена!"
+    echo ""
+fi
+
 echo ""
-echo ""
-echo "✅ Фаза 1 завершена! Переход к фазе 2: обход витрин магазинов"
+echo "📋 Переход к фазе 2: обход витрин магазинов"
 echo ""
 
 # ФАЗА 2: Обход витрин магазинов
+
+# Если указан входной файл и пропущена фаза 1, загружаем продавцов из него
+if [ "$SKIP_PHASE1" = "yes" ] && [ -n "$INPUT_SELLERS_FILE" ] && [ -f "$INPUT_SELLERS_FILE" ]; then
+    echo "📥 Загружаю продавцов из файла: $INPUT_SELLERS_FILE"
+
+    # Извлекаем URLs из JSON и добавляем в SELLERS_FILE
+    python3 <<PYTHON
+import json
+with open('$INPUT_SELLERS_FILE', 'r', encoding='utf-8') as f:
+    data = json.load(f)
+    with open('$SELLERS_FILE', 'w') as out:
+        for seller in data.get('sellers', []):
+            out.write(seller['url'] + '\n')
+PYTHON
+
+    LOADED_COUNT=$(wc -l < "$SELLERS_FILE" | tr -d ' ')
+    echo "✓ Загружено продавцов: $LOADED_COUNT"
+    echo ""
+fi
+
 # Читаем уже собранные URL продавцов
-COLLECTED_SELLERS=$(sort -u "$SELLERS_FILE" 2>/dev/null | head -20)  # Берём первые 20 для начала
+COLLECTED_SELLERS=$(sort -u "$SELLERS_FILE" 2>/dev/null | head -$MAX_SHOPS_TO_VISIT)
 SELLER_COUNT=$(echo "$COLLECTED_SELLERS" | wc -l | tr -d ' ')
 
 if [ -n "$COLLECTED_SELLERS" ] && [ "$SELLER_COUNT" -gt 0 ]; then
@@ -316,6 +352,10 @@ if [ -n "$COLLECTED_SELLERS" ] && [ "$SELLER_COUNT" -gt 0 ]; then
             random_sleep 1 2
         done
 
+        # Ждем загрузки страницы после прокрутки
+        echo "  ⏳ Ждем загрузки товаров..."
+        sleep 3
+
         # Получаем карточки товаров на витрине
         STORE_TILES=$(osascript -e 'tell application "Google Chrome" to execute active tab of window 1 javascript "document.querySelectorAll(\"[data-index]\").length;"' 2>/dev/null)
 
@@ -329,7 +369,7 @@ if [ -n "$COLLECTED_SELLERS" ] && [ "$SELLER_COUNT" -gt 0 ]; then
 
             # Получаем количество отзывов
             REVIEWS_COUNT=$(osascript -e "tell application \"Google Chrome\" to execute active tab of window 1 javascript \"
-var tile = document.querySelector('[data-index=\\\\\"$tile_idx\\\\\"]');
+var tile = document.querySelector('[data-index=\\\"$tile_idx\\\"]');
 if (!tile) { '0'; } else {
     var spans = tile.querySelectorAll('span');
     for (var i = 0; i < spans.length; i++) {
@@ -343,14 +383,9 @@ if (!tile) { '0'; } else {
 }
 \"" 2>/dev/null | head -1)
 
-            # Проверяем: отзывов > 1
-            if [ -z "$REVIEWS_COUNT" ] || [ "$REVIEWS_COUNT" = "missing value" ] || [ "$REVIEWS_COUNT" -lt 2 ]; then
-                continue
-            fi
-
             # Получаем дату доставки
             DELIVERY_TEXT=$(osascript -e "tell application \"Google Chrome\" to execute active tab of window 1 javascript \"
-var tile = document.querySelector('[data-index=\\\\\"$tile_idx\\\\\"]');
+var tile = document.querySelector('[data-index=\\\"$tile_idx\\\"]');
 if (!tile) { ''; } else {
     var buttons = tile.querySelectorAll('button');
     for (var i = 0; i < buttons.length; i++) {
@@ -362,6 +397,11 @@ if (!tile) { ''; } else {
     }
 }
 \"" 2>/dev/null | head -1)
+
+            # Проверяем: отзывов > 1
+            if [ -z "$REVIEWS_COUNT" ] || [ "$REVIEWS_COUNT" = "missing value" ] || [ "$REVIEWS_COUNT" -lt 2 ]; then
+                continue
+            fi
 
             if [ -z "$DELIVERY_TEXT" ] || [ "$DELIVERY_TEXT" = "missing value" ]; then
                 continue
@@ -378,9 +418,9 @@ if (!tile) { ''; } else {
 
                 # Получаем URL товара
                 PRODUCT_URL=$(osascript -e "tell application \"Google Chrome\" to execute active tab of window 1 javascript \"
-var tile = document.querySelector('[data-index=\\\\\"$tile_idx\\\\\"]');
+var tile = document.querySelector('[data-index=\\\"$tile_idx\\\"]');
 if (!tile) { ''; } else {
-    var link = tile.querySelector('a[href*=\\\\\"/product/\\\\\"]');
+    var link = tile.querySelector('a[href*=\\\"/product/\\\"]');
     if (link) { link.href; } else { ''; }
 }
 \"" 2>/dev/null | head -1)
