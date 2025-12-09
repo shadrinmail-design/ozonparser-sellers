@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Вторая ступень парсера: проверка сроков доставки магазинов
-# Проверяет первые 20 карточек каждого магазина
+# Проверяет первые 12 карточек каждого магазина
 # Критерий: >= 3 карточки с доставкой > 15 дней
 
 INPUT_JSON="${1:-results/sellers_combined_500.json}"
@@ -26,6 +26,50 @@ random_sleep() {
 FIFTEEN_DAYS_DATE=$(date -v+15d +"%Y-%m-%d")
 echo "Критерий: доставка позже $FIFTEEN_DAYS_DATE (>15 дней)"
 echo ""
+
+# Функция показа статистики при прерывании
+show_stats() {
+    echo ""
+    echo "⚠️  Получен сигнал прерывания!"
+    echo "💾 Результаты уже сохранены в Excel"
+    echo ""
+
+    python3 <<PYTHON
+import openpyxl
+
+wb = openpyxl.load_workbook('$OUTPUT_EXCEL')
+ws = wb.active
+
+total = 0
+checked = 0
+long_delivery = 0
+short_delivery = 0
+
+for row in range(2, ws.max_row + 1):
+    total += 1
+    status = ws.cell(row, 2).value
+    if status and status != "не проверен":
+        checked += 1
+        if status == "срок более 15 дней":
+            long_delivery += 1
+        else:
+            short_delivery += 1
+
+print("📈 СТАТИСТИКА на момент прерывания:")
+print(f"   Всего магазинов: {total}")
+print(f"   Проверено: {checked}")
+print(f"   ✅ Срок более 15 дней: {long_delivery}")
+print(f"   ⚠️  Срок до 15 дней: {short_delivery}")
+print(f"   ⏳ Не проверено: {total - checked}")
+print()
+print(f"📊 Результаты: {OUTPUT_EXCEL}")
+PYTHON
+
+    exit 130
+}
+
+# Обработчик прерывания (Ctrl+C)
+trap 'show_stats' SIGINT SIGTERM
 
 # Функция для парсинга даты
 parse_date() {
@@ -211,13 +255,13 @@ while read SHOP_URL; do
     # Ждем загрузки (увеличено до 5 секунд для полной загрузки карточек)
     sleep 5
 
-    # Проверяем первые 20 карточек
+    # Проверяем первые 12 карточек
     LONG_DELIVERY_COUNT=0
     CHECKED_CARDS=0
 
     echo "   🔍 Проверяю карточки..."
 
-    for ((card_idx=0; card_idx<20; card_idx++)); do
+    for ((card_idx=0; card_idx<12; card_idx++)); do
         # Получаем дату доставки
         DELIVERY_TEXT=$(osascript -e "tell application \"Google Chrome\" to execute active tab of window 1 javascript \"
 var tile = document.querySelector('[data-index=\\\"$card_idx\\\"]');
@@ -246,9 +290,9 @@ if (!tile) { ''; } else {
             # Сравниваем даты
             if [[ "$DELIVERY_DATE" > "$FIFTEEN_DAYS_DATE" ]]; then
                 LONG_DELIVERY_COUNT=$((LONG_DELIVERY_COUNT + 1))
-                echo -ne "\r   📦 Проверено карточек: $CHECKED_CARDS/20 | Длинная доставка: $LONG_DELIVERY_COUNT    "
+                echo -ne "\r   📦 Проверено карточек: $CHECKED_CARDS/12 | Длинная доставка: $LONG_DELIVERY_COUNT    "
             else
-                echo -ne "\r   📦 Проверено карточек: $CHECKED_CARDS/20 | Длинная доставка: $LONG_DELIVERY_COUNT    "
+                echo -ne "\r   📦 Проверено карточек: $CHECKED_CARDS/12 | Длинная доставка: $LONG_DELIVERY_COUNT    "
             fi
         fi
     done
@@ -294,8 +338,16 @@ PYTHON
 
     echo ""
 
-    # Закрываем вкладку
-    osascript -e 'tell application "Google Chrome" to close active tab of window 1' >/dev/null 2>&1
+    # Управляем количеством вкладок (не закрываем текущую, но следим за лимитом)
+    TAB_COUNT=$(osascript -e 'tell application "Google Chrome" to count of tabs of window 1' 2>/dev/null)
+
+    if [ "$TAB_COUNT" -gt 7 ]; then
+        echo "   🗑️  Закрываю старую вкладку (открыто: $TAB_COUNT вкладок)"
+        # Закрываем первую (самую старую) вкладку
+        osascript -e 'tell application "Google Chrome" to close tab 1 of window 1' >/dev/null 2>&1
+        sleep 1
+    fi
+
     random_sleep 1 2
 
 done < /tmp/shops_to_check.txt
