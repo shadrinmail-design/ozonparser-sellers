@@ -1,0 +1,315 @@
+{
+  "success": true,
+  "total": 102,
+  "parsed_at": "2025-12-09T02:35:23.312876",
+  "filter": "delivery > 21 days + \"Еще\" button clicks",
+  "max_more_clicks": 5,
+  "sellers": [
+    {
+      "url": "https://www.ozon.ru/seller/penga-market-vse-dlya-doma-3432051/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/guangzhou-xisui-trading-firm-3409238/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/chaocheno-3-3580581/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/discount-3327160/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/hanshengyu-2158037/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/kamehb02-2831675/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/hongfeng-1798646/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/maitangheshan01-3367683/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/zolotye-legendy-6-2913420/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/baza-russkiy-uyut-3550546/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/voskresnyy-magazin-2647397/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/limitless-3170121/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/yinglibaihuo2-3309599/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/alley-entrance-3328735/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/l003-2605129/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/hongjian-1797610/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/zhancheng-2729278/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/sams-club-2044654/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/wonderful-2612585/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/optovaya-torgovlya-tovarami-povsednevnogo-sprosa-3387500/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/dvadtsat-dva-3346950/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/wuchen-3491105/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/shengyixintong02-3195373/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/portal-2676198/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/hxh-store-3463216/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/mingzibuyaole4-2782111/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/qinvqiu004-3511858/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/academic-achievement-1-3180360/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/bbqebd-3478622/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/knigavetrov-2762591/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/zjooht-store-1653643/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/otobrannye-horoshie-tovary-2821218/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/univermag-dcq-3193828/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/eksklyuzivnye-kollektsii-3110739/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/starlight-3643426/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/penghuikeji-3149147/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/good-to-come-to-the-discount-store-3016471/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/8bl-3353938/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/xiaoer03-2925062/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/w-z-z-store-3016112/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/weiyi-boutique-trade002-3197775/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/hengxi01-3249913/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/xianhe-house-2034607/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/double-3233956/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/putian-kuduo-trading-2-2664446/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/cz009-3669166/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/vdtgfnukiil-1238137/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/xinyuo-3029114/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/meinv3hao-3283934/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/eshixiong01-2770842/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/quanzhou-zundui-pifa-3667751/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/mirovoy-magazin-06-2763622/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/sunshine-store-2965498/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/koujiaoxing005-3511798/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/matreshka-box-5-2902501/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/swipe-my-card-3139461/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/lavka-chudes-3182379/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/kachestvennye-dushevaya-3339392/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/vot-eto-da-3-2913385/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/xiyifutong02-3195356/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/kk-3197197/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/domashniytrep9313-2639313/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/moorii-store-633855/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/mxstore-3375219/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/butik-magazin-2623289/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/chulian-1943940/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/interesno-audiomagazin-1636219/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/mei002-2768538/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/labin-3480891/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/yuefu-1828066/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/yzc001-3038623/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/weiyifuda-network002-3194610/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/rabbit-2876985/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/jusheng-trading-3117553/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/hydmysh-3164008/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/qiyuan-3008764/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/ochen-bystro-2681613/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/chromahive-2742601/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/xzx-a05-2759580/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/dabao2-3183353/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/leqian-trading-co-ltd-002-3484420/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/qingyang2-3511856/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/jhq-2804994/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/cyjdexiaodian-3410768/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/quality-store-2046531/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/yingyi2-3510587/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/zhanbang-2729312/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/zhouyuqi-3132541/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/song-3689991/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/bl21-3396012/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/chenhuijuan3333-3408099/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/quanzhou-jingzong-pifa-3667687/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/hongshe-2157707/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/hongxiang-1943869/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/mulian-1944213/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/qingzi1-3506494/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/eksklyuzivnyeidei9303-2639303/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/vostochnyy-bazar-3312818/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/nebolshoy-biznes-2699713/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/yun-2778837/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/lsh001-3267438/"
+    },
+    {
+      "url": "https://www.ozon.ru/seller/cl001-3046715/"
+    }
+  ]
+}

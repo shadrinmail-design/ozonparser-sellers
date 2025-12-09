@@ -1,0 +1,12 @@
+{
+  "success": true,
+  "total": 1,
+  "parsed_at": "2025-12-09T02:29:18.100366",
+  "filter": "delivery > 21 days + \"Еще\" button clicks",
+  "max_more_clicks": 5,
+  "sellers": [
+    {
+      "url": "https://www.ozon.ru/seller/academic-achievement-1-3180360/"
+    }
+  ]
+}

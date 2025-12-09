@@ -24,6 +24,52 @@ random_sleep() {
     sleep $delay
 }
 
+# Функция сохранения результатов
+save_results() {
+    echo ""
+    echo "💾 Сохраняю промежуточные результаты..."
+
+    python3 <<PYTHON
+import json
+from datetime import datetime
+import os
+
+# Читаем продавцов
+sellers = []
+try:
+    with open('$SELLERS_FILE', 'r') as f:
+        sellers = list(set([line.strip() for line in f if line.strip()]))
+except:
+    pass
+
+print(f'Сохранено продавцов: {len(sellers)}')
+
+# Сохраняем
+os.makedirs('results', exist_ok=True)
+
+result = {
+    'success': True,
+    'total': len(sellers),
+    'parsed_at': datetime.now().isoformat(),
+    'filter': 'delivery > 21 days + "Еще" button clicks',
+    'max_more_clicks': $MAX_MORE_CLICKS,
+    'interrupted': True,
+    'sellers': [{'url': url} for url in sellers]
+}
+
+timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+filename = f'results/sellers_final_v4_{timestamp}.json'
+
+with open(filename, 'w', encoding='utf-8') as f:
+    json.dump(result, f, ensure_ascii=False, indent=2)
+
+print(f'✅ Результаты сохранены: {filename}')
+PYTHON
+}
+
+# Обработчик прерывания (Ctrl+C)
+trap 'echo ""; echo "⚠️  Получен сигнал прерывания!"; save_results; exit 130' SIGINT SIGTERM
+
 # Вычисляем дату "сегодня + 21 день"
 THREE_WEEKS_DATE=$(date -v+21d +"%Y-%m-%d")
 echo "Фильтр: доставка позже $THREE_WEEKS_DATE"
@@ -167,15 +213,15 @@ if (link) { link.href; } else { \"\"; }
                 FOUND=$((FOUND + 1))
             fi
 
-            # Шаг 2: Проверяем кнопку "Есть дешевле и быстрее"
-            echo "    🔍 Ищу кнопку 'дешевле и быстрее'..."
+            # Шаг 2: Проверяем кнопку "Есть дешевле" или "Есть быстрее"
+            echo "    🔍 Ищу кнопку 'дешевле' или 'быстрее'..."
 
             HAS_CHEAPER=$(osascript -e 'tell application "Google Chrome" to execute active tab of window 1 javascript "
 var buttons = document.querySelectorAll(\"button, a\");
 var found = false;
 for (var i = 0; i < buttons.length; i++) {
     var text = buttons[i].textContent.toLowerCase();
-    if (text.indexOf(\"есть\") > -1 && text.indexOf(\"дешевле\") > -1) {
+    if (text.indexOf(\"есть\") > -1 && (text.indexOf(\"дешевле\") > -1 || text.indexOf(\"быстрее\") > -1)) {
         found = true;
         break;
     }
@@ -191,7 +237,7 @@ found ? \"yes\" : \"no\";
 var buttons = document.querySelectorAll(\"button, a\");
 for (var i = 0; i < buttons.length; i++) {
     var text = buttons[i].textContent.toLowerCase();
-    if (text.indexOf(\"есть\") > -1 && text.indexOf(\"дешевле\") > -1) {
+    if (text.indexOf(\"есть\") > -1 && (text.indexOf(\"дешевле\") > -1 || text.indexOf(\"быстрее\") > -1)) {
         buttons[i].click();
         break;
     }
@@ -432,13 +478,13 @@ if (!tile) { ''; } else {
                     osascript -e "tell application \"Google Chrome\" to open location \"$PRODUCT_URL\"" >/dev/null 2>&1
                     random_sleep 3 5
 
-                    # Ищем модалку "есть дешевле"
+                    # Ищем модалку "есть дешевле" или "есть быстрее"
                     HAS_CHEAPER=$(osascript -e 'tell application "Google Chrome" to execute active tab of window 1 javascript "
 var buttons = document.querySelectorAll(\"button, a\");
 var found = false;
 for (var i = 0; i < buttons.length; i++) {
     var text = buttons[i].textContent.toLowerCase();
-    if (text.indexOf(\"есть\") > -1 && text.indexOf(\"дешевле\") > -1) {
+    if (text.indexOf(\"есть\") > -1 && (text.indexOf(\"дешевле\") > -1 || text.indexOf(\"быстрее\") > -1)) {
         found = true;
         break;
     }
@@ -455,7 +501,7 @@ found ? \"yes\" : \"no\";
 var buttons = document.querySelectorAll(\"button, a\");
 for (var i = 0; i < buttons.length; i++) {
     var text = buttons[i].textContent.toLowerCase();
-    if (text.indexOf(\"есть\") > -1 && text.indexOf(\"дешевле\") > -1) {
+    if (text.indexOf(\"есть\") > -1 && (text.indexOf(\"дешевле\") > -1 || text.indexOf(\"быстрее\") > -1)) {
         buttons[i].click();
         break;
     }
