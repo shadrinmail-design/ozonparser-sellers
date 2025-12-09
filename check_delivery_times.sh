@@ -208,8 +208,8 @@ while read SHOP_URL; do
         random_sleep 1 2
     done
 
-    # Ждем загрузки
-    sleep 3
+    # Ждем загрузки (увеличено до 5 секунд для полной загрузки карточек)
+    sleep 5
 
     # Проверяем первые 20 карточек
     LONG_DELIVERY_COUNT=0
