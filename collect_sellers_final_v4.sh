@@ -51,7 +51,7 @@ result = {
     'success': True,
     'total': len(sellers),
     'parsed_at': datetime.now().isoformat(),
-    'filter': 'delivery > 21 days + "Еще" button clicks',
+    'filter': 'delivery > 15 days + "Еще" button clicks',
     'max_more_clicks': $MAX_MORE_CLICKS,
     'interrupted': True,
     'sellers': [{'url': url} for url in sellers]
@@ -70,9 +70,9 @@ PYTHON
 # Обработчик прерывания (Ctrl+C)
 trap 'echo ""; echo "⚠️  Получен сигнал прерывания!"; save_results; exit 130' SIGINT SIGTERM
 
-# Вычисляем дату "сегодня + 21 день"
-THREE_WEEKS_DATE=$(date -v+21d +"%Y-%m-%d")
-echo "Фильтр: доставка позже $THREE_WEEKS_DATE"
+# Вычисляем дату "сегодня + 15 дней"
+FIFTEEN_DAYS_DATE=$(date -v+15d +"%Y-%m-%d")
+echo "Фильтр: доставка позже $FIFTEEN_DAYS_DATE"
 echo ""
 
 # Создаем временный файл для продавцов
@@ -181,7 +181,7 @@ if (!tile) { ''; } else {
     fi
 
     # Сравниваем даты
-    if [[ "$DELIVERY_DATE" > "$THREE_WEEKS_DATE" ]]; then
+    if [[ "$DELIVERY_DATE" > "$FIFTEEN_DAYS_DATE" ]]; then
         CHECKED=$((CHECKED + 1))
 
         # Получаем URL товара
@@ -459,8 +459,8 @@ if (!tile) { ''; } else {
                 continue
             fi
 
-            # Проверяем: доставка > 3 недель
-            if [[ "$DELIVERY_DATE" > "$THREE_WEEKS_DATE" ]]; then
+            # Проверяем: доставка > 15 дней
+            if [[ "$DELIVERY_DATE" > "$FIFTEEN_DAYS_DATE" ]]; then
 
                 # Получаем URL товара
                 PRODUCT_URL=$(osascript -e "tell application \"Google Chrome\" to execute active tab of window 1 javascript \"
@@ -634,7 +634,7 @@ result = {
     'success': True,
     'total': len(sellers),
     'parsed_at': datetime.now().isoformat(),
-    'filter': 'delivery > 21 days + "Еще" button clicks',
+    'filter': 'delivery > 15 days + "Еще" button clicks',
     'max_more_clicks': $MAX_MORE_CLICKS,
     'sellers': [{'url': url} for url in sellers]
 }
