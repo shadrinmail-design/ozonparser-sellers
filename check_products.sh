@@ -97,8 +97,8 @@ ws = wb.active
 ws.title = "Проверка товаров"
 
 headers = [
-    "URL магазина", "URL товара", "Название", "Цена (руб)", 
-    "Отзывов", "Доставка", "Статус", "Дата проверки"
+    "URL магазина", "URL товара", "Название", "Цена (руб)",
+    "Отзывов", "Доставка", "Минимальная цена товара", "Статус", "Дата проверки"
 ]
 
 for col, header in enumerate(headers, 1):
@@ -109,13 +109,14 @@ for col, header in enumerate(headers, 1):
     cell.alignment = Alignment(horizontal="center")
 
 ws.column_dimensions['A'].width = 50
-ws.column_dimensions['B'].width = 50  
+ws.column_dimensions['B'].width = 50
 ws.column_dimensions['C'].width = 60
 ws.column_dimensions['D'].width = 15
 ws.column_dimensions['E'].width = 12
 ws.column_dimensions['F'].width = 20
 ws.column_dimensions['G'].width = 20
 ws.column_dimensions['H'].width = 20
+ws.column_dimensions['I'].width = 20
 
 wb.save(excel_path)
 print(f"Создан Excel: {excel_path}")
@@ -231,11 +232,93 @@ if (!tile) { 'NO_TILE'; } else {
             continue
         fi
 
-        PRODUCTS_CHECKED=$((PRODUCTS_CHECKED + 1))
-        
-        echo "    [$PRODUCTS_CHECKED] ${PRODUCT_TITLE:0:50}... | $PRODUCT_PRICE руб | $PRODUCT_REVIEWS отз"
+        # Товар прошел базовые проверки - открываем карточку для проверки рейтинга
+        echo "    Проверяю: ${PRODUCT_TITLE:0:40}..."
 
-        export SHOP_URL PRODUCT_URL PRODUCT_TITLE PRODUCT_PRICE PRODUCT_REVIEWS PRODUCT_DELIVERY OUTPUT_EXCEL
+        osascript -e "tell application \"Google Chrome\" to open location \"$PRODUCT_URL\"" >/dev/null 2>&1
+        sleep 3
+
+        # Парсим рейтинг в карточке товара
+        PRODUCT_RATING=$(osascript -e 'tell application "Google Chrome" to execute active tab of window 1 javascript "
+var spans = document.querySelectorAll(\"span\");
+var rating = \"0\";
+for (var i = 0; i < spans.length; i++) {
+    var t = spans[i].textContent.trim();
+    if (t.match(/[0-5]\\.[0-9]/)) {
+        var match = t.match(/([0-5]\\.[0-9])/);
+        if (match) {
+            rating = match[1];
+            break;
+        }
+    }
+}
+rating;
+"' 2>/dev/null | head -1)
+
+        # Проверяем рейтинг >= 4.0
+        if [ -z "$PRODUCT_RATING" ] || [ "$PRODUCT_RATING" = "0" ]; then
+            echo "      Пропуск: рейтинг не найден"
+            osascript -e 'tell application "Google Chrome" to close active tab of window 1' >/dev/null 2>&1
+            continue
+        fi
+
+        RATING_CHECK=$(echo "$PRODUCT_RATING" | python3 -c "import sys; r=float(sys.stdin.read().strip() or '0'); print('ok' if r >= 4.0 else 'low')")
+        if [ "$RATING_CHECK" = "low" ]; then
+            echo "      Пропуск: рейтинг $PRODUCT_RATING < 4.0"
+            osascript -e 'tell application "Google Chrome" to close active tab of window 1' >/dev/null 2>&1
+            continue
+        fi
+
+        # Проверяем модальное окно
+        sleep 2
+        MODAL_INFO=$(osascript -e 'tell application "Google Chrome" to execute active tab of window 1 javascript "
+var result = {modal: \"none\", price: \"0\"};
+var allText = document.body.textContent;
+if (allText.includes(\"есть дешевле и быстрее\")) {
+    result.modal = \"дешевле и быстрее\";
+} else if (allText.includes(\"есть дешевле\")) {
+    result.modal = \"дешевле\";
+} else if (allText.includes(\"есть быстрее\")) {
+    result.modal = \"быстрее\";
+}
+if (result.modal === \"дешевле\" || result.modal === \"дешевле и быстрее\") {
+    var priceSpans = document.querySelectorAll(\"span\");
+    for (var i = 0; i < priceSpans.length; i++) {
+        var text = priceSpans[i].textContent.trim();
+        if (text.match(/^[0-9\\s]+₽$/)) {
+            result.price = text.replace(/[^0-9]/g, \"\");
+            break;
+        }
+    }
+}
+JSON.stringify(result);
+"' 2>/dev/null | head -1)
+
+        MODAL_TYPE=$(echo "$MODAL_INFO" | python3 -c "import sys, json; d=json.loads(sys.stdin.read()); print(d.get('modal', 'none'))")
+        MIN_PRICE=$(echo "$MODAL_INFO" | python3 -c "import sys, json; d=json.loads(sys.stdin.read()); print(d.get('price', '0'))")
+
+        # Закрываем карточку
+        osascript -e 'tell application "Google Chrome" to close active tab of window 1' >/dev/null 2>&1
+
+        # Применяем логику фильтрации
+        if [ "$PRODUCT_REVIEWS" -le 10 ]; then
+            # Отзывов <= 10 → модальное окно ОБЯЗАТЕЛЬНО
+            if [ "$MODAL_TYPE" = "none" ]; then
+                echo "      Пропуск: отзывов <= 10, но нет модального окна"
+                continue
+            fi
+        fi
+
+        # Товар подходит!
+        PRODUCTS_CHECKED=$((PRODUCTS_CHECKED + 1))
+
+        if [ "$MODAL_TYPE" != "none" ]; then
+            echo "      ✓ [$PRODUCTS_CHECKED] $PRODUCT_PRICE руб | ⭐$PRODUCT_RATING | $PRODUCT_REVIEWS отз | Модальное: $MODAL_TYPE | Мин.цена: $MIN_PRICE руб"
+        else
+            echo "      ✓ [$PRODUCTS_CHECKED] $PRODUCT_PRICE руб | ⭐$PRODUCT_RATING | $PRODUCT_REVIEWS отз"
+        fi
+
+        export SHOP_URL PRODUCT_URL PRODUCT_TITLE PRODUCT_PRICE PRODUCT_REVIEWS PRODUCT_DELIVERY MIN_PRICE OUTPUT_EXCEL
 
         python3 - <<PYTHON_SAVE
 import openpyxl
@@ -253,11 +336,18 @@ ws.cell(row, 3).value = os.environ['PRODUCT_TITLE']
 ws.cell(row, 4).value = int(os.environ['PRODUCT_PRICE'])
 ws.cell(row, 5).value = int(os.environ['PRODUCT_REVIEWS'])
 ws.cell(row, 6).value = os.environ['PRODUCT_DELIVERY']
-ws.cell(row, 7).value = 'интересный'
-ws.cell(row, 8).value = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+min_price = os.environ.get('MIN_PRICE', '0')
+if min_price and min_price != '0':
+    ws.cell(row, 7).value = int(min_price)
+else:
+    ws.cell(row, 7).value = '-'
+
+ws.cell(row, 8).value = 'интересный'
+ws.cell(row, 9).value = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
 fill = PatternFill(start_color="C6EFCE", end_color="C6EFCE", fill_type="solid")
-ws.cell(row, 7).fill = fill
+ws.cell(row, 8).fill = fill
 
 wb.save(os.environ['OUTPUT_EXCEL'])
 PYTHON_SAVE
