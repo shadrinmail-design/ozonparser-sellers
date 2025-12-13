@@ -150,7 +150,14 @@ while read SHOP_URL; do
     echo "$SHOP_URL"
     echo ""
 
-    osascript -e "tell application \"Google Chrome\" to open location \"$SHOP_URL\"" >/dev/null 2>&1
+    # Добавляем сортировку по рейтингу
+    if [[ "$SHOP_URL" == *"?"* ]]; then
+        SHOP_URL_SORTED="${SHOP_URL}&sorting=rating"
+    else
+        SHOP_URL_SORTED="${SHOP_URL}?sorting=rating"
+    fi
+
+    osascript -e "tell application \"Google Chrome\" to open location \"$SHOP_URL_SORTED\"" >/dev/null 2>&1
     random_sleep 3 5
 
     echo "  Загружаю товары..."
