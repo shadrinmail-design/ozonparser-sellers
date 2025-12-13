@@ -24,6 +24,56 @@ random_sleep() {
     sleep $delay
 }
 
+# Счетчик последовательных капч
+CONSECUTIVE_CAPTCHAS=0
+MAX_CONSECUTIVE_CAPTCHAS=3
+
+# Функция проверки капчи
+check_for_captcha() {
+    # Проверяем URL в адресной строке
+    local current_url=$(osascript -e 'tell application "Google Chrome" to get URL of active tab of window 1' 2>/dev/null)
+
+    if [[ "$current_url" == *"captcha"* ]] || \
+       [[ "$current_url" == *"blocked"* ]] || \
+       [[ "$current_url" == *"access-denied"* ]] || \
+       [[ "$current_url" == *"showcaptcha"* ]]; then
+        CONSECUTIVE_CAPTCHAS=$((CONSECUTIVE_CAPTCHAS + 1))
+        echo "    ⚠️  Обнаружена капча в URL! ($CONSECUTIVE_CAPTCHAS/$MAX_CONSECUTIVE_CAPTCHAS)"
+        echo "    URL: $current_url"
+
+        if [ $CONSECUTIVE_CAPTCHAS -ge $MAX_CONSECUTIVE_CAPTCHAS ]; then
+            echo ""
+            echo "❌ Обнаружено $MAX_CONSECUTIVE_CAPTCHAS капч подряд - останавливаю сбор"
+            save_results
+            exit 1
+        fi
+        return 1
+    fi
+
+    # Проверяем текст на странице
+    local page_text=$(osascript -e 'tell application "Google Chrome" to execute active tab of window 1 javascript "document.body.textContent;"' 2>/dev/null | head -1)
+
+    if [[ "$page_text" == *"Проверка"* ]] || \
+       [[ "$page_text" == *"Подтвердите, что вы не робот"* ]] || \
+       [[ "$page_text" == *"CAPTCHA"* ]] || \
+       [[ "$page_text" == *"Доступ ограничен"* ]]; then
+        CONSECUTIVE_CAPTCHAS=$((CONSECUTIVE_CAPTCHAS + 1))
+        echo "    ⚠️  Обнаружена капча в тексте! ($CONSECUTIVE_CAPTCHAS/$MAX_CONSECUTIVE_CAPTCHAS)"
+
+        if [ $CONSECUTIVE_CAPTCHAS -ge $MAX_CONSECUTIVE_CAPTCHAS ]; then
+            echo ""
+            echo "❌ Обнаружено $MAX_CONSECUTIVE_CAPTCHAS капч подряд - останавливаю сбор"
+            save_results
+            exit 1
+        fi
+        return 1
+    fi
+
+    # Капчи нет - сбрасываем счетчик
+    CONSECUTIVE_CAPTCHAS=0
+    return 0
+}
+
 # Функция сохранения результатов
 save_results() {
     echo ""
@@ -388,9 +438,23 @@ if [ -n "$COLLECTED_SELLERS" ] && [ "$SELLER_COUNT" -gt 0 ]; then
         SELLER_NUM=$((SELLER_NUM + 1))
         echo "🏪 Магазин $SELLER_NUM/$SELLER_COUNT: $SELLER_URL"
 
-        # Открываем витрину магазина
-        osascript -e "tell application \"Google Chrome\" to open location \"$SELLER_URL\"" >/dev/null 2>&1
+        # Добавляем сортировку по рейтингу
+        if [[ "$SELLER_URL" == *"?"* ]]; then
+            SELLER_URL_SORTED="${SELLER_URL}&sorting=rating"
+        else
+            SELLER_URL_SORTED="${SELLER_URL}?sorting=rating"
+        fi
+
+        # Открываем витрину магазина с сортировкой
+        osascript -e "tell application \"Google Chrome\" to open location \"$SELLER_URL_SORTED\"" >/dev/null 2>&1
         random_sleep 3 5
+
+        # Проверяем капчу
+        check_for_captcha
+        if [ $? -ne 0 ]; then
+            echo "  ⏭️  Пропускаю магазин из-за капчи"
+            continue
+        fi
 
         # Прокручиваем витрину
         for ((scroll=1; scroll<=10; scroll++)); do

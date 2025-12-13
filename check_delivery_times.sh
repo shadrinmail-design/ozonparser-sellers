@@ -22,6 +22,56 @@ random_sleep() {
     sleep $delay
 }
 
+# Счетчик последовательных капч
+CONSECUTIVE_CAPTCHAS=0
+MAX_CONSECUTIVE_CAPTCHAS=3
+
+# Функция проверки капчи
+check_for_captcha() {
+    # Проверяем URL в адресной строке
+    local current_url=$(osascript -e 'tell application "Google Chrome" to get URL of active tab of window 1' 2>/dev/null)
+
+    if [[ "$current_url" == *"captcha"* ]] || \
+       [[ "$current_url" == *"blocked"* ]] || \
+       [[ "$current_url" == *"access-denied"* ]] || \
+       [[ "$current_url" == *"showcaptcha"* ]]; then
+        CONSECUTIVE_CAPTCHAS=$((CONSECUTIVE_CAPTCHAS + 1))
+        echo "    ⚠️  Обнаружена капча в URL! ($CONSECUTIVE_CAPTCHAS/$MAX_CONSECUTIVE_CAPTCHAS)"
+        echo "    URL: $current_url"
+
+        if [ $CONSECUTIVE_CAPTCHAS -ge $MAX_CONSECUTIVE_CAPTCHAS ]; then
+            echo ""
+            echo "❌ Обнаружено $MAX_CONSECUTIVE_CAPTCHAS капч подряд - останавливаю сбор"
+            show_stats
+            exit 1
+        fi
+        return 1
+    fi
+
+    # Проверяем текст на странице
+    local page_text=$(osascript -e 'tell application "Google Chrome" to execute active tab of window 1 javascript "document.body.textContent;"' 2>/dev/null | head -1)
+
+    if [[ "$page_text" == *"Проверка"* ]] || \
+       [[ "$page_text" == *"Подтвердите, что вы не робот"* ]] || \
+       [[ "$page_text" == *"CAPTCHA"* ]] || \
+       [[ "$page_text" == *"Доступ ограничен"* ]]; then
+        CONSECUTIVE_CAPTCHAS=$((CONSECUTIVE_CAPTCHAS + 1))
+        echo "    ⚠️  Обнаружена капча в тексте! ($CONSECUTIVE_CAPTCHAS/$MAX_CONSECUTIVE_CAPTCHAS)"
+
+        if [ $CONSECUTIVE_CAPTCHAS -ge $MAX_CONSECUTIVE_CAPTCHAS ]; then
+            echo ""
+            echo "❌ Обнаружено $MAX_CONSECUTIVE_CAPTCHAS капч подряд - останавливаю сбор"
+            show_stats
+            exit 1
+        fi
+        return 1
+    fi
+
+    # Капчи нет - сбрасываем счетчик
+    CONSECUTIVE_CAPTCHAS=0
+    return 0
+}
+
 # Вычисляем дату "сегодня + 15 дней"
 FIFTEEN_DAYS_DATE=$(date -v+15d +"%Y-%m-%d")
 echo "Критерий: доставка позже $FIFTEEN_DAYS_DATE (>15 дней)"
@@ -244,6 +294,13 @@ while read SHOP_URL; do
     # Открываем страницу магазина
     osascript -e "tell application \"Google Chrome\" to open location \"$SHOP_URL\"" >/dev/null 2>&1
     random_sleep 3 5
+
+    # Проверяем капчу
+    check_for_captcha
+    if [ $? -ne 0 ]; then
+        echo "   ⏭️  Пропускаю магазин из-за капчи"
+        continue
+    fi
 
     # Прокручиваем страницу для загрузки карточек
     echo "   📜 Загружаю карточки..."

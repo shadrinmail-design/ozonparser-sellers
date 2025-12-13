@@ -22,6 +22,54 @@ random_sleep() {
     sleep $delay
 }
 
+# Счетчик последовательных капч
+CONSECUTIVE_CAPTCHAS=0
+MAX_CONSECUTIVE_CAPTCHAS=3
+
+# Функция проверки капчи
+check_for_captcha() {
+    # Проверяем URL в адресной строке
+    local current_url=$(osascript -e 'tell application "Google Chrome" to get URL of active tab of window 1' 2>/dev/null)
+
+    if [[ "$current_url" == *"captcha"* ]] || \
+       [[ "$current_url" == *"blocked"* ]] || \
+       [[ "$current_url" == *"access-denied"* ]] || \
+       [[ "$current_url" == *"showcaptcha"* ]]; then
+        CONSECUTIVE_CAPTCHAS=$((CONSECUTIVE_CAPTCHAS + 1))
+        echo "    ⚠️  Обнаружена капча в URL! ($CONSECUTIVE_CAPTCHAS/$MAX_CONSECUTIVE_CAPTCHAS)"
+        echo "    URL: $current_url"
+
+        if [ $CONSECUTIVE_CAPTCHAS -ge $MAX_CONSECUTIVE_CAPTCHAS ]; then
+            echo ""
+            echo "❌ Обнаружено $MAX_CONSECUTIVE_CAPTCHAS капч подряд - останавливаю сбор"
+            exit 1
+        fi
+        return 1
+    fi
+
+    # Проверяем текст на странице
+    local page_text=$(osascript -e 'tell application "Google Chrome" to execute active tab of window 1 javascript "document.body.textContent;"' 2>/dev/null | head -1)
+
+    if [[ "$page_text" == *"Проверка"* ]] || \
+       [[ "$page_text" == *"Подтвердите, что вы не робот"* ]] || \
+       [[ "$page_text" == *"CAPTCHA"* ]] || \
+       [[ "$page_text" == *"Доступ ограничен"* ]]; then
+        CONSECUTIVE_CAPTCHAS=$((CONSECUTIVE_CAPTCHAS + 1))
+        echo "    ⚠️  Обнаружена капча в тексте! ($CONSECUTIVE_CAPTCHAS/$MAX_CONSECUTIVE_CAPTCHAS)"
+
+        if [ $CONSECUTIVE_CAPTCHAS -ge $MAX_CONSECUTIVE_CAPTCHAS ]; then
+            echo ""
+            echo "❌ Обнаружено $MAX_CONSECUTIVE_CAPTCHAS капч подряд - останавливаю сбор"
+            exit 1
+        fi
+        return 1
+    fi
+
+    # Капчи нет - сбрасываем счетчик
+    CONSECUTIVE_CAPTCHAS=0
+    return 0
+}
+
 FIFTEEN_DAYS_DATE=$(date -v+15d +"%Y-%m-%d")
 echo "Критерий доставки: > $FIFTEEN_DAYS_DATE"
 echo ""
@@ -160,6 +208,13 @@ while read SHOP_URL; do
     osascript -e "tell application \"Google Chrome\" to open location \"$SHOP_URL_SORTED\"" >/dev/null 2>&1
     random_sleep 3 5
 
+    # Проверяем капчу
+    check_for_captcha
+    if [ $? -ne 0 ]; then
+        echo "  ⏭️  Пропускаю магазин из-за капчи"
+        continue
+    fi
+
     echo "  Загружаю товары..."
     for ((i=1; i<=10; i++)); do
         osascript -e 'tell application "Google Chrome" to execute active tab of window 1 javascript "window.scrollBy(0, window.innerHeight);"' >/dev/null 2>&1
@@ -178,13 +233,41 @@ if (!tile) { 'NO_TILE'; } else {
     var result = {};
     var link = tile.querySelector('a[href*=\\\"/product/\\\"]');
     result.url = link ? link.href : '';
-    var spans = tile.querySelectorAll('span');
-    var longest = '';
-    for (var i = 0; i < spans.length; i++) {
-        var t = spans[i].textContent.trim();
-        if (t.length > longest.length && t.length > 10) longest = t;
+
+    // Парсим название товара из ссылки (более надежный способ)
+    var title = '';
+
+    // Способ 1: Атрибут title у ссылки
+    if (link && link.getAttribute('title')) {
+        title = link.getAttribute('title').trim();
     }
-    result.title = longest;
+
+    // Способ 2: Текст внутри ссылки (если атрибута нет)
+    if (!title && link) {
+        var linkSpan = link.querySelector('span[class*=\\\"tsBody500Medium\\\"]');
+        if (linkSpan) {
+            title = linkSpan.textContent.trim();
+        }
+    }
+
+    // Способ 3: Любой span внутри ссылки с текстом > 10 символов (фолбэк)
+    if (!title && link) {
+        var linkSpans = link.querySelectorAll('span');
+        for (var i = 0; i < linkSpans.length; i++) {
+            var t = linkSpans[i].textContent.trim();
+            // Исключаем цены, остатки и служебную инфу
+            if (t.length > 10 &&
+                !t.match(/^[0-9\\s]+₽$/) &&
+                !t.match(/шт осталось/) &&
+                !t.match(/Стало дешевле/) &&
+                !t.match(/^[0-9\\s]+$/) &&
+                t.length > title.length) {
+                title = t;
+            }
+        }
+    }
+
+    result.title = title || 'Название не найдено';
     var priceSpan = tile.querySelector('span[class*=\\\"tsHeadline500Medium\\\"]');
     result.price = priceSpan ? priceSpan.textContent.replace(/[^0-9]/g, '') : '0';
     result.reviews = '0';
@@ -222,7 +305,7 @@ if (!tile) { 'NO_TILE'; } else {
             continue
         fi
 
-        if [ "$PRODUCT_PRICE" -le 300 ]; then
+        if [ "$PRODUCT_PRICE" -le 200 ]; then
             continue
         fi
 

@@ -21,6 +21,54 @@ random_sleep() {
     sleep $delay
 }
 
+# Счетчик последовательных капч
+CONSECUTIVE_CAPTCHAS=0
+MAX_CONSECUTIVE_CAPTCHAS=3
+
+# Функция проверки капчи
+check_for_captcha() {
+    # Проверяем URL в адресной строке
+    local current_url=$(osascript -e 'tell application "Google Chrome" to get URL of active tab of window 1' 2>/dev/null)
+
+    if [[ "$current_url" == *"captcha"* ]] || \
+       [[ "$current_url" == *"blocked"* ]] || \
+       [[ "$current_url" == *"access-denied"* ]] || \
+       [[ "$current_url" == *"showcaptcha"* ]]; then
+        CONSECUTIVE_CAPTCHAS=$((CONSECUTIVE_CAPTCHAS + 1))
+        echo "    ⚠️  Обнаружена капча в URL! ($CONSECUTIVE_CAPTCHAS/$MAX_CONSECUTIVE_CAPTCHAS)"
+        echo "    URL: $current_url"
+
+        if [ $CONSECUTIVE_CAPTCHAS -ge $MAX_CONSECUTIVE_CAPTCHAS ]; then
+            echo ""
+            echo "❌ Обнаружено $MAX_CONSECUTIVE_CAPTCHAS капч подряд - останавливаю сбор"
+            exit 1
+        fi
+        return 1
+    fi
+
+    # Проверяем текст на странице
+    local page_text=$(osascript -e 'tell application "Google Chrome" to execute active tab of window 1 javascript "document.body.textContent;"' 2>/dev/null | head -1)
+
+    if [[ "$page_text" == *"Проверка"* ]] || \
+       [[ "$page_text" == *"Подтвердите, что вы не робот"* ]] || \
+       [[ "$page_text" == *"CAPTCHA"* ]] || \
+       [[ "$page_text" == *"Доступ ограничен"* ]]; then
+        CONSECUTIVE_CAPTCHAS=$((CONSECUTIVE_CAPTCHAS + 1))
+        echo "    ⚠️  Обнаружена капча в тексте! ($CONSECUTIVE_CAPTCHAS/$MAX_CONSECUTIVE_CAPTCHAS)"
+
+        if [ $CONSECUTIVE_CAPTCHAS -ge $MAX_CONSECUTIVE_CAPTCHAS ]; then
+            echo ""
+            echo "❌ Обнаружено $MAX_CONSECUTIVE_CAPTCHAS капч подряд - останавливаю сбор"
+            exit 1
+        fi
+        return 1
+    fi
+
+    # Капчи нет - сбрасываем счетчик
+    CONSECUTIVE_CAPTCHAS=0
+    return 0
+}
+
 # Функция проверки быстрой доставки
 is_fast_delivery() {
     local text="$1"
@@ -172,6 +220,13 @@ python3 -c "import json; products=json.load(open('/tmp/products_stage4.json')); 
     echo "  Ищу на Ozon..."
     osascript -e "tell application \"Google Chrome\" to open location \"$SEARCH_URL\"" >/dev/null 2>&1
     random_sleep 4 6
+
+    # Проверяем капчу
+    check_for_captcha
+    if [ $? -ne 0 ]; then
+        echo "  ⏭️  Пропускаю товар из-за капчи"
+        continue
+    fi
 
     # Прокручиваем
     for ((i=1; i<=3; i++)); do
