@@ -15,6 +15,40 @@ echo "Макс магазинов: $MAX_SHOPS"
 echo "Макс товаров на магазин: $MAX_PRODUCTS_PER_SHOP"
 echo ""
 
+# Обработка прерывания (Ctrl+C)
+trap 'echo ""; echo "⚠️  Обработка прервана пользователем"; echo "💾 Все результаты сохранены в: $OUTPUT_EXCEL"; echo "▶️  При следующем запуске обработка продолжится с места остановки"; exit 130' SIGINT SIGTERM
+
+# Проверяем и создаём окно Chrome если нужно
+WINDOW_COUNT=$(osascript -e 'tell application "Google Chrome" to count windows' 2>/dev/null || echo "0")
+if [ "$WINDOW_COUNT" -eq 0 ]; then
+    echo "🌐 Открываю новое окно Chrome..."
+    osascript <<APPLESCRIPT >/dev/null 2>&1
+tell application "Google Chrome"
+    activate
+    make new window
+    set URL of active tab of window 1 to "about:blank"
+end tell
+APPLESCRIPT
+    sleep 2
+    echo "✓ Окно Chrome открыто"
+    echo ""
+fi
+
+# Закрываем все лишние вкладки (оставляем только 1)
+TAB_COUNT=$(osascript -e 'tell application "Google Chrome" to count tabs of window 1' 2>/dev/null || echo "1")
+if [ "$TAB_COUNT" -gt 1 ]; then
+    echo "🧹 Закрываю $((TAB_COUNT - 1)) лишних вкладок..."
+    osascript <<APPLESCRIPT >/dev/null 2>&1
+tell application "Google Chrome"
+    repeat while (count of tabs of window 1) > 1
+        close tab 2 of window 1
+    end repeat
+end tell
+APPLESCRIPT
+    echo "✓ Оставлена 1 рабочая вкладка"
+    echo ""
+fi
+
 # Функция случайной задержки
 random_sleep() {
     local min=${1:-1}
@@ -29,8 +63,16 @@ MAX_CONSECUTIVE_CAPTCHAS=3
 
 # Функция проверки капчи
 check_for_captcha() {
+    # Сохраняем текущее активное приложение
+    local front_app=$(osascript -e 'tell application "System Events" to return name of first process whose frontmost is true' 2>/dev/null)
+
     # Проверяем URL в адресной строке
     local current_url=$(osascript -e 'tell application "Google Chrome" to get URL of active tab of window 1' 2>/dev/null)
+
+    # Возвращаем фокус
+    if [ "$front_app" != "Google Chrome" ] && [ -n "$front_app" ]; then
+        osascript -e "tell application \"$front_app\" to activate" >/dev/null 2>&1
+    fi
 
     if [[ "$current_url" == *"captcha"* ]] || \
        [[ "$current_url" == *"blocked"* ]] || \
@@ -50,6 +92,11 @@ check_for_captcha() {
 
     # Проверяем текст на странице
     local page_text=$(osascript -e 'tell application "Google Chrome" to execute active tab of window 1 javascript "document.body.textContent;"' 2>/dev/null | head -1)
+
+    # Возвращаем фокус снова
+    if [ "$front_app" != "Google Chrome" ] && [ -n "$front_app" ]; then
+        osascript -e "tell application \"$front_app\" to activate" >/dev/null 2>&1
+    fi
 
     if [[ "$page_text" == *"Проверка"* ]] || \
        [[ "$page_text" == *"Подтвердите, что вы не робот"* ]] || \
@@ -71,10 +118,26 @@ check_for_captcha() {
     return 0
 }
 
-# Вычисляем дату "сегодня + 15 дней"
-FIFTEEN_DAYS_DATE=$(date -v+15d +"%Y-%m-%d")
-echo "Критерий доставки: > $FIFTEEN_DAYS_DATE (>15 дней)"
+# Вычисляем дату "сегодня + 9 дней"
+THIRTEEN_DAYS_DATE=$(date -v+9d +"%Y-%m-%d")
+echo "Критерий доставки: > $THIRTEEN_DAYS_DATE (>9 дней)"
 echo ""
+
+# Функция для выполнения команды в Chrome без активации окна
+run_chrome_silent() {
+    local cmd="$1"
+
+    # Сохраняем текущее активное приложение
+    local front_app=$(osascript -e 'tell application "System Events" to return name of first process whose frontmost is true' 2>/dev/null)
+
+    # Выполняем команду в Chrome
+    eval "$cmd"
+
+    # Возвращаем фокус обратно (если это не Chrome)
+    if [ "$front_app" != "Google Chrome" ] && [ -n "$front_app" ]; then
+        osascript -e "tell application \"$front_app\" to activate" >/dev/null 2>&1
+    fi
+}
 
 # Функция парсинга даты
 parse_date() {
@@ -139,8 +202,9 @@ else:
 
     # Заголовки для магазинов
     headers_shops = [
-        'URL магазина', 'Проверено товаров', 'Товаров с доставкой < 15 дней',
-        '% быстрой доставки', 'Статус', 'Дата проверки'
+        'URL магазина', 'Проверено товаров', 'Прошло фильтры',
+        'Товаров с доставкой < 13 дней', '% быстрой доставки',
+        'Статус', 'Дата проверки'
     ]
 
     for col, header in enumerate(headers_shops, 1):
@@ -152,10 +216,11 @@ else:
     # Ширина колонок
     ws_shops.column_dimensions['A'].width = 50
     ws_shops.column_dimensions['B'].width = 18
-    ws_shops.column_dimensions['C'].width = 25
-    ws_shops.column_dimensions['D'].width = 20
+    ws_shops.column_dimensions['C'].width = 15
+    ws_shops.column_dimensions['D'].width = 25
     ws_shops.column_dimensions['E'].width = 20
     ws_shops.column_dimensions['F'].width = 20
+    ws_shops.column_dimensions['G'].width = 20
 
     # Лист 2: Товары
     ws_products = wb.create_sheet('Товары', 1)
@@ -276,8 +341,8 @@ while IFS= read -r SHOP_URL; do
         SHOP_URL_SORTED="${SHOP_URL}?sorting=rating"
     fi
 
-    # Открываем витрину магазина
-    osascript -e "tell application \"Google Chrome\" to open location \"$SHOP_URL_SORTED\"" >/dev/null 2>&1
+    # Открываем витрину магазина (в текущей вкладке, без активации окна)
+    run_chrome_silent "osascript -e \"tell application \\\"Google Chrome\\\" to set URL of active tab of window 1 to \\\"$SHOP_URL_SORTED\\\"\" >/dev/null 2>&1"
     random_sleep 3 5
 
     # Проверяем капчу
@@ -287,25 +352,39 @@ while IFS= read -r SHOP_URL; do
         continue
     fi
 
-    # Прокручиваем страницу
-    echo "  📜 Загружаю товары..."
-    for ((i=1; i<=10; i++)); do
-        osascript -e 'tell application "Google Chrome" to execute active tab of window 1 javascript "window.scrollBy(0, window.innerHeight);"' >/dev/null 2>&1
-        sleep 1
-    done
-    sleep 3
-
     # Создаем временный файл для товаров этого магазина
     TEMP_PRODUCTS="/tmp/products_${SHOP_NUM}.json"
+    echo "[]" > "$TEMP_PRODUCTS"
 
-    echo "  🔍 Проверяю товары..."
+    # Проверяем товары партиями по 10 (максимум 100)
+    echo "  📜 Проверяю товары партиями по 10..."
+    TOTAL_PRODUCTS_CHECKED=0
+    CONTINUE_CHECKING=true
+    BATCH_NUM=0
 
-    # Создаем JavaScript файл
-    cat > /tmp/parse_products.js <<'JSEOF'
+    while [ "$CONTINUE_CHECKING" = true ] && [ $BATCH_NUM -lt 10 ]; do
+        BATCH_NUM=$((BATCH_NUM + 1))
+
+        # Скроллим для загрузки следующей партии (без активации окна)
+        for ((i=1; i<=2; i++)); do
+            run_chrome_silent "osascript -e 'tell application \"Google Chrome\" to execute active tab of window 1 javascript \"window.scrollBy(0, window.innerHeight);\"' >/dev/null 2>&1"
+            sleep 1
+        done
+        sleep 2
+
+        # Передаем индексы через window объект
+        START_IDX=$TOTAL_PRODUCTS_CHECKED
+        END_IDX=$((TOTAL_PRODUCTS_CHECKED + 10))
+
+        run_chrome_silent "osascript -e \"tell application \\\"Google Chrome\\\" to execute active tab of window 1 javascript \\\"window.batchStart = $START_IDX; window.batchEnd = $END_IDX;\\\"\" >/dev/null 2>&1"
+
+        # Создаем JavaScript файл для парсинга партии из 10 товаров (используем window переменные)
+        cat > /tmp/parse_products_batch.js <<'JSEOF'
 var products = [];
-var maxProducts = $MAX_PRODUCTS_PER_SHOP;
+var startIdx = window.batchStart || 0;
+var endIdx = window.batchEnd || 10;
 
-for (var idx = 0; idx < maxProducts; idx++) {
+for (var idx = startIdx; idx < endIdx; idx++) {
     var tiles = document.querySelectorAll('[data-index]');
     var tile = null;
     for (var z = 0; z < tiles.length; z++) {
@@ -387,7 +466,9 @@ for (var idx = 0; idx < maxProducts; idx++) {
     product.delivery = '';
     for (var i = 0; i < buttons.length; i++) {
         var t = buttons[i].textContent.trim();
-        if (t.match(/[0-9]+\\s+(янв|фев|мар|апр|май|июн|июл|авг|сен|окт|ноя|дек)/)) {
+        // Ищем полные формы месяцев или "завтра" (используем \s+ без экранирования в heredoc)
+        if (t.match(/[0-9]+\s+(января|февраля|марта|апреля|мая|июня|июля|августа|сентября|октября|ноября|декабря)/i) ||
+            t.match(/завтра/i)) {
             product.delivery = t;
             break;
         }
@@ -399,23 +480,72 @@ for (var idx = 0; idx < maxProducts; idx++) {
 JSON.stringify(products);
 JSEOF
 
-    # Подставляем значение MAX_PRODUCTS_PER_SHOP
-    sed -i '' "s/\\\$MAX_PRODUCTS_PER_SHOP/$MAX_PRODUCTS_PER_SHOP/g" /tmp/parse_products.js
+        # Выполняем JavaScript для парсинга партии (без активации окна)
+        # Сохраняем текущее активное приложение
+        FRONT_APP=$(osascript -e 'tell application "System Events" to return name of first process whose frontmost is true' 2>/dev/null)
 
-    # Читаем JavaScript и выполняем через osascript
-    JS_CODE=$(cat /tmp/parse_products.js)
-    PRODUCTS_DATA=$(osascript <<APPLESCRIPT
+        BATCH_DATA=$(osascript <<APPLESCRIPT 2>/dev/null
 tell application "Google Chrome"
-    execute active tab of window 1 javascript "$JS_CODE"
+    set jsCode to do shell script "cat /tmp/parse_products_batch.js"
+    execute active tab of window 1 javascript jsCode
 end tell
 APPLESCRIPT
 )
 
-    # Сохраняем во временный файл
-    echo "$PRODUCTS_DATA" > "$TEMP_PRODUCTS"
+        # Возвращаем фокус обратно
+        if [ "$FRONT_APP" != "Google Chrome" ] && [ -n "$FRONT_APP" ]; then
+            osascript -e "tell application \"$FRONT_APP\" to activate" >/dev/null 2>&1
+        fi
+
+
+        # Проверяем есть ли товары с отзывами в этой партии
+        HAS_REVIEWS=$(echo "$BATCH_DATA" | python3 -c "
+import sys, json
+try:
+    products = json.loads(sys.stdin.read())
+    has_reviews = any(int(p.get('reviews', 0)) >= 1 for p in products)
+    print('yes' if has_reviews else 'no')
+except:
+    print('no')
+")
+
+        # Добавляем товары из партии к общему списку (используем pipes для кириллицы)
+        echo "$BATCH_DATA" | python3 -c "
+import json, sys
+
+try:
+    with open('$TEMP_PRODUCTS', 'r', encoding='utf-8') as f:
+        all_products = json.load(f)
+
+    batch_data = sys.stdin.read().strip()
+    if not batch_data:
+        batch_products = []
+    else:
+        batch_products = json.loads(batch_data)
+
+    all_products.extend(batch_products)
+    with open('$TEMP_PRODUCTS', 'w', encoding='utf-8') as f:
+        json.dump(all_products, f, ensure_ascii=False)
+except Exception as e:
+    print(f'    ⚠️  Ошибка обработки партии: {e}', file=sys.stderr)
+    sys.exit(1)
+"
+
+        TOTAL_PRODUCTS_CHECKED=$((TOTAL_PRODUCTS_CHECKED + 10))
+
+        echo "    Партия $BATCH_NUM: проверено $TOTAL_PRODUCTS_CHECKED товаров (отзывы: $HAS_REVIEWS)"
+
+        # Если в партии нет товаров с отзывами - останавливаемся
+        if [ "$HAS_REVIEWS" = "no" ]; then
+            echo "    ⏹️  Партия без отзывов - останавливаю проверку"
+            CONTINUE_CHECKING=false
+        fi
+    done
+
+    echo "  🔍 Итого проверено: $TOTAL_PRODUCTS_CHECKED товаров"
 
     # Обрабатываем товары и сохраняем в Excel
-    export SHOP_URL TEMP_PRODUCTS OUTPUT_EXCEL FIFTEEN_DAYS_DATE
+    export SHOP_URL TEMP_PRODUCTS OUTPUT_EXCEL THIRTEEN_DAYS_DATE TOTAL_PRODUCTS_CHECKED
 
     python3 - <<'PYTHON_SAVE'
 import json
@@ -429,22 +559,40 @@ from PIL import Image
 import io
 
 shop_url = os.environ['SHOP_URL']
+
+# Добавляем параметр сортировки по рейтингу для удобства открытия
+if '?' in shop_url:
+    shop_url_with_sorting = shop_url + '&sorting=rating'
+else:
+    shop_url_with_sorting = shop_url + '?sorting=rating'
+
 temp_file = os.environ['TEMP_PRODUCTS']
 output_file = os.environ['OUTPUT_EXCEL']
-fifteen_days_date = os.environ['FIFTEEN_DAYS_DATE']
+thirteen_days_date = os.environ['THIRTEEN_DAYS_DATE']
+total_checked = int(os.environ.get('TOTAL_PRODUCTS_CHECKED', 0))
 
 # Функция парсинга даты
 def parse_date(text):
     import re
-    from datetime import datetime
+    from datetime import datetime, timedelta
 
+    if not text or text == '-':
+        return None
+
+    # Обработка "завтра"
+    if 'завтра' in text.lower():
+        tomorrow = datetime.now() + timedelta(days=1)
+        return f"{tomorrow.year:04d}-{tomorrow.month:02d}-{tomorrow.day:02d}"
+
+    # Карта полных форм месяцев
     month_map = {
-        'янв': 1, 'фев': 2, 'мар': 3, 'апр': 4,
-        'май': 5, 'июн': 6, 'июл': 7, 'авг': 8,
-        'сен': 9, 'окт': 10, 'ноя': 11, 'дек': 12
+        'января': 1, 'февраля': 2, 'марта': 3, 'апреля': 4,
+        'мая': 5, 'июня': 6, 'июля': 7, 'августа': 8,
+        'сентября': 9, 'октября': 10, 'ноября': 11, 'декабря': 12
     }
 
-    match = re.search(r'(\d+)\s+(янв|фев|мар|апр|май|июн|июл|авг|сен|окт|ноя|дек)', text)
+    # Ищем паттерн "число месяц" (полная форма)
+    match = re.search(r'(\d+)\s+(января|февраля|марта|апреля|мая|июня|июля|августа|сентября|октября|ноября|декабря)', text.lower())
     if not match:
         return None
 
@@ -495,32 +643,53 @@ def download_and_resize_image(url, size=(100, 100)):
 with open(temp_file, 'r', encoding='utf-8') as f:
     products = json.loads(f.read())
 
+# DEBUG: выводим первые 3 товара
+print(f"\n  🐛 DEBUG: Первые 3 товара из {len(products)}:")
+for i, p in enumerate(products[:3], 1):
+    print(f"    {i}. {p.get('title', 'N/A')[:40]}...")
+    print(f"       reviews={p.get('reviews', 0)}, price={p.get('price', 0)}, delivery=\"{p.get('delivery', '')}\"")
+
 # Фильтруем товары
+failed_products_debug = []
 filtered_products = []
-total_checked = 0
 fast_delivery_count = 0
+no_delivery_count = 0
+slow_delivery_count = 0
+failed_reviews = 0
+failed_price = 0
+failed_delivery = 0
 
 for product in products:
-    total_checked += 1
 
     # Парсим дату доставки для проверки "местного магазина"
     delivery_date = None
     if product['delivery']:
         delivery_date = parse_date(product['delivery'])
 
-    # Считаем товары с быстрой доставкой
-    if delivery_date and delivery_date < fifteen_days_date:
+    # Статистика по доставке
+    if not delivery_date:
+        no_delivery_count += 1
+    elif delivery_date < thirteen_days_date:
         fast_delivery_count += 1
+    else:
+        slow_delivery_count += 1
 
     # Применяем фильтры для сохранения
     reviews = int(product.get('reviews', 0))
     price = int(product.get('price', 0))
 
     if reviews < 1:
+        failed_reviews += 1
+        failed_products_debug.append((product, 'отзывы < 1'))
         continue
     if price <= 200:
+        failed_price += 1
+        failed_products_debug.append((product, f'цена <= 200 (найдено: {price})'))
         continue
-    if not delivery_date or delivery_date <= fifteen_days_date:
+    if not delivery_date or delivery_date <= thirteen_days_date:
+        failed_delivery += 1
+        reason = 'нет даты' if not delivery_date else f'доставка <= 11 дней ({product.get("delivery", "")})'
+        failed_products_debug.append((product, reason))
         continue
 
     filtered_products.append(product)
@@ -530,8 +699,18 @@ percent_fast = (fast_delivery_count / total_checked * 100) if total_checked > 0 
 status = 'местный магазин' if percent_fast > 50 else 'интересный'
 
 print(f"  ✅ Проверено: {total_checked} товаров")
-print(f"  📦 С быстрой доставкой: {fast_delivery_count} ({percent_fast:.1f}%)")
+print(f"  📦 Доставка: быстрая={fast_delivery_count}, медленная={slow_delivery_count}, нет={no_delivery_count}")
+print(f"  ❌ Не прошли: отзывы={failed_reviews}, цена={failed_price}, доставка={failed_delivery}")
 print(f"  ⭐ Прошло фильтры: {len(filtered_products)} товаров")
+
+# DEBUG: выводим примеры отклоненных товаров
+if failed_products_debug:
+    print(f"\n  🐛 DEBUG: Примеры отклоненных товаров (первые 5):")
+    for i, (p, reason) in enumerate(failed_products_debug[:5], 1):
+        print(f"    {i}. {p.get('title', 'N/A')[:35]}...")
+        print(f"       Причина: {reason}")
+        print(f"       reviews={p.get('reviews', 0)}, price={p.get('price', 0)}, delivery=\"{p.get('delivery', '')}\"")
+
 print(f"  🏷️  Статус: {status}")
 
 # Загружаем Excel
@@ -539,27 +718,26 @@ wb = openpyxl.load_workbook(output_file)
 ws_shops = wb['Магазины']
 ws_products = wb['Товары']
 
-# Добавляем магазин
+# Добавляем магазин (новая структура v2)
 row_shop = ws_shops.max_row + 1
-ws_shops.cell(row_shop, 1, shop_url)
-ws_shops.cell(row_shop, 2, total_checked)
-ws_shops.cell(row_shop, 3, fast_delivery_count)
-ws_shops.cell(row_shop, 4, f"{percent_fast:.1f}%")
-ws_shops.cell(row_shop, 5, status)
-ws_shops.cell(row_shop, 6, datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+ws_shops.cell(row_shop, 1, shop_url_with_sorting)          # URL магазина
+ws_shops.cell(row_shop, 2, total_checked)                  # Проверено товаров
+ws_shops.cell(row_shop, 3, len(filtered_products))         # Прошло фильтры
+ws_shops.cell(row_shop, 4, failed_reviews)                 # Не прошло: отзывы
+ws_shops.cell(row_shop, 5, failed_price)                   # Не прошло: цена
+ws_shops.cell(row_shop, 6, failed_delivery)                # Не прошло: доставка
+ws_shops.cell(row_shop, 7, status)                         # Статус
+ws_shops.cell(row_shop, 8, datetime.now().strftime('%Y-%m-%d %H:%M:%S'))  # Дата
 
 # Выравнивание
-ws_shops.cell(row_shop, 2).alignment = Alignment(horizontal='center')
-ws_shops.cell(row_shop, 3).alignment = Alignment(horizontal='center')
-ws_shops.cell(row_shop, 4).alignment = Alignment(horizontal='center')
-ws_shops.cell(row_shop, 5).alignment = Alignment(horizontal='center')
-ws_shops.cell(row_shop, 6).alignment = Alignment(horizontal='center')
+for col in range(2, 9):
+    ws_shops.cell(row_shop, col).alignment = Alignment(horizontal='center')
 
-# Цвет статуса
+# Цвет статуса (колонка 7 теперь)
 if status == 'местный магазин':
-    ws_shops.cell(row_shop, 5).fill = PatternFill(start_color='FFC7CE', end_color='FFC7CE', fill_type='solid')
+    ws_shops.cell(row_shop, 7).fill = PatternFill(start_color='FFC7CE', end_color='FFC7CE', fill_type='solid')
 else:
-    ws_shops.cell(row_shop, 5).fill = PatternFill(start_color='C6EFCE', end_color='C6EFCE', fill_type='solid')
+    ws_shops.cell(row_shop, 7).fill = PatternFill(start_color='C6EFCE', end_color='C6EFCE', fill_type='solid')
 
 # Добавляем товары
 for product in filtered_products:
@@ -587,7 +765,7 @@ for product in filtered_products:
     ws_products.cell(row_prod, 4, int(product['reviews']))
     ws_products.cell(row_prod, 5, product['delivery'])
     ws_products.cell(row_prod, 6, product['url'])
-    ws_products.cell(row_prod, 7, shop_url)
+    ws_products.cell(row_prod, 7, shop_url_with_sorting)
 
     # Выравнивание
     ws_products.cell(row_prod, 3).alignment = Alignment(horizontal='right')
@@ -640,3 +818,11 @@ PYTHON_STATS
 
 # Очистка
 rm -f /tmp/shops_to_process.txt
+
+# Закрываем вкладку, если открыто больше одной
+TAB_COUNT=$(osascript -e 'tell application "Google Chrome" to count tabs of window 1' 2>/dev/null || echo "1")
+if [ "$TAB_COUNT" -gt 1 ]; then
+    echo ""
+    echo "🧹 Закрываю рабочую вкладку (открыто вкладок: $TAB_COUNT)..."
+    osascript -e 'tell application "Google Chrome" to close active tab of window 1' 2>/dev/null
+fi
